@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 서비스 워커 및 워크박스 파일
+/public/sw.js
+/public/workbox-*.js
