@@ -1,6 +1,15 @@
+import { ReactNode } from "react";
+
+/* 공통 인터페이스 */
+export interface IHeader {
+  title: string;
+  leftChild?: ReactNode;
+  rightChild?: ReactNode;
+}
+
 /* 버튼 인터페이스 */
 export interface IEventButton {
-  text: string; // 아이콘으로 변경될 수 있음
+  text: string; // 아이콘으로 변경되어야 함
   onClick: () => void;
 }
 
