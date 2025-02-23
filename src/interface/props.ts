@@ -13,6 +13,12 @@ export interface INavItem {
 }
 
 /* 버튼 인터페이스 */
+export interface IButton {
+  text: string;
+  type?: string;
+  onClick: () => void;
+}
+
 export interface IEventButton {
   text: string; // 아이콘으로 변경되어야 함
   onClick: () => void;
