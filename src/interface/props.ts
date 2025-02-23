@@ -7,6 +7,11 @@ export interface IHeader {
   rightChild?: ReactNode;
 }
 
+export interface INavItem {
+  icon: string; // 아이콘으로 변경되어야 함
+  text: string;
+}
+
 /* 버튼 인터페이스 */
 export interface IEventButton {
   text: string; // 아이콘으로 변경되어야 함
