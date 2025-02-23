@@ -1,5 +1,7 @@
-const EventButton = () => {
-  return <div>이벤트 속성만 있는 작은 버튼</div>;
+import { IEventButton } from "@interface/props";
+
+const EventButton = ({ text, onClick }: IEventButton) => {
+  return <button onClick={onClick}>{text}</button>;
 };
 
 export default EventButton;

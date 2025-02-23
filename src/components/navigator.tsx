@@ -1,5 +1,13 @@
+import NavItem from "@components/nav-item";
+
 const Navigator = () => {
-  return <div>하단 내비게이션 바</div>;
+  return (
+    <div>
+      <NavItem icon="" text="랭킹" />
+      <NavItem icon="" text="학습" />
+      <NavItem icon="" text="마이페이지" />
+    </div>
+  );
 };
 
 export default Navigator;
