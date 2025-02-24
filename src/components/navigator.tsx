@@ -9,7 +9,7 @@ import mypage_active from "@assets/svg/mypage_fill.svg";
 
 const Navigator = () => {
   return (
-    <nav className="w-full h-[72px] fixed bottom-0 flex justify-around items-center bg-white border-t-[1px] border-t-[#F2F2F2]">
+    <nav className="max-w-[480px] w-full h-[72px] fixed bottom-0 flex justify-around items-center bg-white border-t-[1px] border-t-[#F2F2F2]">
       <NavItem
         icon={rank}
         activeIcon={rank_active}
