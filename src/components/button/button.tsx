@@ -20,10 +20,17 @@ const Button = ({ icon, text, type, link }: IButton) => {
         className={`w-full h-14 rounded-[10px] ${buttonClass[type]}`}
         onClick={() => router.push(link)}
       >
-        {icon ? (
-          <Image src={icon} width={21} height={21} alt="카카오 로고" />
-        ) : null}
-        {text}
+        <div className="flex justify-center gap-2">
+          {icon ? (
+            <Image
+              src={icon}
+              width={21}
+              height={21}
+              alt="카카오 로고"
+            />
+          ) : null}
+          {text}
+        </div>
       </button>
     </div>
   );
