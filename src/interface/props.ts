@@ -2,14 +2,16 @@ import { ReactNode } from "react";
 
 /* 공통 인터페이스 */
 export interface IHeader {
-  title: string;
+  title?: string;
   leftChild?: ReactNode;
   rightChild?: ReactNode;
 }
 
 export interface INavItem {
-  icon: string; // 아이콘으로 변경되어야 함
+  icon: string;
+  activeIcon: string;
   text: string;
+  link: string;
 }
 
 export interface IModal {
@@ -23,14 +25,22 @@ export interface IModal {
 
 /* 버튼 인터페이스 */
 export interface IButton {
+  icon?: string;
   text: string;
-  type?: string;
-  onClick: () => void;
+  type: "kakao" | "active" | "inactive";
+  link: string;
 }
 
 export interface IEventButton {
-  text: string; // 아이콘으로 변경되어야 함
+  icon: string;
   onClick: () => void;
+}
+
+export interface ISmallButton {
+  text: string;
+  type: "inactive" | "active" | "negative" | "positive";
+  link?: string;
+  onClick?: () => void;
 }
 
 /* 사용자 인터페이스 */

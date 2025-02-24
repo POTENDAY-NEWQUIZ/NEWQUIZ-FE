@@ -22,6 +22,7 @@
     "paths": {
       "@api/*": ["src/api/*"],
       "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@container/*": ["src/container/*"],
       "@context/*": ["src/context/*"],
