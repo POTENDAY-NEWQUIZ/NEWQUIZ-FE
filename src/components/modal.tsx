@@ -1,5 +1,25 @@
-const Modal = () => {
-  return <div>중앙에 오는 기본 모달</div>;
+import { IModal } from "@interface/props";
+
+const Modal = ({
+  icon,
+  text,
+  description,
+  leftChild,
+  centerChild,
+  rightChild,
+}: IModal) => {
+  return (
+    <div>
+      <div>{icon}</div>
+      <div>{text}</div>
+      <div>{description}</div>
+      <div>
+        {leftChild}
+        {centerChild}
+        {rightChild}
+      </div>
+    </div>
+  );
 };
 
 export default Modal;
