@@ -18,6 +18,9 @@ export default {
         "mist-lavender": "#EAE1FF",
         "lime-green": "#B2F142",
       },
+      boxShadow: {
+        modal: "0px 3.81px 9.524px 0px rgba(0, 0, 0, 0.10)",
+      },
     },
   },
   plugins: [],

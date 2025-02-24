@@ -36,6 +36,13 @@ export interface IEventButton {
   onClick: () => void;
 }
 
+export interface ISmallButton {
+  text: string;
+  type: "inactive" | "active" | "negative" | "positive";
+  link?: string;
+  onClick?: () => void;
+}
+
 /* 사용자 인터페이스 */
 
 /* 기사 인터페이스 */
