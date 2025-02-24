@@ -8,8 +8,10 @@ export interface IHeader {
 }
 
 export interface INavItem {
-  icon: string; // 아이콘으로 변경되어야 함
+  icon: string;
+  activeIcon: string;
   text: string;
+  link: string;
 }
 
 export interface IModal {
