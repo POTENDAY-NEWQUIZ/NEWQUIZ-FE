@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 /* 공통 인터페이스 */
 export interface IHeader {
-  title: string;
+  title?: string;
   leftChild?: ReactNode;
   rightChild?: ReactNode;
 }
@@ -23,13 +23,14 @@ export interface IModal {
 
 /* 버튼 인터페이스 */
 export interface IButton {
+  icon?: string;
   text: string;
-  type?: string;
-  onClick: () => void;
+  type: "kakao" | "active" | "inactive";
+  link: string;
 }
 
 export interface IEventButton {
-  text: string; // 아이콘으로 변경되어야 함
+  icon: string;
   onClick: () => void;
 }
 
