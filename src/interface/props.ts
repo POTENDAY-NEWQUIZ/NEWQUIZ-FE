@@ -12,6 +12,15 @@ export interface INavItem {
   text: string;
 }
 
+export interface IModal {
+  icon: string; // 아이콘으로 변경되어야 함
+  text: string;
+  description?: string;
+  leftChild?: ReactNode;
+  centerChild?: ReactNode;
+  rightChild?: ReactNode;
+}
+
 /* 버튼 인터페이스 */
 export interface IButton {
   text: string;
@@ -29,5 +38,11 @@ export interface IEventButton {
 /* 기사 인터페이스 */
 
 /* 퀴즈 인터페이스 */
+export interface IQuizModal {
+  text: string;
+  answer?: string;
+  description?: string;
+  button: ReactNode;
+}
 
 /* 요약 인터페이스 */
