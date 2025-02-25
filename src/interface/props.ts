@@ -33,7 +33,7 @@ export interface IButton {
 
 export interface IEventButton {
   icon: string;
-  onClick: () => void;
+  command: string;
 }
 
 export interface ISmallButton {
@@ -41,6 +41,11 @@ export interface ISmallButton {
   type: "inactive" | "active" | "negative" | "positive";
   link?: string;
   onClick?: () => void;
+}
+
+export interface ICheckButton {
+  text: string;
+  onClick: () => void;
 }
 
 /* 사용자 인터페이스 */
