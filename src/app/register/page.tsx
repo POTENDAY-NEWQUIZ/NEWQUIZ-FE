@@ -1,5 +1,6 @@
-"use client"; // useState 부분 컴포넌트 분리 or 서버 액션 사용해서 SSR 적용 필요
+"use client"; // 리액트 훅 부분 컴포넌트 분리 or 서버 액션 사용해서 SSR 적용 필요
 
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import Header from "@components/header";
@@ -7,20 +8,64 @@ import Blank from "@components/button/blank";
 import EventButton from "@components/button/event-button";
 import CheckButton from "@components/button/check-button";
 import Button from "@components/button/button";
+import { checkNickname, register } from "@api/user-api";
 
 import cancel from "@assets/svg/cancel.svg";
 
 const Register = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const registerToken = searchParams.get("token");
   const [nickname, setNickname] = useState("");
   const [birth, setBirth] = useState("");
-  const [isCheckNickname, SetIsCheckNickname] = useState(false);
+  const [isCheckNickname, setIsCheckNickname] = useState("DEFAULT");
+
+  const nicknameRegex =
+    /^(?=.*[가-힣a-zA-Z])(?=.*\d)[가-힣a-zA-Z\d]{2,8}$/;
+  const birthRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+  const isValidNickname = nicknameRegex.test(nickname);
+  const isValidBirth = birthRegex.test(birth);
 
   const onChangeNickname = (e: any) => {
     setNickname(e.target.value);
+    setIsCheckNickname("DEFAULT");
   };
 
   const onChangeBirth = (e: any) => {
     setBirth(e.target.value);
+  };
+
+  const onClickCheckNickname = async () => {
+    if (!isValidNickname) {
+      setIsCheckNickname("FALSE");
+      return;
+    }
+
+    const response = await checkNickname(
+      String(registerToken),
+      nickname
+    );
+
+    if (response.data.isDuplicate) {
+      setIsCheckNickname("FALSE");
+    } else {
+      setIsCheckNickname("TRUE");
+    }
+  };
+
+  const onClickRegister = async () => {
+    const response = await register(
+      String(registerToken),
+      nickname,
+      birth
+    );
+
+    console.log(response);
+
+    if (response.is_success) {
+      router.replace("/");
+    }
   };
 
   return (
@@ -53,7 +98,7 @@ const Register = () => {
                 onChange={onChangeNickname}
               />
               <div className="absolute right-0 z-10">
-                {isCheckNickname ? (
+                {isCheckNickname === "TRUE" ? (
                   <CheckButton
                     text="확인완료"
                     type="check"
@@ -63,10 +108,21 @@ const Register = () => {
                   <CheckButton
                     text="중복확인"
                     type="uncheck"
-                    onClick={() => {}}
+                    onClick={onClickCheckNickname}
                   />
                 )}
               </div>
+            </div>
+            <div className="text-xs text-right pt-2">
+              {isCheckNickname === "TRUE" ? (
+                <p>사용 가능한 닉네임입니다 :)</p>
+              ) : isCheckNickname === "FALSE" ? (
+                <p className="text-[#FC1919]">
+                  사용 중인 닉네임입니다.{" "}
+                </p>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
           <div className="flex flex-col">
@@ -88,8 +144,14 @@ const Register = () => {
 
       {/* 버튼 구역 */}
       <section className="max-w-[480px] w-full fixed bottom-5">
-        {nickname && birth ? (
-          <Button text="뉴퀴즈 시작하기" type="active" link="/" />
+        {isCheckNickname === "TRUE" &&
+        isValidNickname &&
+        isValidBirth ? (
+          <Button
+            text="뉴퀴즈 시작하기"
+            type="active"
+            onClick={onClickRegister}
+          />
         ) : (
           <Button text="뉴퀴즈 시작하기" type="inactive" link="" />
         )}
