@@ -45,6 +45,7 @@ export interface ISmallButton {
 
 export interface ICheckButton {
   text: string;
+  type: "uncheck" | "check";
   onClick: () => void;
 }
 

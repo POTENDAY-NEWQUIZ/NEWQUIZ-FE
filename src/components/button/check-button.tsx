@@ -1,9 +1,14 @@
 import { ICheckButton } from "@interface/props";
 
-const CheckButton = ({ text, onClick }: ICheckButton) => {
+const CheckButton = ({ text, type, onClick }: ICheckButton) => {
+  const buttonClass = {
+    uncheck: "bg-lavender text-white",
+    check: "bg-[#FBFAFF] text-lavender border-[1px] border-lavender",
+  };
+
   return (
     <button
-      className="w-[60px] h-[26px] bg-lavender text-[11px] text-white font-semibold rounded-[20px]"
+      className={`${buttonClass[type]} w-[60px] h-[26px] text-[11px] font-semibold rounded-[20px]`}
       onClick={onClick}
     >
       {text}

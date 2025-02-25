@@ -10,8 +10,8 @@ const Button = ({ icon, text, type, link }: IButton) => {
 
   const buttonClass = {
     kakao: "bg-[#FEE500] text-black",
-    active: "bg-[#484848] text-white",
-    inactive: "bg-[#E2E2E2] text-[#888888]",
+    active: "bg-[#484848] text-white font-semibold text-sm",
+    inactive: "bg-[#E2E2E2] text-[#888888] font-semibold text-sm",
   };
 
   return (
