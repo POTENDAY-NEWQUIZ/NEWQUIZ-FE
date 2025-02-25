@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 /* 공통 인터페이스 */
 export interface IHeader {
@@ -28,12 +28,13 @@ export interface IButton {
   icon?: string;
   text: string;
   type: "kakao" | "active" | "inactive";
-  link: string;
+  link?: string;
+  onClick?: () => {};
 }
 
 export interface IEventButton {
   icon: string;
-  onClick: () => void;
+  command: string;
 }
 
 export interface ISmallButton {
@@ -41,6 +42,12 @@ export interface ISmallButton {
   type: "inactive" | "active" | "negative" | "positive";
   link?: string;
   onClick?: () => void;
+}
+
+export interface ICheckButton {
+  text: string;
+  type: "uncheck" | "check";
+  onClick: MouseEventHandler;
 }
 
 /* 사용자 인터페이스 */

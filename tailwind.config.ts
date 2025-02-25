@@ -11,11 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lavender: "#6D2FF2",
+        "bright-lavender": "#B287FD",
+        "mist-lavender": "#EAE1FF",
         "void-black": "#262626",
         "rasin-black": "#212121",
         "light-gray": "#D8D9DD",
-        "bright-lavender": "#B287FD",
-        "mist-lavender": "#EAE1FF",
         "lime-green": "#B2F142",
       },
       boxShadow: {
