@@ -26,11 +26,11 @@ export const register = async (
         baseURL: baseURL,
         withCredentials: true,
         headers: {
-          "Content-Type": "applicaiton/json",
+          "Content-Type": "application/json",
           registerToken: registerToken,
         },
       })
-      .post(`/users/register`, { nickname, birth });
+      .post(`/users/register`, { nickName: nickname, birth });
 
     const { refreshToken, accessToken } = response.data.data;
 
@@ -44,3 +44,24 @@ export const register = async (
 };
 
 // 닉네임 중복 확인
+export const checkNickname = async (
+  registerToken: string,
+  nickname: string
+) => {
+  try {
+    const response = await axios
+      .create({
+        baseURL: baseURL,
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          registerToken: registerToken,
+        },
+      })
+      .post(`/users/nickname/check`, { nickName: nickname });
+
+    return response.data;
+  } catch (error) {
+    console.error("닉네임 중복 확인 실패", error);
+  }
+};
