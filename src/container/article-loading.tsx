@@ -20,7 +20,7 @@ const ArticleLoading = () => {
 
       {/* 안내문 구역 */}
       <section className="mx-w-[420px] bg-white shadow-description rounded-[10px] mx-[30px]">
-        <ul className="p-6 text-sm font-medium list-disc list-inside">
+        <ul className="ml-3 p-6 text-sm font-medium list-disc list-outside leading-6">
           <li>원하는 분야의 사설을 선택해주세요</li>
           <li>
             기사 선택 후 하단의 버튼을 누르면 퀴즈가 바로 시작됩니다
