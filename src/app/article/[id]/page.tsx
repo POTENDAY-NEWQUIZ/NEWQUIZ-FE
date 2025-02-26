@@ -82,7 +82,7 @@ const Article = () => {
       </section>
 
       {/* 버튼 영역 */}
-      <section className="w-full fixed bottom-4">
+      <section className="max-w-[480px] w-full fixed bottom-4">
         <Button
           text="해당 사설로 퀴즈 시작할래요!"
           type="start"
