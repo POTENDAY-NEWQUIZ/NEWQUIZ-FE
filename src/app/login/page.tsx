@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import Button from "@components/button/button";
 import { useAuthStore } from "@store/user-store";
 
-import notification from "@assets/notification.svg";
+import logo from "@assets/logo.svg";
+import notification from "@assets/img/notification.svg";
 import kakao from "@assets/svg/kakao.svg";
 
 const Login = () => {
@@ -32,13 +33,16 @@ const Login = () => {
     <main className="w-full h-screen bg-white flex flex-col justify-center items-center">
       {/* 로고 영역 */}
       <section className="text-center mb-20">
-        <div>뉴퀴즈(로고)</div>
+        <div className="mb-3">
+          <Image src={logo} width={174.01} height={39.52} alt="로고" />
+        </div>
         <div className="font-semibold">퀴즈 하나로 뉴스를 더 쉽게!</div>
       </section>
 
       {/* 버튼 영역 */}
       <section className="w-full">
         <div className="flex justify-center mb-2">
+          {/* 로티 애니메이션 적용 필요 */}
           <Image
             src={notification}
             width={163}
