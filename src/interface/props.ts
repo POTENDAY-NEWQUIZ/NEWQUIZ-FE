@@ -80,4 +80,9 @@ export interface IProgressiveBar {
   current: number;
 }
 
+export interface IQuizSelect {
+  text: string;
+  type: "click" | "unclick";
+}
+
 /* 요약 인터페이스 */

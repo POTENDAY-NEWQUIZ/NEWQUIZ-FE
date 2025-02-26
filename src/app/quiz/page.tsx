@@ -5,6 +5,7 @@ import Blank from "@components/button/blank";
 
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
+import WordQuiz1 from "@container/word-quiz-1";
 
 const Quiz = () => {
   return (
@@ -23,6 +24,9 @@ const Quiz = () => {
       </section>
 
       {/* 퀴즈 구역 */}
+      <section>
+        <WordQuiz1 />
+      </section>
 
       {/* 버튼 구역 */}
     </main>
