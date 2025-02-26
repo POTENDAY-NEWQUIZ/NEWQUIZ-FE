@@ -6,11 +6,18 @@ import Calendar from "react-calendar";
 
 import prev from "@assets/svg/month-prev.svg";
 import next from "@assets/svg/month-next.svg";
+import fire from "@assets/img/fire.svg";
 
 // 날짜 관련 부분은 백에서 정해지면 수정 필요
 type SelectDate = Date;
 
-const MyCalendar = () => {
+// 임시 자료형
+type CalendarProps = {
+  start: string;
+  end: string;
+};
+
+const MyCalendar = ({ start, end }: CalendarProps) => {
   const [selectDate, setSelectDate] = useState<SelectDate>(new Date());
 
   const onClickPrev = () => {
@@ -23,6 +30,45 @@ const MyCalendar = () => {
     setSelectDate(
       new Date(selectDate.getFullYear(), selectDate.getMonth() + 1, 1)
     );
+  };
+
+  const isSameDay = (date1: Date, date2: Date) => {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  };
+
+  const insertColorToDate = ({ date }: { date: Date }) => {
+    const normalizeDate = (date: Date) => {
+      return new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
+      );
+    };
+
+    if (
+      normalizeDate(date) > normalizeDate(new Date(start)) &&
+      normalizeDate(date) < normalizeDate(new Date(end))
+    ) {
+      return "highlight-color";
+    }
+
+    return "";
+  };
+
+  const insertImageToDate = ({ date }: { date: Date }) => {
+    if (isSameDay(date, new Date(start))) {
+      return "highlight-image-start";
+    }
+
+    if (isSameDay(date, new Date(end))) {
+      return "highlight-image-end";
+    }
+
+    return "";
   };
 
   return (
@@ -40,6 +86,19 @@ const MyCalendar = () => {
           showNeighboringMonth={false}
           formatMonthYear={(locale, date) =>
             `${date.getFullYear()}년 ${date.getMonth() + 1}월`
+          }
+          tileClassName={(props) => {
+            return `${insertColorToDate(props)} ${insertImageToDate(
+              props
+            )}`;
+          }}
+          tileContent={({ date }) =>
+            isSameDay(date, new Date(start)) ||
+            isSameDay(date, new Date(end)) ? (
+              <div>
+                <Image src={fire} width={40} height={40} alt="불꽃" />
+              </div>
+            ) : null
           }
         />
         <button

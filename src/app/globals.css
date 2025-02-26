@@ -42,8 +42,62 @@ body {
 }
 
 .custom-calendar .react-calendar__tile {
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 14px;
   font-weight: 500;
   width: 40px;
   height: 40px;
+  margin: 4px 0;
+}
+
+.custom-calendar .highlight-color abbr {
+  background-color: #ebe2ff;
+}
+
+.custom-calendar .highlight-image-start,
+.custom-calendar .highlight-image-end {
+  position: relative;
+}
+
+.custom-calendar .highlight-image-start div,
+.custom-calendar .highlight-image-end div {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.custom-calendar .highlight-image-start div:after {
+  content: "";
+  background-color: #ebe2ff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 21px;
+  z-index: -1;
+}
+
+.custom-calendar .highlight-image-end div:after {
+  content: "";
+  background-color: #ebe2ff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 21px;
+  z-index: -1;
+}
+
+.custom-calendar .highlight-image-start abbr,
+.custom-calendar .highlight-image-end abbr {
+  font-weight: 700;
+  color: #552baf;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
 }

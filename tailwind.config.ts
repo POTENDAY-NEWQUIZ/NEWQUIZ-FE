@@ -15,7 +15,6 @@ export default {
         black: "#121212",
         lavender: "#552BAF",
         "point-lavender": "#6838CE",
-        "light-lavender": "#EBE2FF",
         "home-lavender": "#F5F2FF",
         "mist-lavender": "#FBFAFF",
       },

@@ -16,7 +16,7 @@ const Home = () => {
 
         {/* 캘린더 구역 */}
         <section className="pt-16 mb-5">
-          <MyCalendar />
+          <MyCalendar start={"2025-02-12"} end={"2025-02-19"} />
         </section>
 
         {/* 학습일수 구역 */}
