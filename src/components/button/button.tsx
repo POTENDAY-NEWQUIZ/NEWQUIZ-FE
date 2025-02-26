@@ -10,6 +10,7 @@ const Button = ({ icon, text, type, link, onClick }: IButton) => {
 
   const buttonClass = {
     kakao: "bg-[#FEE500] text-black",
+    start: "bg-lavender text-white font-semibold text-sm shadow-button",
     active: "bg-lavender text-white font-semibold text-sm",
     inactive: "bg-[#E2E2E2] text-[#888888] font-semibold text-sm",
   };

@@ -19,7 +19,8 @@ export default {
         "mist-lavender": "#FBFAFF",
       },
       boxShadow: {
-        default: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)",
+        default: "0px 2px 10px 0px rgba(0, 0, 0, 0.05)",
+        button: "0px 4px 8px 0px rgba(0, 0, 0, 0.15)",
         modal: "0px 3.81px 9.524px 0px rgba(0, 0, 0, 0.10)",
       },
     },
