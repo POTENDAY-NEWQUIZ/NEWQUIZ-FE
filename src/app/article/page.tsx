@@ -1,3 +1,4 @@
+import ArticleLoading from "@container/article-loading";
 import Header from "@components/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
@@ -5,11 +6,12 @@ import Blank from "@components/button/blank";
 const ArticleList = () => {
   return (
     <div>
-      <Header
+      <ArticleLoading />
+      {/* <Header
         title="분야 선택하기"
         leftChild={<BackButton />}
         rightChild={<Blank />}
-      />
+      /> */}
     </div>
   );
 };

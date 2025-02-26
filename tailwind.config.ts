@@ -4,6 +4,7 @@ export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/container/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -11,16 +12,16 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        lavender: "#6D2FF2",
-        "bright-lavender": "#B287FD",
-        "mist-lavender": "#EAE1FF",
-        "void-black": "#262626",
-        "rasin-black": "#212121",
-        "light-gray": "#D8D9DD",
-        "lime-green": "#B2F142",
+        black: "#121212",
+        lavender: "#552BAF",
+        "point-lavender": "#6838CE",
+        "light-lavender": "#EBE2FF",
+        "home-lavender": "#F5F2FF",
+        "mist-lavender": "#FBFAFF",
       },
       boxShadow: {
         modal: "0px 3.81px 9.524px 0px rgba(0, 0, 0, 0.10)",
+        description: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)",
       },
     },
   },
