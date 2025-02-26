@@ -38,7 +38,7 @@ const Register = () => {
 
   const onClickCheckNickname = async () => {
     if (!isValidNickname) {
-      setIsCheckNickname("FALSE");
+      setIsCheckNickname("ERROR");
       return;
     }
 
@@ -118,10 +118,12 @@ const Register = () => {
                 <p>사용 가능한 닉네임입니다 :)</p>
               ) : isCheckNickname === "FALSE" ? (
                 <p className="text-[#FC1919]">
-                  사용 중인 닉네임입니다.{" "}
+                  사용 중인 닉네임입니다.
                 </p>
+              ) : isCheckNickname === "ERROR" ? (
+                <p className="text-[#FC1919]">다시 입력해주세요.</p>
               ) : (
-                <p></p>
+                <p className="text-white">닉네임 관련 문구</p>
               )}
             </div>
           </div>
