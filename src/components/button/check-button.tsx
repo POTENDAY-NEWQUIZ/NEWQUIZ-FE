@@ -4,7 +4,7 @@ const CheckButton = ({ text, type, onClick }: ICheckButton) => {
   const buttonClass = {
     uncheck: "bg-lavender text-white",
     check:
-      "bg-[#FBFAFF] text-lavender border-[1px] border-lavender cursor-default",
+      "bg-mist-lavender text-lavender border-[1px] border-lavender cursor-default",
   };
 
   return (
