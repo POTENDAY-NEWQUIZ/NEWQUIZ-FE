@@ -53,6 +53,12 @@ export interface ICheckButton {
 /* 사용자 인터페이스 */
 
 /* 기사 인터페이스 */
+export interface IArticleItem {
+  id: number;
+  title: string;
+  date: string;
+  source: string;
+}
 
 /* 퀴즈 인터페이스 */
 export interface IQuizModal {
