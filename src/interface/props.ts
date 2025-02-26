@@ -27,7 +27,7 @@ export interface IModal {
 export interface IButton {
   icon?: string;
   text: string;
-  type: "kakao" | "active" | "inactive";
+  type: "kakao" | "start" | "active" | "inactive";
   link?: string;
   onClick?: () => {};
 }
