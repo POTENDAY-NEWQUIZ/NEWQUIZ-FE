@@ -1,9 +1,29 @@
-import Button from "@components/button/button";
+import ProgressiveBar from "@components/quiz/progressive-bar";
+import Header from "@components/header";
+import Blank from "@components/button/blank";
+import EventButton from "@components/button/event-button";
 import QuizSelect from "@components/quiz/quiz-select";
+import Button from "@components/button/button";
+
+import cancel from "@assets/svg/cancel.svg";
+import hint from "@assets/svg/hint.svg";
 
 const WordQuiz1 = () => {
   return (
     <>
+      {/* 헤더 구역 */}
+      <Header
+        title="유의어 퀴즈"
+        leftChild={<EventButton icon={cancel} command="back" />}
+        rightChild={<Blank />}
+      />
+
+      {/* 프로그레시브 바 구역 */}
+      <section className="pt-16 mx-5 flex items-center gap-3">
+        <ProgressiveBar total={4} current={1} />
+        <EventButton icon={hint} command="" />
+      </section>
+
       {/* 문제 영역 */}
       <section className="mt-6 mx-5">
         <div className="text-center font-semibold text-lg mb-5">
@@ -11,7 +31,7 @@ const WordQuiz1 = () => {
           <br />
           <span className="underline">'반등'</span>의 의미와
           <br />
-          가장 <span className="text-point-lavender">유사한</span>{" "}
+          가장 <span className="text-point-lavender">유사한</span>
           단어는?
         </div>
 
