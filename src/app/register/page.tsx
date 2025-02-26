@@ -72,7 +72,7 @@ const Register = () => {
     <main className="bg-white">
       <Header
         leftChild={<Blank />}
-        rightChild={<EventButton icon={cancel} command="register" />}
+        rightChild={<EventButton icon={cancel} command="back" />}
       />
 
       <div className="h-screen flex flex-col justify-center p-5">

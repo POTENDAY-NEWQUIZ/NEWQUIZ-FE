@@ -75,4 +75,9 @@ export interface IQuizModal {
   button: ReactNode;
 }
 
+export interface IProgressiveBar {
+  total: number;
+  current: number;
+}
+
 /* 요약 인터페이스 */
