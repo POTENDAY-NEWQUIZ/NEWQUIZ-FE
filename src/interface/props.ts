@@ -50,6 +50,13 @@ export interface ICheckButton {
   onClick: MouseEventHandler;
 }
 
+/* 홈 인터페이스 */
+export interface IStudyDuration {
+  icon: string;
+  duration: number;
+  text: string;
+}
+
 /* 사용자 인터페이스 */
 
 /* 기사 인터페이스 */

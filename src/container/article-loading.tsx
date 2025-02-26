@@ -19,7 +19,7 @@ const ArticleLoading = () => {
       </section>
 
       {/* 안내문 구역 */}
-      <section className="mx-w-[420px] bg-white shadow-description rounded-[10px] mx-[30px]">
+      <section className="mx-w-[420px] bg-white shadow-default rounded-[10px] mx-[30px]">
         <ul className="ml-3 p-6 text-sm font-medium list-disc list-outside leading-6">
           <li>원하는 분야의 사설을 선택해주세요</li>
           <li>
