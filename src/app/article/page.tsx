@@ -7,8 +7,10 @@ import Header from "@components/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
 import Category from "@components/category";
+import ArticleList from "@container/article-list";
 
-const ArticleList = () => {
+// 기사 카테고리별 api 연결 필요
+const Article = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ const ArticleList = () => {
           />
           <section className="pt-16">
             <Category />
+            <ArticleList />
           </section>
         </>
       )}
@@ -39,4 +42,4 @@ const ArticleList = () => {
   );
 };
 
-export default ArticleList;
+export default Article;
