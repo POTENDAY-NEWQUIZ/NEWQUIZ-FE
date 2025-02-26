@@ -13,28 +13,30 @@ const NavItem = ({ icon, activeIcon, text, link }: INavItem) => {
 
   return (
     <div
-      className="w-12 flex flex-col items-center gap-1 cursor-pointer"
+      className="w-12 flex flex-col items-center cursor-pointer"
       onClick={() => router.push(link)}
     >
       {isActive ? (
         <Image
           src={activeIcon}
-          width={30}
-          height={30}
+          width={40}
+          height={40}
           alt="내비게이션 아이콘"
         />
       ) : (
         <Image
           src={icon}
-          width={30}
-          height={30}
+          width={40}
+          height={40}
           alt="내비게이션 아이콘"
         />
       )}
 
       <div
         className={`text-[10px] font-semibold ${
-          isActive ? "font-semibold" : "font-normal"
+          isActive
+            ? "font-bold text-lavender"
+            : "font-normal text-[#909090]"
         }`}
       >
         {text}
