@@ -1,5 +1,11 @@
+import AILoading from "@container/ai-loading";
+
 const Result = () => {
-  return <main>AI 요약 결과 페이지</main>;
+  return (
+    <main>
+      <AILoading />
+    </main>
+  );
 };
 
 export default Result;
