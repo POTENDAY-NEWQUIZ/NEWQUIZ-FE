@@ -76,6 +76,21 @@ export interface IArticleItem {
   source: string;
 }
 
+export interface IArticle {
+  category: string;
+  date: string;
+  newsId: number;
+  paragraphs: IParagraph[];
+  source: string;
+  title: string;
+}
+
+export interface IParagraph {
+  paragraphId: number;
+  order: number;
+  content: string;
+}
+
 /* 퀴즈 인터페이스 */
 export interface IQuizModal {
   text: string;
