@@ -61,8 +61,6 @@ const RegisterContainer = () => {
       birth
     );
 
-    console.log(response);
-
     if (response.is_success) {
       router.replace("/");
     }
