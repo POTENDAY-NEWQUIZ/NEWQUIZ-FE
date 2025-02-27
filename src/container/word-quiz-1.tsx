@@ -1,12 +1,4 @@
-import ProgressiveBar from "@components/quiz/progressive-bar";
-import Header from "@components/header";
-import Blank from "@components/button/blank";
-import EventButton from "@components/button/event-button";
 import QuizSelect from "@components/quiz/quiz-select";
-import Button from "@components/button/button";
-
-import cancel from "@assets/svg/cancel.svg";
-import hint from "@assets/svg/hint.svg";
 
 const WordQuiz1 = () => {
   return (
