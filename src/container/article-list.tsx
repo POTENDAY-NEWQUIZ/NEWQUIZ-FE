@@ -1,26 +1,28 @@
 import ArticleItem from "@components/article/article-item";
 
-const ArticleList = () => {
+import { IArticleItemList } from "@interface/props";
+
+const ArticleList = ({ articles }: IArticleItemList) => {
   return (
     <main className="mx-8">
-      <ArticleItem
-        id={25}
-        title="[사설] 러시아·북한 편에 선 미국, 안보 지각변동 대비하라"
-        date="2025-02-26"
-        source="한국일보"
-      />
-      <ArticleItem
-        id={25}
-        title="[사설] 러시아·북한 편에 선 미국, 안보 지각변동 대비하라"
-        date="2025-02-26"
-        source="한국일보"
-      />
-      <ArticleItem
-        id={25}
-        title="[사설] 러시아·북한 편에 선 미국, 안보 지각변동 대비하라"
-        date="2025-02-26"
-        source="한국일보"
-      />
+      {articles.length > 0 ? (
+        articles.map((article, index) => (
+          <ArticleItem
+            key={index + 1}
+            id={index + 1}
+            newsId={article.newsId}
+            title={article.title}
+            date={article.date}
+            source={article.source}
+          />
+        ))
+      ) : (
+        <p className="mt-[100%] text-center text-sm font">
+          해당 분야에 존재하는 기사가 없습니다.
+          <br />
+          다른 분야를 선택해주세요
+        </p>
+      )}
     </main>
   );
 };

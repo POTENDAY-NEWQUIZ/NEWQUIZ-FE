@@ -1,11 +1,17 @@
 import { IArticleItem } from "@interface/props";
 import { useRouter } from "next/navigation";
 
-const ArticleItem = ({ id, title, date, source }: IArticleItem) => {
+const ArticleItem = ({
+  id,
+  newsId,
+  title,
+  date,
+  source,
+}: IArticleItem) => {
   const router = useRouter();
 
   const onClickArticle = () => {
-    router.push(`article/${id}`);
+    router.push(`article/${newsId}`);
   };
 
   return (

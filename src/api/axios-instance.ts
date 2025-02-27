@@ -1,10 +1,7 @@
-import { useRouter } from "next/navigation";
 import axios from "axios";
 
 import { useAuthStore } from "@store/user-store";
 import { reissue } from "./user-api";
-
-const router = useRouter();
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -39,7 +36,7 @@ axiosInstance.interceptors.response.use(
 
       const { refreshToken } = useAuthStore.getState();
       if (!refreshToken) {
-        router.replace("/login");
+        window.location.href = "/login";
         return Promise.reject(error);
       }
 
@@ -47,7 +44,7 @@ axiosInstance.interceptors.response.use(
         const response = await reissue(refreshToken);
 
         if (response.data.is_success) {
-          const newAccessToken = response.data.data.accessToken;
+          const newAccessToken = `Bearer ${response.data.data.accessToken}`;
           useAuthStore.getState().setAccessToken(newAccessToken);
 
           originalRequest.headers["Authorization"] = newAccessToken;
@@ -55,14 +52,16 @@ axiosInstance.interceptors.response.use(
         } else {
           useAuthStore.getState().clearRefreshToken();
           useAuthStore.getState().clearAccessToken();
-          router.replace("/login");
+          window.location.href = "/login";
         }
       } catch (error) {
         useAuthStore.getState().clearAccessToken();
-        router.replace("/login");
+        window.location.href = "/login";
       }
     }
 
     return Promise.reject(error);
   }
 );
+
+export default axiosInstance;

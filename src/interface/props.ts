@@ -60,8 +60,17 @@ export interface IStudyDuration {
 /* 사용자 인터페이스 */
 
 /* 기사 인터페이스 */
+export interface ICategory {
+  onCategorySelect: (category: string) => void;
+}
+
+export interface IArticleItemList {
+  articles: IArticleItem[];
+}
+
 export interface IArticleItem {
   id: number;
+  newsId: number;
   title: string;
   date: string;
   source: string;
