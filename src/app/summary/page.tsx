@@ -1,9 +1,24 @@
+"use client";
+
+import { useState } from "react";
+
 import SummaryLoading from "@container/summary-loading";
+import SummaryQuiz from "@container/summary-quiz";
 
 const Summary = () => {
+  const [quizStart, setQuizStart] = useState(false);
+
+  const onCilckComponentChange = () => {
+    setQuizStart(true);
+  };
+
   return (
     <main>
-      <SummaryLoading />
+      {quizStart ? (
+        <SummaryQuiz />
+      ) : (
+        <SummaryLoading onStartQuiz={onCilckComponentChange} />
+      )}
     </main>
   );
 };

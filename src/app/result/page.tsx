@@ -1,5 +1,5 @@
 const Result = () => {
-  return <div>AI 요약 결과 페이지</div>;
+  return <main>AI 요약 결과 페이지</main>;
 };
 
 export default Result;

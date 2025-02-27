@@ -1,9 +1,11 @@
 import Image from "next/image";
 
-import temp from "@assets/img/summary-quiz.svg";
 import Button from "@components/button/button";
+import { ISummaryLoading } from "@interface/props";
 
-const SummaryLoading = () => {
+import temp from "@assets/img/summary-quiz.svg";
+
+const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
   return (
     <main className="h-screen flex flex-col justify-center items-center">
       {/* 문구 영역 */}
@@ -51,7 +53,11 @@ const SummaryLoading = () => {
 
       {/* 버튼 영역 */}
       <section className="w-full mt-12">
-        <Button text="준비됐어요!" type="active" />
+        <Button
+          text="준비됐어요!"
+          type="active"
+          onClick={onStartQuiz}
+        />
       </section>
     </main>
   );
