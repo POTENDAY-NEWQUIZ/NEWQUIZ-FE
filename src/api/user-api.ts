@@ -36,7 +36,7 @@ export const register = async (
     const { refreshToken, accessToken } = response.data.data;
 
     useAuthStore.getState().setRefreshToken(refreshToken);
-    useAuthStore.getState().setAccessToken(`Bearer ${accessToken}`);
+    useAuthStore.getState().setAccessToken(accessToken);
 
     return response.data;
   } catch (error) {

@@ -11,7 +11,8 @@ export const useAuthStore = create<IAuthStore>(
       setRefreshToken: (token: string) => set({ refreshToken: token }),
       clearRefreshToken: () => set({ refreshToken: null }),
       accessToken: null,
-      setAccessToken: (token: string) => set({ accessToken: token }),
+      setAccessToken: (token: string) =>
+        set({ accessToken: `Bearer ${token}` }),
       clearAccessToken: () => set({ accessToken: null }),
     }),
     {
