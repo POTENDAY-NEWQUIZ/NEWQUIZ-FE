@@ -69,6 +69,7 @@ export interface IArticleItemList {
 }
 
 export interface IArticleItem {
+  id: number;
   newsId: number;
   title: string;
   date: string;

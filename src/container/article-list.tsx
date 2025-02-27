@@ -8,8 +8,9 @@ const ArticleList = ({ articles }: IArticleItemList) => {
       {articles.length > 0 ? (
         articles.map((article, index) => (
           <ArticleItem
-            key={article.newsId}
-            newsId={index + 1}
+            key={index + 1}
+            id={index + 1}
+            newsId={article.newsId}
             title={article.title}
             date={article.date}
             source={article.source}
