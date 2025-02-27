@@ -29,7 +29,7 @@ export interface IButton {
   text: string;
   type: "kakao" | "start" | "active" | "inactive";
   link?: string;
-  onClick?: () => {};
+  onClick?: () => void;
 }
 
 export interface IEventButton {
@@ -91,6 +91,10 @@ export interface IOXSelect {
   iconUnselect: string;
   isActive: boolean;
   onSelect: () => void;
+}
+
+export interface ISummaryLoading {
+  onStartQuiz: () => void;
 }
 
 /* 요약 인터페이스 */
