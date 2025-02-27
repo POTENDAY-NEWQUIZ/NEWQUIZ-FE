@@ -11,19 +11,6 @@ import hint from "@assets/svg/hint.svg";
 const WordQuiz1 = () => {
   return (
     <>
-      {/* 헤더 구역 */}
-      <Header
-        title="유의어 퀴즈"
-        leftChild={<EventButton icon={cancel} command="back" />}
-        rightChild={<Blank />}
-      />
-
-      {/* 프로그레시브 바 구역 */}
-      <section className="pt-16 mx-5 flex items-center gap-3">
-        <ProgressiveBar total={4} current={1} />
-        <EventButton icon={hint} command="" />
-      </section>
-
       {/* 문제 영역 */}
       <section className="mt-6 mx-5">
         <div className="text-center font-semibold text-lg mb-5">
@@ -50,11 +37,6 @@ const WordQuiz1 = () => {
         <QuizSelect text="상승" type="unclick" />
         <QuizSelect text="감소" type="click" />
         <QuizSelect text="상승" type="unclick" />
-      </section>
-
-      {/* 버튼 영역 */}
-      <section className="mt-10 mb-5">
-        <Button text="정답 확인하기" type="inactive" />
       </section>
     </>
   );

@@ -11,19 +11,6 @@ import hint from "@assets/svg/hint.svg";
 const WordQuiz2 = () => {
   return (
     <>
-      {/* 헤더 구역 */}
-      <Header
-        title="단어 뜻 퀴즈"
-        leftChild={<EventButton icon={cancel} command="back" />}
-        rightChild={<Blank />}
-      />
-
-      {/* 프로그레시브 바 구역 */}
-      <section className="pt-16 mx-5 flex items-center gap-3">
-        <ProgressiveBar total={4} current={2} />
-        <EventButton icon={hint} command="" />
-      </section>
-
       {/* 문제 영역 */}
       <section className="mt-6 mx-5">
         <div className="text-center font-semibold text-lg mb-5">
@@ -63,11 +50,6 @@ const WordQuiz2 = () => {
           text="임신한 부모가 병원 진료 시 사용할 수 있는 의료비 지원"
           type="unclick"
         />
-      </section>
-
-      {/* 버튼 영역 */}
-      <section className="mt-10 mb-5">
-        <Button text="정답 확인하기" type="inactive" />
       </section>
     </>
   );
