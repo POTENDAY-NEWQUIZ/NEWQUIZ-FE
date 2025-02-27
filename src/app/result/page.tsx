@@ -1,5 +1,13 @@
+import AIFeedback from "@container/ai-feedback";
+import AILoading from "@container/ai-loading";
+
 const Result = () => {
-  return <main>AI 요약 결과 페이지</main>;
+  return (
+    <main>
+      {/* <AILoading /> */}
+      <AIFeedback />
+    </main>
+  );
 };
 
 export default Result;
