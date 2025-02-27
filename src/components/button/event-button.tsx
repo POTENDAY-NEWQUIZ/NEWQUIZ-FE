@@ -18,6 +18,10 @@ const EventButton = ({ icon, command }: IEventButton) => {
         // 원문 컴포넌트 올라와야 함
         break;
       }
+      case "close": {
+        router.replace("/");
+        break;
+      }
       default:
         break;
     }
