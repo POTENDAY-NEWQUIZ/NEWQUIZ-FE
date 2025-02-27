@@ -8,10 +8,13 @@ import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
 import Category from "@components/category";
 import ArticleList from "@container/article-list";
+import { readNewsAll } from "@api/news-api";
 
 // 기사 카테고리별 api 연결 필요
 const Article = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [articles, setArticles] = useState([]);
+  const [category, setCategory] = useState("정치");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,6 +23,19 @@ const Article = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    getArticles(category);
+  }, [category]);
+
+  const getArticles = async (category: string) => {
+    const response = await readNewsAll(category);
+    setArticles(response.data.news);
+  };
+
+  const onCategorySelect = (category: string) => {
+    setCategory(category);
+  };
 
   return (
     <main>
@@ -36,8 +52,8 @@ const Article = () => {
 
           {/* 카테고리 & 기사 리스트 구역 */}
           <section className="pt-16">
-            <Category />
-            <ArticleList />
+            <Category onCategorySelect={onCategorySelect} />
+            <ArticleList articles={articles} />
           </section>
         </>
       )}

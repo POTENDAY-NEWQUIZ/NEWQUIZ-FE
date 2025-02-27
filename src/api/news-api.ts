@@ -5,5 +5,6 @@ export const readNewsAll = async (category: string) => {
   const response = await axiosInstance.get(
     `/news?category=${category}`
   );
+
   return response.data;
 };

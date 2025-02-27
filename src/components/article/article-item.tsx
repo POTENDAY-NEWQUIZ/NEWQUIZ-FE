@@ -1,11 +1,11 @@
 import { IArticleItem } from "@interface/props";
 import { useRouter } from "next/navigation";
 
-const ArticleItem = ({ id, title, date, source }: IArticleItem) => {
+const ArticleItem = ({ newsId, title, date, source }: IArticleItem) => {
   const router = useRouter();
 
   const onClickArticle = () => {
-    router.push(`article/${id}`);
+    router.push(`article/${newsId}`);
   };
 
   return (
@@ -14,7 +14,7 @@ const ArticleItem = ({ id, title, date, source }: IArticleItem) => {
       onClick={onClickArticle}
     >
       {/* 기사 번호 */}
-      <div className="text-lavender font-semibold mr-2">{id}</div>
+      <div className="text-lavender font-semibold mr-2">{newsId}</div>
 
       {/* 기사 정보 */}
       <div className="flex flex-col gap-1 w-full">
