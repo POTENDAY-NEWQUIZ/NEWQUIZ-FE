@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import temp from "@assets/img/summary-quiz.svg";
+import Button from "@components/button/button";
 
 const SummaryLoading = () => {
   return (
@@ -49,7 +50,9 @@ const SummaryLoading = () => {
       </section>
 
       {/* 버튼 영역 */}
-      <section></section>
+      <section className="w-full mt-12">
+        <Button text="준비됐어요!" type="active" />
+      </section>
     </main>
   );
 };
