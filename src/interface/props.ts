@@ -85,4 +85,12 @@ export interface IQuizSelect {
   type: "click" | "unclick";
 }
 
+export interface IOXSelect {
+  text: boolean;
+  iconSelect: string;
+  iconUnselect: string;
+  isActive: boolean;
+  onSelect: () => void;
+}
+
 /* 요약 인터페이스 */
