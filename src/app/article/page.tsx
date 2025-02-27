@@ -27,11 +27,14 @@ const Article = () => {
         <ArticleLoading />
       ) : (
         <>
+          {/* 헤더 구역 */}
           <Header
             title="분야 선택하기"
             leftChild={<BackButton />}
             rightChild={<Blank />}
           />
+
+          {/* 카테고리 & 기사 리스트 구역 */}
           <section className="pt-16">
             <Category />
             <ArticleList />

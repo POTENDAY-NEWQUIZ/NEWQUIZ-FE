@@ -75,4 +75,22 @@ export interface IQuizModal {
   button: ReactNode;
 }
 
+export interface IProgressiveBar {
+  total: number;
+  current: number;
+}
+
+export interface IQuizSelect {
+  text: string;
+  type: "click" | "unclick";
+}
+
+export interface IOXSelect {
+  text: boolean;
+  iconSelect: string;
+  iconUnselect: string;
+  isActive: boolean;
+  onSelect: () => void;
+}
+
 /* 요약 인터페이스 */

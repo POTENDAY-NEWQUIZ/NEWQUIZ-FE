@@ -10,8 +10,12 @@ const EventButton = ({ icon, command }: IEventButton) => {
 
   const onClick = () => {
     switch (command) {
-      case "register": {
+      case "back": {
         router.back();
+        break;
+      }
+      case "hint": {
+        // 원문 컴포넌트 올라와야 함
         break;
       }
       default:
@@ -21,7 +25,7 @@ const EventButton = ({ icon, command }: IEventButton) => {
 
   return (
     <button onClick={onClick}>
-      <Image src={icon} width={24} height={24} alt="이벤트버튼" />
+      <Image src={icon} width={24} height={24} alt="이벤트 버튼" />
     </button>
   );
 };

@@ -3,9 +3,9 @@ import Image from "next/image";
 import Header from "@components/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
-
-import caution from "@assets/svg/caution.svg";
 import Button from "@components/button/button";
+
+import caution from "@assets/svg/caution-lavender.svg";
 
 const Article = () => {
   return (
