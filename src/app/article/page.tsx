@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import ArticleLoading from "@container/article-loading";
-import Header from "@components/header";
+import ArticleLoading from "@container/article/article-loading";
+import Header from "@components/common/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
-import Category from "@components/category";
-import ArticleList from "@container/article-list";
+import Category from "@components/common/category";
+import ArticleList from "@container/article/article-list";
 import { readNewsAll } from "@api/news-api";
 
 // 기사 카테고리별 api 연결 필요

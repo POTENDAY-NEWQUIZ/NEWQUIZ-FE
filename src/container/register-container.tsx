@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import Header from "@components/header";
+import Header from "@components/common/header";
 import Blank from "@components/button/blank";
 import EventButton from "@components/button/event-button";
 import CheckButton from "@components/button/check-button";

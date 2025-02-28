@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import SummaryLoading from "@container/summary-loading";
-import SummaryQuiz from "@container/summary-quiz";
+import SummaryLoading from "@container/quiz/summary-loading";
+import SummaryQuiz from "@container/quiz/summary-quiz";
 
 const Summary = () => {
   const [quizStart, setQuizStart] = useState(false);
