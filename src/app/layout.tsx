@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { ModalProvider } from "@context/modal-context";
+
 const pretendard = localFont({
   src: "/fonts/pretendard-variable.woff2",
   display: "swap",
@@ -24,7 +26,7 @@ export default function RootLayout({
         className={`${pretendard.className} antialiased tracking-tighter`}
       >
         <div className="max-w-[480px] min-h-screen mx-auto border-x-[1px] border-[#F2F2F2] box-content">
-          {children}
+          <ModalProvider>{children}</ModalProvider>
         </div>
       </body>
     </html>

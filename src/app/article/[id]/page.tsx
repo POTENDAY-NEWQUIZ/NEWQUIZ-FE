@@ -8,10 +8,11 @@ import Header from "@components/common/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
 import Button from "@components/button/button";
+import { IArticle } from "@interface/props";
 import { readNewsDetail } from "@api/news-api";
 
 import caution from "@assets/svg/caution-lavender.svg";
-import { IArticle } from "@interface/props";
+import { useNewsStore } from "@store/news-store";
 
 const Article = () => {
   const params = useParams();
@@ -32,6 +33,9 @@ const Article = () => {
   const getArticleDetail = async (newsId: string) => {
     const response = await readNewsDetail(newsId);
     setArticle(response.data);
+
+    const { setNews } = useNewsStore.getState();
+    setNews(response.data);
   };
 
   return (

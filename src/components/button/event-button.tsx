@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
+import { ModalContext } from "@context/modal-context";
 import { IEventButton } from "@interface/props";
 
 const EventButton = ({ icon, command }: IEventButton) => {
   const router = useRouter();
+  const { openModal, closeModal } = useContext(ModalContext);
 
   const onClick = () => {
     switch (command) {
@@ -15,7 +18,11 @@ const EventButton = ({ icon, command }: IEventButton) => {
         break;
       }
       case "hint": {
-        // 원문 컴포넌트 올라와야 함
+        openModal("hint-modal");
+        break;
+      }
+      case "hint-close": {
+        closeModal("hint-modal");
         break;
       }
       case "close": {

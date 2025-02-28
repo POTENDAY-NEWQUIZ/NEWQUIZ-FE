@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 import Header from "@components/common/header";
 import ProgressiveBar from "@components/quiz/progressive-bar";
@@ -10,16 +10,24 @@ import Blank from "@components/button/blank";
 import WordQuiz1 from "@container/quiz/word-quiz-1";
 import WordQuiz2 from "@container/quiz/word-quiz-2";
 import WordQuiz3 from "@container/quiz/word-quiz-3";
-import Button from "@components/button/button";
+import AnswerModal from "@components/quiz/answer-modal";
 import { readQuizAll } from "@api/quiz-api";
+import { ModalContext } from "@context/modal-context";
 
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
+import { useQuizStore } from "@store/quiz-store";
+import HintModal from "@components/quiz/hint-modal";
 
 const Quiz = () => {
   const params = useParams();
+  const router = useRouter();
+  const { openModal } = useContext(ModalContext);
   const [quizData, setQuizData] = useState<any>(null);
+  const [quiz, setQuiz] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const { submitQuizAnswer } = useQuizStore();
 
   useEffect(() => {
     const newsId = params.id;
@@ -34,21 +42,9 @@ const Quiz = () => {
         ...quizData.synonymQuiz,
       ];
 
-      const quiz = quizList[currentIndex];
-
-      switch (quiz.type) {
-        case "유의어":
-          renderQuiz(WordQuiz1, quiz);
-          break;
-        case "단어뜻":
-          renderQuiz(WordQuiz2, quiz);
-          break;
-        case "내용일치":
-          renderQuiz(WordQuiz3, quiz);
-          break;
-        default:
-          break;
-      }
+      const currentQuiz = quizList[currentIndex];
+      setQuiz(currentQuiz);
+      console.log(currentQuiz);
     }
   }, [quizData, currentIndex]);
 
@@ -57,13 +53,32 @@ const Quiz = () => {
     setQuizData(response.data);
   };
 
-  const renderQuiz = (QuizComponent: React.ElementType, quiz: any) => {
-    return <QuizComponent quiz={quiz} />;
+  const renderQuiz = () => {
+    if (!quiz) return null;
+
+    switch (quiz.type) {
+      case "유의어":
+        return <WordQuiz1 {...quiz} onCheck={checkAnswerCorrect} />;
+      case "단어뜻":
+        return <WordQuiz2 {...quiz} onCheck={checkAnswerCorrect} />;
+      case "내용일치":
+        return <WordQuiz3 {...quiz} onCheck={checkAnswerCorrect} />;
+      default:
+        return null;
+    }
+  };
+
+  const checkAnswerCorrect = (isCorrect: boolean) => {
+    setIsCorrect(isCorrect);
+    openModal("answer-modal");
   };
 
   const onClickNext = () => {
-    if (currentIndex < quizData.totalQuizCount - 1) {
+    if (currentIndex + 1 < quizData.totalQuizCount) {
       setCurrentIndex((prev) => prev + 1);
+    } else {
+      submitQuizAnswer();
+      router.push("/summary");
     }
   };
 
@@ -71,7 +86,7 @@ const Quiz = () => {
     <main>
       {/* 헤더 구역 */}
       <Header
-        title="내용 일치 퀴즈"
+        title={`${quiz?.type} 퀴즈`}
         leftChild={<EventButton icon={cancel} command="back" />}
         rightChild={<Blank />}
       />
@@ -82,45 +97,26 @@ const Quiz = () => {
           total={quizData?.totalQuizCount}
           current={currentIndex}
         />
-        <EventButton icon={hint} command="" />
+        <EventButton icon={hint} command="hint" />
       </section>
 
       {/* 퀴즈 구역 */}
-      <section>
-        {quizData && (
-          <div>
-            {(() => {
-              const quizList = [
-                ...quizData.contentQuiz,
-                ...quizData.meaningQuiz,
-                ...quizData.synonymQuiz,
-              ];
+      <section>{renderQuiz()}</section>
 
-              const quiz = quizList[currentIndex];
+      <AnswerModal
+        type={isCorrect ? "correct" : "incorrect"}
+        answer={
+          typeof quiz?.answer === "boolean"
+            ? quiz.answer
+              ? "⭕"
+              : "❌"
+            : quiz?.answer
+        }
+        explanation={quiz?.explanation}
+        onClick={onClickNext}
+      />
 
-              switch (quiz.type) {
-                case "유의어":
-                  return <WordQuiz1 {...quiz} />;
-                case "단어뜻":
-                  return <WordQuiz2 {...quiz} />;
-                case "내용일치":
-                  return <WordQuiz3 {...quiz} />;
-                default:
-                  return null;
-              }
-            })()}
-          </div>
-        )}
-      </section>
-
-      {/* 버튼 구역 */}
-      <section className="mt-10 mb-5">
-        <Button
-          text="정답 확인하기"
-          type="inactive"
-          onClick={onClickNext}
-        />
-      </section>
+      <HintModal paragraphId={quiz?.paragraphId} />
     </main>
   );
 };

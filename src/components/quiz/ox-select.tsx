@@ -7,7 +7,7 @@ const OXSelect = ({
   iconSelect,
   iconUnselect,
   isActive,
-  onSelect,
+  onClick,
 }: IOXSelect) => {
   const imageSize = text
     ? { width: 36, height: 36 }
@@ -21,7 +21,7 @@ const OXSelect = ({
     <div className="w-full">
       <button
         className={`w-full h-24 flex justify-center rounded-[20px] ${selectClass}`}
-        onClick={onSelect}
+        onClick={onClick}
       >
         <Image
           src={isActive ? iconSelect : iconUnselect}

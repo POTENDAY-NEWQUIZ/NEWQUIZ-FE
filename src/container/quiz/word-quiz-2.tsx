@@ -1,5 +1,9 @@
-import QuizSelect from "@components/quiz/quiz-select";
+import { useState } from "react";
+
 import { IMeaningQuiz } from "@interface/props";
+import Button from "@components/button/button";
+import QuizSelect from "@components/quiz/quiz-select";
+import { useQuizStore } from "@store/quiz-store";
 
 const WordQuiz2 = ({
   type,
@@ -13,7 +17,21 @@ const WordQuiz2 = ({
   option4,
   answer,
   explanation,
-}: IMeaningQuiz) => {
+  onCheck,
+}: IMeaningQuiz & { onCheck: (isCorrect: boolean) => void }) => {
+  const [userAnswer, setUserAnswer] = useState(0);
+  const { insertQuizAnswer } = useQuizStore();
+
+  const onClickAnswer = (index: number) => {
+    setUserAnswer(index);
+  };
+
+  const onClickCheckAnswer = () => {
+    const isCorrect = userAnswer === answer;
+    onCheck(isCorrect);
+    insertQuizAnswer(quizId, type, isCorrect, userAnswer);
+  };
+
   const highlight = sourceSentence.replace(
     new RegExp(`(${word})`, "g"),
     `<span class="underline font-bold">$1</span>`
@@ -42,10 +60,39 @@ const WordQuiz2 = ({
 
       {/* 보기 영역 - 데이터 받아오면 배열로 해야 함 */}
       <section className="flex flex-col gap-2">
-        <QuizSelect text={option1} type="unclick" />
-        <QuizSelect text={option2} type="unclick" />
-        <QuizSelect text={option3} type="click" />
-        <QuizSelect text={option4} type="unclick" />
+        <QuizSelect
+          text={option1}
+          type={userAnswer === 1 ? "click" : "unclick"}
+          onClick={() => onClickAnswer(1)}
+        />
+        <QuizSelect
+          text={option2}
+          type={userAnswer === 2 ? "click" : "unclick"}
+          onClick={() => onClickAnswer(2)}
+        />
+        <QuizSelect
+          text={option3}
+          type={userAnswer === 3 ? "click" : "unclick"}
+          onClick={() => onClickAnswer(3)}
+        />
+        <QuizSelect
+          text={option4}
+          type={userAnswer === 4 ? "click" : "unclick"}
+          onClick={() => onClickAnswer(4)}
+        />
+      </section>
+
+      {/* 버튼 구역 */}
+      <section className="mt-10 mb-5">
+        {userAnswer > 0 ? (
+          <Button
+            text="정답 확인하기"
+            type="active"
+            onClick={onClickCheckAnswer}
+          />
+        ) : (
+          <Button text="정답 확인하기" type="inactive" />
+        )}
       </section>
     </>
   );
