@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IContentQuiz } from "@interface/props";
 import Button from "@components/button/button";
 import QuizSelect from "@components/quiz/quiz-select";
+import { useQuizStore } from "@store/quiz-store";
 
 const WordQuiz1 = ({
   type,
@@ -19,6 +20,7 @@ const WordQuiz1 = ({
   onCheck,
 }: IContentQuiz & { onCheck: (isCorrect: boolean) => void }) => {
   const [userAnswer, setUserAnswer] = useState(0);
+  const { insertQuizAnswer } = useQuizStore();
 
   const onClickAnswer = (index: number) => {
     setUserAnswer(index);
@@ -27,6 +29,7 @@ const WordQuiz1 = ({
   const onClickCheckAnswer = () => {
     const isCorrect = userAnswer === answer;
     onCheck(isCorrect);
+    insertQuizAnswer(quizId, type, isCorrect, userAnswer);
   };
 
   const highlight = sourceSentence.replace(

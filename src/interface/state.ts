@@ -7,3 +7,23 @@ export interface IAuthStore {
   setAccessToken: (token: string) => void;
   clearAccessToken: () => void;
 }
+
+// 뉴스 store state
+export interface INewsStore {}
+
+// 퀴즈 store state
+export interface IQuizStore {
+  quizzes: {
+    quizId: number;
+    type: string;
+    isCorrect: boolean;
+    userAnswer: number;
+  }[];
+  insertQuizAnswer: (
+    quizId: number,
+    type: string,
+    isCorrect: boolean,
+    userAnswer: number
+  ) => void;
+  submitQuizAnswer: () => void;
+}

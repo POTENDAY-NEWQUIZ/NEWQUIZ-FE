@@ -4,14 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 
 import OXSelect from "@components/quiz/ox-select";
+import Button from "@components/button/button";
 import { ISynonymQuiz } from "@interface/props";
+import { useQuizStore } from "@store/quiz-store";
 
 import caution from "@assets/svg/caution-gray.svg";
 import O from "@assets/svg/o.svg";
 import OFill from "@assets/svg/o-fill.svg";
 import X from "@assets/svg/x.svg";
 import XFill from "@assets/svg/x-fill.svg";
-import Button from "@components/button/button";
 
 const WordQuiz3 = ({
   type,
@@ -23,6 +24,7 @@ const WordQuiz3 = ({
   onCheck,
 }: ISynonymQuiz & { onCheck: (isCorrect: boolean) => void }) => {
   const [userAnswer, setUserAnswer] = useState<boolean | null>(null);
+  const { insertQuizAnswer } = useQuizStore();
 
   const onClickAnswer = (index: boolean) => {
     setUserAnswer(index);
@@ -31,6 +33,7 @@ const WordQuiz3 = ({
   const onClickCheckAnswer = () => {
     const isCorrect = userAnswer === answer;
     onCheck(isCorrect);
+    insertQuizAnswer(quizId, type, isCorrect, userAnswer ? 1 : 0);
   };
 
   return (

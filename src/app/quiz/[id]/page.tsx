@@ -16,6 +16,7 @@ import { ModalContext } from "@context/modal-context";
 
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
+import { useQuizStore } from "@store/quiz-store";
 
 const Quiz = () => {
   const params = useParams();
@@ -25,6 +26,7 @@ const Quiz = () => {
   const [quiz, setQuiz] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const { submitQuizAnswer } = useQuizStore();
 
   useEffect(() => {
     const newsId = params.id;
@@ -74,6 +76,7 @@ const Quiz = () => {
     if (currentIndex + 1 < quizData.totalQuizCount) {
       setCurrentIndex((prev) => prev + 1);
     } else {
+      submitQuizAnswer();
       router.push("/summary");
     }
   };

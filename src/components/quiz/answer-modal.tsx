@@ -35,7 +35,7 @@ const AnswerModal = ({
 
       {/* 모달 */}
       <div
-        className={`man-w-[480px] w-full fixed left-0 bottom-0 py-8 z-50 ${styleClass[type]} rounded-t-2xl`}
+        className={`max-w-[480px] w-full fixed left-1/2 bottom-0 transform -translate-x-1/2 py-8 z-50 ${styleClass[type]} rounded-t-2xl`}
       >
         {/* 결과 구역 */}
         <section className="px-5">
