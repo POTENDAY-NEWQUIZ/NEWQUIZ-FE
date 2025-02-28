@@ -23,6 +23,10 @@ export interface IModal {
   rightChild?: ReactNode;
 }
 
+export interface ILottie {
+  image: any;
+}
+
 /* 버튼 인터페이스 */
 export interface IButton {
   icon?: string;
