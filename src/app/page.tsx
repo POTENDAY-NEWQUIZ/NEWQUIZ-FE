@@ -1,6 +1,6 @@
-import Header from "@components/header";
-import Navigator from "@components/navigator";
-import MyCalendar from "@container/calendar";
+import Header from "@components/common/header";
+import Navigator from "@components/common/navigator";
+import MyCalendar from "@container/home/calendar";
 import Button from "@components/button/button";
 import StudyDuration from "@components/study-duration";
 

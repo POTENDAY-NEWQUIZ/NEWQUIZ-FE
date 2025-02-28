@@ -1,5 +1,5 @@
-import AIFeedback from "@container/ai-feedback";
-import AILoading from "@container/ai-loading";
+import AIFeedback from "@container/feedback/ai-feedback";
+import AILoading from "@container/feedback/ai-loading";
 
 const Result = () => {
   return (

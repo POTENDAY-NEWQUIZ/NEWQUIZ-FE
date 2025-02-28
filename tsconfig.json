@@ -27,8 +27,7 @@
       "@container/*": ["src/container/*"],
       "@context/*": ["src/context/*"],
       "@interface/*": ["src/interface/*"],
-      "@store/*": ["src/store/*"],
-      "@utils/*": ["src/utils/*"]
+      "@store/*": ["src/store/*"]
     }
   },
   "include": [

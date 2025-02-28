@@ -1,4 +1,4 @@
-import NavItem from "@components/nav-item";
+import NavItem from "@components/common/nav-item";
 
 import rank from "@assets/svg/rank.svg";
 import study from "@assets/svg/study.svg";

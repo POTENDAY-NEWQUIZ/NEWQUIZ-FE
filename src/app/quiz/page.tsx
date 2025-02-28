@@ -1,10 +1,10 @@
-import Header from "@components/header";
+import Header from "@components/common/header";
 import ProgressiveBar from "@components/quiz/progressive-bar";
 import EventButton from "@components/button/event-button";
 import Blank from "@components/button/blank";
-import WordQuiz1 from "@container/word-quiz-1";
-import WordQuiz2 from "@container/word-quiz-2";
-import WordQuiz3 from "@container/word-quiz-3";
+import WordQuiz1 from "@container/quiz/word-quiz-1";
+import WordQuiz2 from "@container/quiz/word-quiz-2";
+import WordQuiz3 from "@container/quiz/word-quiz-3";
 import Button from "@components/button/button";
 
 import cancel from "@assets/svg/cancel.svg";

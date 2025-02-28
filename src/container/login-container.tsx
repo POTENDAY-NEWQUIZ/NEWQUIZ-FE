@@ -8,7 +8,6 @@ import Button from "@components/button/button";
 import { useAuthStore } from "@store/user-store";
 
 import logo from "@assets/logo.svg";
-import notification from "@assets/img/notification.svg";
 import kakao from "@assets/svg/kakao.svg";
 
 const LoginContainer = () => {
@@ -43,12 +42,6 @@ const LoginContainer = () => {
       <section className="w-full">
         <div className="flex justify-center mb-2">
           {/* 로티 애니메이션 적용 필요 */}
-          <Image
-            src={notification}
-            width={163}
-            height={39}
-            alt="3초만에 빠른 시작하기"
-          />
         </div>
         <Button
           icon={kakao}

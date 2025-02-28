@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Header from "@components/header";
+import Header from "@components/common/header";
 import EventButton from "@components/button/event-button";
 import Blank from "@components/button/blank";
 
