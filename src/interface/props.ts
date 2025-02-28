@@ -121,6 +121,54 @@ export interface IOXSelect {
   onSelect: () => void;
 }
 
+export interface IQuiz {
+  contentQuiz: [];
+  contentQuizCount: number;
+  meaningQuiz: [];
+  meaningQuizCount: number;
+  synonymQuiz: [];
+  synonymQuizCount: number;
+  quizIdList: number[];
+  totalQuizCount: number;
+}
+
+export interface IContentQuiz {
+  type: string;
+  quizId: number;
+  paragraphId: 82;
+  sourceSentence: string;
+  word: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  option4: string;
+  answer: number;
+  explanation: string;
+}
+
+export interface IMeaningQuiz {
+  type: string;
+  quizId: number;
+  paragraphId: 82;
+  sourceSentence: string;
+  word: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  option4: string;
+  answer: number;
+  explanation: string;
+}
+
+export interface ISynonymQuiz {
+  type: string;
+  quizId: number;
+  paragraphId: 82;
+  question: string;
+  answer: number;
+  explanation: string;
+}
+
 export interface ISummaryLoading {
   onStartQuiz: () => void;
 }
