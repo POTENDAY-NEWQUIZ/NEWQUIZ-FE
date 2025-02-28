@@ -1,3 +1,5 @@
+import { IArticle } from "@interface/props";
+
 // 사용자 store state
 export interface IAuthStore {
   refreshToken: string | null;
@@ -9,7 +11,10 @@ export interface IAuthStore {
 }
 
 // 뉴스 store state
-export interface INewsStore {}
+export interface INewsStore {
+  news: IArticle | null;
+  setNews: (article: IArticle) => void;
+}
 
 // 퀴즈 store state
 export interface IQuizStore {

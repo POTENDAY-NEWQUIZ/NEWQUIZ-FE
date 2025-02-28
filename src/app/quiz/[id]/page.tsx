@@ -17,6 +17,7 @@ import { ModalContext } from "@context/modal-context";
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
 import { useQuizStore } from "@store/quiz-store";
+import HintModal from "@components/quiz/hint-modal";
 
 const Quiz = () => {
   const params = useParams();
@@ -96,7 +97,7 @@ const Quiz = () => {
           total={quizData?.totalQuizCount}
           current={currentIndex}
         />
-        <EventButton icon={hint} command="" />
+        <EventButton icon={hint} command="hint" />
       </section>
 
       {/* 퀴즈 구역 */}
@@ -114,6 +115,8 @@ const Quiz = () => {
         explanation={quiz?.explanation}
         onClick={onClickNext}
       />
+
+      <HintModal paragraphId={quiz?.paragraphId} />
     </main>
   );
 };
