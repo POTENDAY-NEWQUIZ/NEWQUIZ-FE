@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useEffect } from "react";
 
 import Button from "@components/button/button";
+import LottieImage from "@components/common/lottie-image";
 import { useAuthStore } from "@store/user-store";
 
 import logo from "@assets/logo.svg";
-import notification from "@assets/img/notification.svg";
 import kakao from "@assets/svg/kakao.svg";
+import login from "@assets/lottie/login.json";
 
 const LoginContainer = () => {
   const router = useRouter();
@@ -43,12 +44,7 @@ const LoginContainer = () => {
       <section className="w-full">
         <div className="flex justify-center mb-2">
           {/* 로티 애니메이션 적용 필요 */}
-          <Image
-            src={notification}
-            width={163}
-            height={39}
-            alt="3초만에 빠른 시작하기"
-          />
+          <LottieImage image={login} />
         </div>
         <Button
           icon={kakao}
