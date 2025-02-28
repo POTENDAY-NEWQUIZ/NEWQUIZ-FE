@@ -18,7 +18,22 @@ export const createQuizAnswer = async (
   const response = await axiosInstance.post(`/news/quiz`, {
     quizzes: quizzes,
   });
+
   return response.data;
 };
 
 // 요약 퀴즈 정답 제츨
+export const createSummaryAnswer = async (
+  newsId: number,
+  paragraphs: {
+    paragraphId: number;
+    userSummary: string;
+  }[]
+) => {
+  const response = await axiosInstance.post(`/news/summary`, {
+    newsId: newsId,
+    paragraphs: paragraphs,
+  });
+
+  return response.data;
+};
