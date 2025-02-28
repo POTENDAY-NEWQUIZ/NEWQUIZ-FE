@@ -79,7 +79,7 @@ const Article = () => {
         <Button
           text="해당 사설로 퀴즈 시작할래요!"
           type="start"
-          link="/quiz"
+          link={`/quiz/${params.id}`}
         />
       </section>
     </main>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import OXSelect from "@components/quiz/ox-select";
+import { ISynonymQuiz } from "@interface/props";
 
 import caution from "@assets/svg/caution-gray.svg";
 import O from "@assets/svg/o.svg";
@@ -11,7 +12,14 @@ import OFill from "@assets/svg/o-fill.svg";
 import X from "@assets/svg/x.svg";
 import XFill from "@assets/svg/x-fill.svg";
 
-const WordQuiz3 = () => {
+const WordQuiz3 = ({
+  type,
+  quizId,
+  paragraphId,
+  question,
+  answer,
+  explanation,
+}: ISynonymQuiz) => {
   const [select, setSelect] = useState<"O" | "X" | null>(null);
 
   return (
@@ -21,7 +29,7 @@ const WordQuiz3 = () => {
         <div className="text-center font-semibold text-lg mb-5">
           다음 문장을 읽고
           <br />
-          사설의 내용과 일치하면{" "}
+          사설의 내용과 일치하면{` `}
           <span className="text-point-lavender">O</span>
           <br />
           그렇지 않으면 <span className="text-point-lavender">X</span>를
@@ -36,8 +44,7 @@ const WordQuiz3 = () => {
         </div>
 
         <div className="px-4 py-8 mb-24 bg-mist-lavender text-sm font-bold shadow-default leading-6">
-          정부는 2024년부터 출생아에게 첫 만남 이용권을 첫째는 300만원,
-          둘째 이상은 500만원 지급한다.
+          {question}
         </div>
       </section>
 
