@@ -23,6 +23,9 @@ export default {
         button: "0px 4px 8px 0px rgba(0, 0, 0, 0.15)",
         modal: "0px 3.81px 9.524px 0px rgba(0, 0, 0, 0.10)",
       },
+      screens: {
+        xs: { max: "368px" },
+      },
     },
   },
   plugins: [],

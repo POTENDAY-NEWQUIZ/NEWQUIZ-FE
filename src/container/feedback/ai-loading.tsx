@@ -1,7 +1,3 @@
-import Image from "next/image";
-
-import temp from "@assets/img/summary-loading.svg";
-
 const AILoading = () => {
   return (
     <main className="h-screen bg-[radial-gradient(circle,_#FBFAFFCC_0%,_#DCD4FF80_100%,_#876EFF4D_200%)] flex flex-col justify-center items-center">
@@ -12,9 +8,7 @@ const AILoading = () => {
         </p>
         <p>조금만 기다려 주세요!</p>
       </section>
-      <section>
-        <Image src={temp} width={260} height={260} alt="로딩" />
-      </section>
+      <section>{/* 로티 이미지 추가 필요 */}</section>
     </main>
   );
 };

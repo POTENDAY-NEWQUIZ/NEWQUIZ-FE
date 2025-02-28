@@ -13,10 +13,8 @@ const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
         다음은 문단 요약 퀴즈예요!
       </section>
 
-      {/* 이미지 영역 - 로티 이미지로 변경 예정 */}
-      <section>
-        <Image src={temp} width={260} height={260} alt="temp" />
-      </section>
+      {/* 이미지 영역 */}
+      <section>{/* 로티 이미지 추가 필요 */}</section>
 
       {/* 텍스트 영역 */}
       <section className="flex flex-col gap-5 bg-mist-lavender mx-5 rounded-[10px] p-8">
