@@ -2,7 +2,7 @@
 
 import { createContext, ReactNode, useState } from "react";
 
-type ModalType = "";
+type ModalType = "answer-modal";
 
 interface IModalContext {
   activeModal: ModalType | null;
@@ -10,9 +10,11 @@ interface IModalContext {
   closeModal: (modalType: ModalType) => void;
 }
 
-const ModalContext = createContext<IModalContext | undefined>(
-  undefined
-);
+const ModalContext = createContext<IModalContext>({
+  activeModal: null,
+  openModal: () => {},
+  closeModal: () => {},
+});
 
 const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [activeModal, setActiveModal] = useState<ModalType | null>(

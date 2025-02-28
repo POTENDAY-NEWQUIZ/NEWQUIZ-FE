@@ -31,7 +31,7 @@ export interface ILottie {
 export interface IButton {
   icon?: string;
   text: string;
-  type: "kakao" | "start" | "active" | "inactive";
+  type: "kakao" | "start" | "active" | "inactive" | "next";
   link?: string;
   onClick?: () => void;
 }
@@ -111,6 +111,7 @@ export interface IProgressiveBar {
 export interface IQuizSelect {
   text: string;
   type: "click" | "unclick";
+  onClick: () => void;
 }
 
 export interface IOXSelect {
@@ -167,6 +168,13 @@ export interface ISynonymQuiz {
   question: string;
   answer: number;
   explanation: string;
+}
+
+export interface IQuizAnswer {
+  type: "correct" | "incorrect";
+  answer?: string;
+  explanation?: string;
+  onClick: () => void;
 }
 
 export interface ISummaryLoading {
