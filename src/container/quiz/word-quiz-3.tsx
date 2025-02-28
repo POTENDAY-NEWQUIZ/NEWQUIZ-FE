@@ -11,6 +11,7 @@ import O from "@assets/svg/o.svg";
 import OFill from "@assets/svg/o-fill.svg";
 import X from "@assets/svg/x.svg";
 import XFill from "@assets/svg/x-fill.svg";
+import Button from "@components/button/button";
 
 const WordQuiz3 = ({
   type,
@@ -19,8 +20,18 @@ const WordQuiz3 = ({
   question,
   answer,
   explanation,
-}: ISynonymQuiz) => {
-  const [select, setSelect] = useState<"O" | "X" | null>(null);
+  onCheck,
+}: ISynonymQuiz & { onCheck: (isCorrect: boolean) => void }) => {
+  const [userAnswer, setUserAnswer] = useState<boolean | null>(null);
+
+  const onClickAnswer = (index: boolean) => {
+    setUserAnswer(index);
+  };
+
+  const onClickCheckAnswer = () => {
+    const isCorrect = userAnswer === answer;
+    onCheck(isCorrect);
+  };
 
   return (
     <>
@@ -54,16 +65,29 @@ const WordQuiz3 = ({
           text={true}
           iconSelect={OFill}
           iconUnselect={O}
-          isActive={select === "O"}
-          onSelect={() => setSelect("O")}
+          isActive={userAnswer === true}
+          onClick={() => onClickAnswer(true)}
         />
         <OXSelect
           text={false}
           iconSelect={XFill}
           iconUnselect={X}
-          isActive={select === "X"}
-          onSelect={() => setSelect("X")}
+          isActive={userAnswer === false}
+          onClick={() => onClickAnswer(false)}
         />
+      </section>
+
+      {/* 버튼 구역 */}
+      <section className="mt-10 mb-5">
+        {typeof userAnswer == "boolean" ? (
+          <Button
+            text="정답 확인하기"
+            type="active"
+            onClick={onClickCheckAnswer}
+          />
+        ) : (
+          <Button text="정답 확인하기" type="inactive" />
+        )}
       </section>
     </>
   );

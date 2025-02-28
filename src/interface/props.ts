@@ -119,7 +119,7 @@ export interface IOXSelect {
   iconSelect: string;
   iconUnselect: string;
   isActive: boolean;
-  onSelect: () => void;
+  onClick: () => void;
 }
 
 export interface IQuiz {
@@ -166,7 +166,7 @@ export interface ISynonymQuiz {
   quizId: number;
   paragraphId: 82;
   question: string;
-  answer: number;
+  answer: boolean;
   explanation: string;
 }
 

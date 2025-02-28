@@ -13,6 +13,7 @@ const Button = ({ icon, text, type, link, onClick }: IButton) => {
     start: "bg-lavender text-white font-semibold text-sm shadow-button",
     active: "bg-lavender text-white font-semibold text-sm",
     inactive: "bg-[#E2E2E2] text-[#888888] font-semibold text-sm",
+    next: "bg-black text-white font-semibold text-sm",
   };
 
   const onClickButton = () => {
