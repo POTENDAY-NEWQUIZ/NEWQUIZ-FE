@@ -58,11 +58,10 @@ const SummaryQuiz = () => {
         news!.newsId,
         summaryList
       );
-      console.log(response);
       insertSummaryFeedback(response);
-      router.push(`/result`);
-    } finally {
       setLoading(false);
+    } finally {
+      router.push(`/result`);
     }
   };
 
@@ -157,7 +156,10 @@ const SummaryQuiz = () => {
             <SmallButton
               text="중단하기"
               type="negative"
-              onClick={() => router.replace("/")}
+              onClick={() => {
+                closeModal("back-modal");
+                router.replace("/");
+              }}
             />
           }
           rightChild={

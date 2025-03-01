@@ -10,6 +10,8 @@ import HintModal from "@components/quiz/hint-modal";
 import Blank from "@components/button/blank";
 import AnswerModal from "@components/quiz/answer-modal";
 import Modal from "@components/common/modal";
+import SmallButton from "@components/button/small-button";
+import LottieImage from "@components/common/lottie-image";
 import WordQuiz1 from "@container/quiz/word-quiz-1";
 import WordQuiz2 from "@container/quiz/word-quiz-2";
 import WordQuiz3 from "@container/quiz/word-quiz-3";
@@ -20,7 +22,7 @@ import { readQuizAll } from "@api/quiz-api";
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
 import warn from "@assets/img/warn.svg";
-import SmallButton from "@components/button/small-button";
+import lottie from "@assets/lottie/hint.json";
 
 const Quiz = () => {
   const params = useParams();
@@ -96,12 +98,15 @@ const Quiz = () => {
         />
 
         {/* 프로그레시브 바 구역 */}
-        <section className="pt-16 mx-5 flex items-center gap-3">
+        <section className="pt-16 mx-5 flex items-center gap-3 relative">
           <ProgressiveBar
             total={quizData?.totalQuizCount}
             current={currentIndex}
           />
           <EventButton icon={hint} command="hint" />
+          <div className="absolute right-0 top-[88px]">
+            <LottieImage image={lottie} />
+          </div>
         </section>
 
         {/* 퀴즈 구역 */}
@@ -144,7 +149,10 @@ const Quiz = () => {
             <SmallButton
               text="중단하기"
               type="negative"
-              onClick={() => router.replace("/")}
+              onClick={() => {
+                closeModal("back-modal");
+                router.replace("/");
+              }}
             />
           }
           rightChild={
