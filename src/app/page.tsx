@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Header from "@components/common/header";
@@ -11,8 +12,11 @@ import { readStudyHome } from "@api/study-api";
 
 import duration1 from "@assets/img/calendar.svg";
 import duration2 from "@assets/img/clock.svg";
+import ArticleLoading from "@container/article/article-loading";
 
 const Home = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [study, setStudy] = useState({
     startDate: "",
     endDate: "",
@@ -29,44 +33,60 @@ const Home = () => {
     setStudy(response.data);
   };
 
+  const onClickLoading = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      router.push("/article");
+    }, 3500);
+  };
+
   return (
     <>
-      <main className="bg-home-lavender h-screen overflow-y-auto pb-[88px] scrollbar-hide">
-        {/* 헤더 구역 */}
-        <Header title="logo" />
+      {isLoading ? (
+        <ArticleLoading />
+      ) : (
+        <div>
+          <main className="bg-home-lavender h-screen overflow-y-auto pb-[88px] scrollbar-hide">
+            {/* 헤더 구역 */}
+            <Header title="logo" />
 
-        {/* 캘린더 구역 */}
-        <section className="pt-16 mb-5">
-          <MyCalendar start={study.startDate} end={study.endDate} />
-        </section>
+            {/* 캘린더 구역 */}
+            <section className="pt-16 mb-5">
+              <MyCalendar start={study.startDate} end={study.endDate} />
+            </section>
 
-        {/* 학습일수 구역 */}
-        <section className="mx-5 flex justify-between">
-          <StudyDuration
-            icon={duration1}
-            duration={study.learningDays}
-            text="현재 연속 학습 일수"
-          />
-          <StudyDuration
-            icon={duration2}
-            duration={
-              study.maxLearningDays == null ? 0 : study.maxLearningDays
-            }
-            text="최대 연속 학습 일수"
-          />
-        </section>
+            {/* 학습일수 구역 */}
+            <section className="mx-5 flex justify-between">
+              <StudyDuration
+                icon={duration1}
+                duration={study.learningDays}
+                text="현재 연속 학습 일수"
+              />
+              <StudyDuration
+                icon={duration2}
+                duration={
+                  study.maxLearningDays == null
+                    ? 0
+                    : study.maxLearningDays
+                }
+                text="최대 연속 학습 일수"
+              />
+            </section>
 
-        {/* 버튼 구역 */}
-        <section className="mt-14">
-          <Button
-            text="바로 학습 시작하기!"
-            type="active"
-            link="/article"
-          />
-        </section>
-      </main>
+            {/* 버튼 구역 */}
+            <section className="mt-14">
+              <Button
+                text="바로 학습 시작하기!"
+                type="active"
+                onClick={onClickLoading}
+              />
+            </section>
+          </main>
 
-      <Navigator />
+          <Navigator />
+        </div>
+      )}
     </>
   );
 };

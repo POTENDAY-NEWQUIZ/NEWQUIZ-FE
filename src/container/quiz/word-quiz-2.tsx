@@ -30,6 +30,7 @@ const WordQuiz2 = ({
     const isCorrect = userAnswer === answer;
     onCheck(isCorrect);
     insertQuizAnswer(quizId, type, isCorrect, userAnswer);
+    setUserAnswer(0);
   };
 
   const highlight = sourceSentence.replace(
@@ -44,9 +45,9 @@ const WordQuiz2 = ({
         <div className="text-center font-semibold text-lg mb-5">
           다음 문장에서
           <br />
-          <span className="underline">{word}</span>의 의미와
+          <span className="underline">{word}</span>의 의미를
           <br />
-          <span className="text-point-lavender">가장 잘 설명한</span>
+          <span className="text-point-lavender">가장 잘 설명한 </span>
           단어는?
         </div>
 
