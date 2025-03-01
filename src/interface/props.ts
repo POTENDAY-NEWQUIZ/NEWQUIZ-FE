@@ -63,6 +63,14 @@ export interface IStudyDuration {
 
 /* 사용자 인터페이스 */
 
+/* 랭킹 인터페이스 */
+export interface IRank {
+  rank: number;
+  type?: string;
+  nickname: string;
+  count: number;
+}
+
 /* 기사 인터페이스 */
 export interface ICategory {
   onCategorySelect: (category: string) => void;
