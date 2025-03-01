@@ -93,3 +93,10 @@ export const readUserData = async () => {
 };
 
 // 닉네임 수정
+export const updateUserData = async (nickname: string) => {
+  const response = await axiosInstance.patch(`/users/nickname`, {
+    nickName: nickname,
+  });
+
+  return response.data;
+};
