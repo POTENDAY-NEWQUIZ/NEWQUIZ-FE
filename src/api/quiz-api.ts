@@ -37,3 +37,16 @@ export const createSummaryAnswer = async (
 
   return response.data;
 };
+
+// 난이도 평가
+export const createQuizLevel = async (
+  newsId: number,
+  level: string
+) => {
+  const response = await axiosInstance.post(`/news/level`, {
+    newsId: newsId,
+    level: level,
+  });
+
+  return response.data;
+};
