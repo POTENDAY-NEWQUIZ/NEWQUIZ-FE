@@ -7,19 +7,22 @@ import { useState } from "react";
 import Header from "@components/common/header";
 import EventButton from "@components/button/event-button";
 import Blank from "@components/button/blank";
+import Button from "@components/button/button";
+import AILoading from "@container/feedback/ai-loading";
+import { createSummaryAnswer } from "@api/quiz-api";
+import { useNewsStore } from "@store/news-store";
+import { useSummaryStore } from "@store/summary-store";
 
 import cancel from "@assets/svg/cancel.svg";
 import pen from "@assets/svg/pen.svg";
 import pin from "@assets/svg/seciton_pin.svg";
-import Button from "@components/button/button";
-import { useNewsStore } from "@store/news-store";
-import { createSummaryAnswer } from "@api/quiz-api";
-import AILoading from "@container/feedback/ai-loading";
 
 const SummaryQuiz = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { news } = useNewsStore();
+  const { insertSummaryList, insertSummaryFeedback } =
+    useSummaryStore();
   const [summaryList, setSummaryList] = useState(
     news!.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,
@@ -41,6 +44,7 @@ const SummaryQuiz = () => {
 
   const onSubmit = async () => {
     if (isDisabled) return;
+    insertSummaryList(summaryList);
     setLoading(true);
 
     try {
@@ -48,9 +52,9 @@ const SummaryQuiz = () => {
         news!.newsId,
         summaryList
       );
-      router.push(
-        `/result/?data=${encodeURIComponent(JSON.stringify(response))}`
-      );
+      console.log(response);
+      insertSummaryFeedback(response);
+      router.push(`/result`);
     } finally {
       setLoading(false);
     }

@@ -5,6 +5,7 @@ import EventButton from "@components/button/event-button";
 import Button from "@components/button/button";
 import { ISummary } from "@interface/props";
 import { useNewsStore } from "@store/news-store";
+import { useSummaryStore } from "@store/summary-store";
 
 import cancel from "@assets/svg/cancel.svg";
 import robot from "@assets/img/robot-1.svg";
@@ -16,6 +17,7 @@ import ai from "@assets/svg/summary-ai.svg";
 
 const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const { news } = useNewsStore();
+  const { summaryList } = useSummaryStore();
   const { totalScore, generalFeedback, paragraphs } = data;
 
   return (
@@ -60,7 +62,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                     {index + 1}번째 문단
                   </div>
                   <p className="text-sm leading-7">
-                    {news!.paragraphs[paragraph.paragraphId].content}
+                    {news!.paragraphs[index].content}
                   </p>
                 </div>
 
@@ -76,9 +78,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                     사용자 요약
                   </div>
                   <div className="text-xs leading-6">
-                    둘째 아이 출산 증가 : 지난해 출생아 수가 늘어나면서
-                    둘째 아이 출산 비율도 높아졌다. 2018년 이후 줄어들던
-                    둘째 출산이 다시 증가한 것은 희망적인 변화다.
+                    {summaryList[index].userSummary}
                   </div>
                 </div>
 
@@ -96,13 +96,21 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                   <div className="text-xs leading-6">
                     <p className="font-semibold">✅ 잘된 점</p>
                     <ul>
-                      <li>{paragraph.strengths}</li>
+                      <li>
+                        {paragraph.strengths === ""
+                          ? "피드백 내용 없음"
+                          : paragraph.strengths}
+                      </li>
                     </ul>
                   </div>
                   <div className="text-xs leading-6">
                     <p className="font-semibold">❗ 보완할 점</p>
                     <ul>
-                      <li>{paragraph.improvements}</li>
+                      <li>
+                        {paragraph.improvements === ""
+                          ? "피드백 내용 없음"
+                          : paragraph.improvements}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -191,9 +199,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                     사용자 요약
                   </div>
                   <div className="text-xs leading-6">
-                    둘째 아이 출산 증가 : 지난해 출생아 수가 늘어나면서
-                    둘째 아이 출산 비율도 높아졌다. 2018년 이후 줄어들던
-                    둘째 출산이 다시 증가한 것은 희망적인 변화다.
+                    {summaryList[index].userSummary}
                   </div>
                 </div>
 
