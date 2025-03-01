@@ -78,6 +78,13 @@ export const logout = async () => {
 };
 
 // 회원탈퇴
+export const withdraw = async () => {
+  const response = await axiosInstance.delete(`/users`);
+  useAuthStore.getState().clearRefreshToken();
+  useAuthStore.getState().clearAccessToken();
+
+  return response.data;
+};
 
 // 사용자 정보 조회
 
