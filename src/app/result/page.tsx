@@ -1,11 +1,14 @@
+"use client";
+
 import AIFeedback from "@container/feedback/ai-feedback";
-import AILoading from "@container/feedback/ai-loading";
+import { useSummaryStore } from "@store/summary-store";
 
 const Result = () => {
+  const { summaryFeedback } = useSummaryStore();
+
   return (
     <main>
-      {/* <AILoading /> */}
-      <AIFeedback />
+      <AIFeedback {...summaryFeedback!} />
     </main>
   );
 };

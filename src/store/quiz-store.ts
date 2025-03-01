@@ -24,9 +24,10 @@ export const useQuizStore = create<IQuizStore>(
       },
       submitQuizAnswer: async () => {
         const quizzes = useQuizStore.getState().quizzes;
+        console.log(quizzes);
         const response = await createQuizAnswer(quizzes);
 
-        if (response.status === 201) {
+        if (response.code === 201) {
           set({ quizzes: [] });
         }
       },

@@ -1,4 +1,4 @@
-import { IArticle } from "@interface/props";
+import { IArticle, ISummary, ISummaryUser } from "@interface/props";
 
 // 사용자 store state
 export interface IAuthStore {
@@ -31,4 +31,12 @@ export interface IQuizStore {
     userAnswer: number
   ) => void;
   submitQuizAnswer: () => void;
+}
+
+// 요약 store state
+export interface ISummaryStore {
+  summaryList: ISummaryUser[];
+  insertSummaryList: (summaryList: ISummaryUser[]) => void;
+  summaryFeedback: ISummary | null;
+  insertSummaryFeedback: (response: ISummary) => void;
 }

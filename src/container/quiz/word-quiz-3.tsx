@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import OXSelect from "@components/quiz/ox-select";
 import Button from "@components/button/button";
-import { ISynonymQuiz } from "@interface/props";
+import { IContentQuiz, ISynonymQuiz } from "@interface/props";
 import { useQuizStore } from "@store/quiz-store";
 
 import caution from "@assets/svg/caution-gray.svg";
@@ -22,7 +22,7 @@ const WordQuiz3 = ({
   answer,
   explanation,
   onCheck,
-}: ISynonymQuiz & { onCheck: (isCorrect: boolean) => void }) => {
+}: IContentQuiz & { onCheck: (isCorrect: boolean) => void }) => {
   const [userAnswer, setUserAnswer] = useState<boolean | null>(null);
   const { insertQuizAnswer } = useQuizStore();
 

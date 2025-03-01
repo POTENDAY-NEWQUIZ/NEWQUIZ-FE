@@ -3,8 +3,6 @@ import Image from "next/image";
 import Button from "@components/button/button";
 import { ISummaryLoading } from "@interface/props";
 
-import temp from "@assets/img/summary-quiz.svg";
-
 const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
   return (
     <main className="h-screen flex flex-col justify-center items-center">

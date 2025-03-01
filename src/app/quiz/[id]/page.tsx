@@ -44,7 +44,6 @@ const Quiz = () => {
 
       const currentQuiz = quizList[currentIndex];
       setQuiz(currentQuiz);
-      console.log(currentQuiz);
     }
   }, [quizData, currentIndex]);
 
