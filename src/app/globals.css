@@ -56,11 +56,13 @@ body {
   background-color: #ebe2ff;
 }
 
+.custom-calendar .highlight-image-same,
 .custom-calendar .highlight-image-start,
 .custom-calendar .highlight-image-end {
   position: relative;
 }
 
+.custom-calendar .highlight-image-same div,
 .custom-calendar .highlight-image-start div,
 .custom-calendar .highlight-image-end div {
   display: flex;
@@ -91,6 +93,7 @@ body {
   z-index: -1;
 }
 
+.custom-calendar .highlight-image-same abbr,
 .custom-calendar .highlight-image-start abbr,
 .custom-calendar .highlight-image-end abbr {
   font-weight: 700;
