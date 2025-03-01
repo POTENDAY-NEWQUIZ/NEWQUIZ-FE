@@ -69,7 +69,7 @@ export const checkNickname = async (
 };
 
 // 로그아웃
-export const logout = async () => {
+export const logoutUserData = async () => {
   const response = await axiosInstance.post(`/users/logout`);
   useAuthStore.getState().clearRefreshToken();
   useAuthStore.getState().clearAccessToken();
@@ -78,7 +78,7 @@ export const logout = async () => {
 };
 
 // 회원탈퇴
-export const withdraw = async () => {
+export const deleteUserData = async () => {
   const response = await axiosInstance.delete(`/users`);
   useAuthStore.getState().clearRefreshToken();
   useAuthStore.getState().clearAccessToken();

@@ -27,11 +27,12 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const { news } = useNewsStore();
   const { summaryList } = useSummaryStore();
   const { totalScore, generalFeedback, paragraphs } = data || {};
-  const { openModal, closeModal } = useContext(ModalContext);
+  const { activeModal, openModal, closeModal } =
+    useContext(ModalContext);
 
   const onClickModalButton = async (level: string) => {
     const response = await createQuizLevel(news!.newsId, level);
-    closeModal("modal");
+    closeModal("level-modal");
     router.replace("/rank");
   };
 
@@ -157,7 +158,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
             <Button
               text="나의 랭킹은? 순위 확인하러 가기!"
               type="active"
-              onClick={() => openModal("modal")}
+              onClick={() => openModal("level-modal")}
             />
           </section>
         </main>
@@ -278,37 +279,39 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
             <Button
               text="나의 랭킹은? 순위 확인하러 가기!"
               type="active"
-              onClick={() => openModal("modal")}
+              onClick={() => openModal("level-modal")}
             />
           </section>
         </main>
       )}
 
-      <Modal
-        icon={level}
-        text="난이도는 어떠셨나요?"
-        leftChild={
-          <SmallButton
-            text="상"
-            type="inactive"
-            onClick={() => onClickModalButton("상")}
-          />
-        }
-        centerChild={
-          <SmallButton
-            text="중"
-            type="inactive"
-            onClick={() => onClickModalButton("중")}
-          />
-        }
-        rightChild={
-          <SmallButton
-            text="하"
-            type="inactive"
-            onClick={() => onClickModalButton("하")}
-          />
-        }
-      />
+      {activeModal === "level-modal" && (
+        <Modal
+          icon={level}
+          text="난이도는 어떠셨나요?"
+          leftChild={
+            <SmallButton
+              text="상"
+              type="inactive"
+              onClick={() => onClickModalButton("상")}
+            />
+          }
+          centerChild={
+            <SmallButton
+              text="중"
+              type="inactive"
+              onClick={() => onClickModalButton("중")}
+            />
+          }
+          rightChild={
+            <SmallButton
+              text="하"
+              type="inactive"
+              onClick={() => onClickModalButton("하")}
+            />
+          }
+        />
+      )}
     </>
   );
 };

@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { useContext } from "react";
 
 import { IModal } from "@interface/props";
-import { ModalContext } from "@context/modal-context";
 
 const Modal = ({
   icon,
@@ -12,9 +10,6 @@ const Modal = ({
   centerChild,
   rightChild,
 }: IModal) => {
-  const { activeModal } = useContext(ModalContext);
-  if (activeModal !== "modal") return;
-
   return (
     <>
       {/* 흐린 배경 */}

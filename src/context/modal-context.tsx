@@ -2,7 +2,12 @@
 
 import { createContext, ReactNode, useState } from "react";
 
-type ModalType = "answer-modal" | "hint-modal" | "modal";
+type ModalType =
+  | "answer-modal"
+  | "hint-modal"
+  | "level-modal"
+  | "logout-modal"
+  | "withdraw-modal";
 
 interface IModalContext {
   activeModal: ModalType | null;
@@ -23,6 +28,7 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
 
   const openModal = (modalType: ModalType) => {
     setActiveModal(modalType);
+    console.log(activeModal);
   };
 
   const closeModal = () => {
