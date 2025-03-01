@@ -1,11 +1,15 @@
 "use client";
 
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 
 import { ILottie } from "@interface/props";
 
+const LottieImageDynamic = dynamic(() => import("lottie-react"), {
+  ssr: false,
+});
+
 const LottieImage = ({ image }: ILottie) => {
-  return <Lottie animationData={image} loop={true} />;
+  return <LottieImageDynamic animationData={image} loop={true} />;
 };
 
 export default LottieImage;

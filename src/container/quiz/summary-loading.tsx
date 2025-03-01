@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import Button from "@components/button/button";
 import LottieImage from "@components/common/lottie-image";
 import { ISummaryLoading } from "@interface/props";

@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { IStudyDuration } from "@interface/props";
 
 const StudyDuration = ({ icon, duration, text }: IStudyDuration) => {
