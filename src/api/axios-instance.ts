@@ -1,7 +1,7 @@
 import axios from "axios";
 
+import { reissue } from "@api/user-api";
 import { useAuthStore } from "@store/user-store";
-import { reissue } from "./user-api";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -30,13 +30,14 @@ axiosInstance.interceptors.response.use(
     if (
       error.response &&
       !originalRequest._retry &&
-      error.response.status === 401
+      (error.response.status === 401 ||
+        error.response.data.code === "0401")
     ) {
       originalRequest._retry = true;
 
       const { refreshToken } = useAuthStore.getState();
       if (!refreshToken) {
-        window.location.href = "/login";
+        window.location.replace("/login");
         return Promise.reject(error);
       }
 
@@ -52,14 +53,15 @@ axiosInstance.interceptors.response.use(
         } else {
           useAuthStore.getState().clearRefreshToken();
           useAuthStore.getState().clearAccessToken();
-          window.location.href = "/login";
+          window.location.replace("/login");
         }
       } catch (error) {
         useAuthStore.getState().clearAccessToken();
-        window.location.href = "/login";
+        window.location.replace("/login");
       }
     }
 
+    window.location.replace("/login");
     return Promise.reject(error);
   }
 );
