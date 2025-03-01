@@ -87,5 +87,9 @@ export const withdraw = async () => {
 };
 
 // 사용자 정보 조회
+export const readUserData = async () => {
+  const response = await axiosInstance.get(`/users`);
+  return response.data;
+};
 
 // 닉네임 수정
