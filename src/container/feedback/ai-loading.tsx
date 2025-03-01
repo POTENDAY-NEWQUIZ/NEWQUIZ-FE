@@ -1,3 +1,7 @@
+import LottieImage from "@components/common/lottie-image";
+
+import lottie from "@assets/lottie/ai-feedback.json";
+
 const AILoading = () => {
   return (
     <main className="h-screen bg-[radial-gradient(circle,_#FBFAFFCC_0%,_#DCD4FF80_100%,_#876EFF4D_200%)] flex flex-col justify-center items-center">
@@ -8,7 +12,9 @@ const AILoading = () => {
         </p>
         <p>조금만 기다려 주세요!</p>
       </section>
-      <section>{/* 로티 이미지 추가 필요 */}</section>
+      <section>
+        <LottieImage image={lottie} />
+      </section>
     </main>
   );
 };

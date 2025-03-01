@@ -1,3 +1,7 @@
+import LottieImage from "@components/common/lottie-image";
+
+import lottie from "@assets/lottie/quiz-word.json";
+
 const ArticleLoading = () => {
   return (
     <main className="h-screen flex flex-col justify-center items-center bg-mist-lavender">
@@ -6,7 +10,7 @@ const ArticleLoading = () => {
         <p className="mt-3 mb-8 text-xl font-semibold">
           퀴즈가 곧 시작돼요!
         </p>
-        {/* 로티 이미지 추가 필요 */}
+        <LottieImage image={lottie} />
       </section>
 
       {/* 안내문 구역 */}

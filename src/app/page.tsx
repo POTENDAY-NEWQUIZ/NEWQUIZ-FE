@@ -38,7 +38,7 @@ const Home = () => {
     setTimeout(() => {
       setIsLoading(false);
       router.push("/article");
-    }, 3500);
+    }, 3000);
   };
 
   return (

@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 import Button from "@components/button/button";
+import LottieImage from "@components/common/lottie-image";
 import { ISummaryLoading } from "@interface/props";
+
+import lottie from "@assets/lottie/quiz-summary.json";
 
 const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
   return (
@@ -12,7 +15,9 @@ const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
       </section>
 
       {/* 이미지 영역 */}
-      <section>{/* 로티 이미지 추가 필요 */}</section>
+      <section>
+        <LottieImage image={lottie} />
+      </section>
 
       {/* 텍스트 영역 */}
       <section className="flex flex-col gap-5 bg-mist-lavender mx-5 rounded-[10px] p-8">
