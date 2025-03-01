@@ -60,6 +60,12 @@ const MyCalendar = ({ start, end }: CalendarProps) => {
   };
 
   const insertImageToDate = ({ date }: { date: Date }) => {
+    if (isSameDay(new Date(start), new Date(end))) {
+      if (isSameDay(date, new Date(start))) {
+        return "highlight-image-same";
+      }
+    }
+
     if (isSameDay(date, new Date(start))) {
       return "highlight-image-start";
     }
