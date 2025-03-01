@@ -26,7 +26,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const router = useRouter();
   const { news } = useNewsStore();
   const { summaryList } = useSummaryStore();
-  const { totalScore, generalFeedback, paragraphs } = data;
+  const { totalScore, generalFeedback, paragraphs } = data || {};
   const { openModal, closeModal } = useContext(ModalContext);
 
   const onClickModalButton = async (level: string) => {
@@ -34,6 +34,10 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
     closeModal("modal");
     router.replace("/rank");
   };
+
+  if (!data) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
