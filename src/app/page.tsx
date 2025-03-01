@@ -7,10 +7,10 @@ import Navigator from "@components/common/navigator";
 import MyCalendar from "@container/home/calendar";
 import Button from "@components/button/button";
 import StudyDuration from "@components/study-duration";
+import { readStudyHome } from "@api/study-api";
 
 import duration1 from "@assets/img/calendar.svg";
 import duration2 from "@assets/img/clock.svg";
-import { readStudyHome } from "@api/study-api";
 
 const Home = () => {
   const [study, setStudy] = useState({
@@ -27,7 +27,6 @@ const Home = () => {
   const getStudyHome = async () => {
     const response = await readStudyHome();
     setStudy(response.data);
-    console.log(response.data);
   };
 
   return (
