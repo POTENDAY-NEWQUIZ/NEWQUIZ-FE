@@ -1,11 +1,18 @@
+"use client";
+
 import AIFeedback from "@container/feedback/ai-feedback";
-import AILoading from "@container/feedback/ai-loading";
+import { useSearchParams } from "next/navigation";
 
 const Result = () => {
+  const searchParams = useSearchParams();
+  const data = searchParams.get("data");
+  const response = JSON.parse(decodeURIComponent(data!));
+
+  console.log(response);
+
   return (
     <main>
-      {/* <AILoading /> */}
-      <AIFeedback />
+      <AIFeedback {...response} />
     </main>
   );
 };

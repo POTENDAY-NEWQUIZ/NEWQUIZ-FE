@@ -177,8 +177,23 @@ export interface IQuizAnswer {
   onClick: () => void;
 }
 
+/* 요약 인터페이스 */
 export interface ISummaryLoading {
   onStartQuiz: () => void;
 }
 
-/* 요약 인터페이스 */
+export interface ISummary {
+  code: number;
+  data: {
+    totalScore: number;
+    generalFeedback: string;
+    paragraphs: {
+      paragraphId: number;
+      aiSummary: string;
+      strengths: string;
+      improvements: string;
+    }[];
+  };
+  isSuccess: boolean;
+  message: string;
+}
