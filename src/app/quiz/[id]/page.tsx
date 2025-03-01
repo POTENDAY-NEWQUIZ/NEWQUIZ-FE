@@ -6,23 +6,27 @@ import { useContext, useEffect, useState } from "react";
 import Header from "@components/common/header";
 import ProgressiveBar from "@components/quiz/progressive-bar";
 import EventButton from "@components/button/event-button";
+import HintModal from "@components/quiz/hint-modal";
 import Blank from "@components/button/blank";
+import AnswerModal from "@components/quiz/answer-modal";
+import Modal from "@components/common/modal";
 import WordQuiz1 from "@container/quiz/word-quiz-1";
 import WordQuiz2 from "@container/quiz/word-quiz-2";
 import WordQuiz3 from "@container/quiz/word-quiz-3";
-import AnswerModal from "@components/quiz/answer-modal";
-import { readQuizAll } from "@api/quiz-api";
 import { ModalContext } from "@context/modal-context";
+import { useQuizStore } from "@store/quiz-store";
+import { readQuizAll } from "@api/quiz-api";
 
 import cancel from "@assets/svg/cancel.svg";
 import hint from "@assets/svg/hint.svg";
-import { useQuizStore } from "@store/quiz-store";
-import HintModal from "@components/quiz/hint-modal";
+import warn from "@assets/img/warn.svg";
+import SmallButton from "@components/button/small-button";
 
 const Quiz = () => {
   const params = useParams();
   const router = useRouter();
-  const { openModal } = useContext(ModalContext);
+  const { activeModal, openModal, closeModal } =
+    useContext(ModalContext);
   const [quizData, setQuizData] = useState<any>(null);
   const [quiz, setQuiz] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -82,41 +86,71 @@ const Quiz = () => {
   };
 
   return (
-    <main>
-      {/* 헤더 구역 */}
-      <Header
-        title={`${quiz?.type} 퀴즈`}
-        leftChild={<EventButton icon={cancel} command="back" />}
-        rightChild={<Blank />}
-      />
-
-      {/* 프로그레시브 바 구역 */}
-      <section className="pt-16 mx-5 flex items-center gap-3">
-        <ProgressiveBar
-          total={quizData?.totalQuizCount}
-          current={currentIndex}
+    <>
+      <main>
+        {/* 헤더 구역 */}
+        <Header
+          title={`${quiz?.type} 퀴즈`}
+          leftChild={<EventButton icon={cancel} command="back-modal" />}
+          rightChild={<Blank />}
         />
-        <EventButton icon={hint} command="hint" />
-      </section>
 
-      {/* 퀴즈 구역 */}
-      <section>{renderQuiz()}</section>
+        {/* 프로그레시브 바 구역 */}
+        <section className="pt-16 mx-5 flex items-center gap-3">
+          <ProgressiveBar
+            total={quizData?.totalQuizCount}
+            current={currentIndex}
+          />
+          <EventButton icon={hint} command="hint" />
+        </section>
 
-      <AnswerModal
-        type={isCorrect ? "correct" : "incorrect"}
-        answer={
-          typeof quiz?.answer === "boolean"
-            ? quiz.answer
-              ? "⭕"
-              : "❌"
-            : quiz?.answer
-        }
-        explanation={quiz?.explanation}
-        onClick={onClickNext}
-      />
+        {/* 퀴즈 구역 */}
+        <section>{renderQuiz()}</section>
+
+        <AnswerModal
+          type={isCorrect ? "correct" : "incorrect"}
+          answer={
+            typeof quiz?.answer === "boolean"
+              ? quiz.answer
+                ? "⭕"
+                : "❌"
+              : quiz?.answer
+          }
+          explanation={quiz?.explanation}
+          onClick={onClickNext}
+        />
+      </main>
 
       <HintModal paragraphId={quiz?.paragraphId} />
-    </main>
+
+      {activeModal === "back-modal" && (
+        <Modal
+          icon={warn}
+          text="아직 문제가 남아있어요!"
+          description={
+            <>
+              중간에 멈추시면 저장이 되지 않습니다.
+              <br />
+              그래도 멈추실 건가요?
+            </>
+          }
+          leftChild={
+            <SmallButton
+              text="중단하기"
+              type="negative"
+              onClick={() => router.replace("/")}
+            />
+          }
+          rightChild={
+            <SmallButton
+              text="계속하기"
+              type="positive"
+              onClick={() => closeModal("back-modal")}
+            />
+          }
+        />
+      )}
+    </>
   );
 };
 

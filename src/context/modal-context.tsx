@@ -4,6 +4,7 @@ import { createContext, ReactNode, useState } from "react";
 
 type ModalType =
   | "answer-modal"
+  | "back-modal"
   | "hint-modal"
   | "level-modal"
   | "logout-modal"

@@ -17,7 +17,7 @@ export interface INavItem {
 export interface IModal {
   icon: string; // 아이콘으로 변경되어야 함
   text: string;
-  description?: string;
+  description?: string | ReactNode;
   leftChild?: ReactNode;
   centerChild?: ReactNode;
   rightChild?: ReactNode;

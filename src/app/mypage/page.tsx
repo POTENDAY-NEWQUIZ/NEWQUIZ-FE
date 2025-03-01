@@ -48,11 +48,13 @@ const Mypage = () => {
   const logout = async () => {
     const response = await logoutUserData();
     closeModal("logout-modal");
+    router.replace("/login");
   };
 
   const withdraw = async () => {
     const response = await deleteUserData();
     closeModal("withdraw-modal");
+    router.replace("/login");
   };
 
   return (
@@ -206,7 +208,13 @@ const Mypage = () => {
         <Modal
           icon={warn}
           text="정말 탈퇴하시겠어요?"
-          description={`탈퇴 버튼 선택 시 계정은 삭제되며\n\n복구되지 않습니다.`}
+          description={
+            <>
+              탈퇴 버튼 선택 시 계정은 삭제되며
+              <br />
+              복구되지 않습니다.
+            </>
+          }
           leftChild={
             <SmallButton
               text="중단하기"
