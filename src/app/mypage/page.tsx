@@ -48,11 +48,13 @@ const Mypage = () => {
   const logout = async () => {
     const response = await logoutUserData();
     closeModal("logout-modal");
+    router.replace("/login");
   };
 
   const withdraw = async () => {
     const response = await deleteUserData();
     closeModal("withdraw-modal");
+    router.replace("/login");
   };
 
   return (

@@ -66,7 +66,15 @@ export const checkNickname = async (nickname: string) => {
 
 // 로그아웃
 export const logoutUserData = async () => {
-  const response = await axiosInstance.post(`/users/logout`);
+  const response = await axiosInstance.post(
+    `/users/logout`,
+    {},
+    {
+      headers: {
+        refreshToken: useAuthStore.getState().refreshToken,
+      },
+    }
+  );
   useAuthStore.getState().clearRefreshToken();
   useAuthStore.getState().clearAccessToken();
 
@@ -75,7 +83,11 @@ export const logoutUserData = async () => {
 
 // 회원탈퇴
 export const deleteUserData = async () => {
-  const response = await axiosInstance.delete(`/users`);
+  const response = await axiosInstance.delete(`/users`, {
+    headers: {
+      refreshToken: useAuthStore.getState().refreshToken,
+    },
+  });
   useAuthStore.getState().clearRefreshToken();
   useAuthStore.getState().clearAccessToken();
 
