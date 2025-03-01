@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { useAuthStore } from "@store/user-store";
+import axiosInstance from "./axios-instance";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -45,10 +46,7 @@ export const register = async (
 };
 
 // 닉네임 중복 확인
-export const checkNickname = async (
-  registerToken: string,
-  nickname: string
-) => {
+export const checkNickname = async (nickname: string) => {
   try {
     const response = await axios
       .create({
@@ -56,7 +54,6 @@ export const checkNickname = async (
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          registerToken: registerToken,
         },
       })
       .post(`/users/nickname/check`, { nickName: nickname });
@@ -65,4 +62,37 @@ export const checkNickname = async (
   } catch (error) {
     console.error("닉네임 중복 확인 실패", error);
   }
+};
+
+// 로그아웃
+export const logoutUserData = async () => {
+  const response = await axiosInstance.post(`/users/logout`);
+  useAuthStore.getState().clearRefreshToken();
+  useAuthStore.getState().clearAccessToken();
+
+  return response.data;
+};
+
+// 회원탈퇴
+export const deleteUserData = async () => {
+  const response = await axiosInstance.delete(`/users`);
+  useAuthStore.getState().clearRefreshToken();
+  useAuthStore.getState().clearAccessToken();
+
+  return response.data;
+};
+
+// 사용자 정보 조회
+export const readUserData = async () => {
+  const response = await axiosInstance.get(`/users`);
+  return response.data;
+};
+
+// 닉네임 수정
+export const updateUserData = async (nickname: string) => {
+  const response = await axiosInstance.patch(`/users/nickname`, {
+    nickName: nickname,
+  });
+
+  return response.data;
 };
