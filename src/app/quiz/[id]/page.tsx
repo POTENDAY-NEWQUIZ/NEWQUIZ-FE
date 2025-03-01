@@ -114,7 +114,13 @@ const Quiz = () => {
               ? quiz.answer
                 ? "⭕"
                 : "❌"
-              : quiz?.answer
+              : quiz?.answer === 1
+              ? quiz?.option1
+              : quiz?.answer === 2
+              ? quiz?.option2
+              : quiz?.answer === 3
+              ? quiz?.option3
+              : quiz?.option4
           }
           explanation={quiz?.explanation}
           onClick={onClickNext}

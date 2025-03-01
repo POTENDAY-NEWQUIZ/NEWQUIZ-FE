@@ -30,6 +30,7 @@ const WordQuiz1 = ({
     const isCorrect = userAnswer === answer;
     onCheck(isCorrect);
     insertQuizAnswer(quizId, type, isCorrect, userAnswer);
+    setUserAnswer(0);
   };
 
   const highlight = sourceSentence.replace(
@@ -46,8 +47,7 @@ const WordQuiz1 = ({
           <br />
           <span className="underline">{word}</span>의 의미와
           <br />
-          가장 <span className="text-point-lavender">유사한</span>
-          {` `}
+          가장 <span className="text-point-lavender">유사한 </span>
           단어는?
         </div>
 

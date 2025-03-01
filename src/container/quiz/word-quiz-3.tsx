@@ -34,6 +34,7 @@ const WordQuiz3 = ({
     const isCorrect = userAnswer === answer;
     onCheck(isCorrect);
     insertQuizAnswer(quizId, type, isCorrect, userAnswer ? 1 : 0);
+    setUserAnswer(null);
   };
 
   return (
