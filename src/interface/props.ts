@@ -133,7 +133,7 @@ export interface IQuiz {
   totalQuizCount: number;
 }
 
-export interface IContentQuiz {
+export interface ISynonymQuiz {
   type: string;
   quizId: number;
   paragraphId: 82;
@@ -161,7 +161,7 @@ export interface IMeaningQuiz {
   explanation: string;
 }
 
-export interface ISynonymQuiz {
+export interface IContentQuiz {
   type: string;
   quizId: number;
   paragraphId: 82;
@@ -180,6 +180,11 @@ export interface IQuizAnswer {
 /* 요약 인터페이스 */
 export interface ISummaryLoading {
   onStartQuiz: () => void;
+}
+
+export interface ISummaryUser {
+  paragraphId: number;
+  userSummary: string;
 }
 
 export interface ISummary {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IContentQuiz } from "@interface/props";
+import { ISynonymQuiz } from "@interface/props";
 import Button from "@components/button/button";
 import QuizSelect from "@components/quiz/quiz-select";
 import { useQuizStore } from "@store/quiz-store";
@@ -18,7 +18,7 @@ const WordQuiz1 = ({
   answer,
   explanation,
   onCheck,
-}: IContentQuiz & { onCheck: (isCorrect: boolean) => void }) => {
+}: ISynonymQuiz & { onCheck: (isCorrect: boolean) => void }) => {
   const [userAnswer, setUserAnswer] = useState(0);
   const { insertQuizAnswer } = useQuizStore();
 
