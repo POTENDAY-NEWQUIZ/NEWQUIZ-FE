@@ -1,5 +1,8 @@
-import { IModal } from "@interface/props";
 import Image from "next/image";
+import { useContext } from "react";
+
+import { IModal } from "@interface/props";
+import { ModalContext } from "@context/modal-context";
 
 const Modal = ({
   icon,
@@ -9,6 +12,9 @@ const Modal = ({
   centerChild,
   rightChild,
 }: IModal) => {
+  const { activeModal } = useContext(ModalContext);
+  if (activeModal !== "modal") return;
+
   return (
     <>
       {/* 흐린 배경 */}
@@ -17,9 +23,9 @@ const Modal = ({
       {/* 모달 컨텐츠 */}
       <div className="max-w-[340px] w-[calc(100%-60px)] h-[240px] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-[14px] z-50 shadow-modal text-center px-4 py-10">
         <section className="flex justify-center mt-2 mb-4">
-          <Image src={icon} width={24} height={24} alt="모달 아이콘" />
+          <Image src={icon} width={32} height={32} alt="모달 아이콘" />
         </section>
-        <section className="mb-4">
+        <section className="mb-8">
           <div className="text-xl font-bold">{text}</div>
           <div className="text-sm text-[#727272]">{description}</div>
         </section>

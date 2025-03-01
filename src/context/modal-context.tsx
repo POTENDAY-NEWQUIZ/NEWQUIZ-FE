@@ -2,7 +2,7 @@
 
 import { createContext, ReactNode, useState } from "react";
 
-type ModalType = "answer-modal" | "hint-modal";
+type ModalType = "answer-modal" | "hint-modal" | "modal";
 
 interface IModalContext {
   activeModal: ModalType | null;
