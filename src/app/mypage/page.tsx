@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
@@ -23,6 +24,7 @@ import into from "@assets/svg/into.svg";
 import warn from "@assets/img/warn.svg";
 
 const Mypage = () => {
+  const router = useRouter();
   const { activeModal, openModal, closeModal } =
     useContext(ModalContext);
   const [userData, setUserData] = useState({
@@ -36,7 +38,7 @@ const Mypage = () => {
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [userData.nickname]);
 
   const getUserData = async () => {
     const response = await readUserData();
@@ -61,8 +63,15 @@ const Mypage = () => {
           <div className="rounded-full">
             <Image src={user} width={90} height={90} alt="프로필" />
           </div>
-          <p className="text-2xl font-semibold">{userData.nickname}</p>
-          <p className="text-sm text-[#B6B6B6] underline">수정하기</p>
+          <p className="text-2xl font-semibold xs:text-xl">
+            {userData.nickname}
+          </p>
+          <p
+            className="text-sm text-[#B6B6B6] underline cursor-pointer xs:text-xs"
+            onClick={() => router.push("/mypage/update")}
+          >
+            수정하기
+          </p>
         </section>
 
         {/* 학습 일수 구역 */}
@@ -84,7 +93,7 @@ const Mypage = () => {
         </section>
 
         {/* 학습 데이터 구역 */}
-        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4 mb-2">
+        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4 mb-2 xs:py-4">
           <div className="flex gap-2 items-start">
             <Image
               src={chart}
@@ -130,7 +139,7 @@ const Mypage = () => {
         </section>
 
         {/* 오답노트 구역 */}
-        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4">
+        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4 xs:py-4">
           <div className="flex gap-2 items-start">
             <Image
               src={book}
@@ -197,7 +206,7 @@ const Mypage = () => {
         <Modal
           icon={warn}
           text="정말 탈퇴하시겠어요?"
-          description={`탈퇴 버튼 선택 시 계정은 삭제되며\n복구되지 않습니다.`}
+          description={`탈퇴 버튼 선택 시 계정은 삭제되며\n\n복구되지 않습니다.`}
           leftChild={
             <SmallButton
               text="중단하기"

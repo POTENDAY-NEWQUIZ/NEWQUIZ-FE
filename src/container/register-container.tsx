@@ -20,8 +20,7 @@ const RegisterContainer = () => {
   const [birth, setBirth] = useState("");
   const [isCheckNickname, setIsCheckNickname] = useState("DEFAULT");
 
-  const nicknameRegex =
-    /^(?=.*[가-힣a-zA-Z])(?=.*\d)[가-힣a-zA-Z\d]{2,8}$/;
+  const nicknameRegex = /^[가-힣a-zA-Z0-9]{2,8}$/;
   const birthRegex = /^\d{4}-\d{2}-\d{2}$/;
 
   const isValidNickname = nicknameRegex.test(nickname);
@@ -42,10 +41,7 @@ const RegisterContainer = () => {
       return;
     }
 
-    const response = await checkNickname(
-      String(registerToken),
-      nickname
-    );
+    const response = await checkNickname(nickname);
 
     if (response.data.isDuplicate) {
       setIsCheckNickname("FALSE");
@@ -88,7 +84,7 @@ const RegisterContainer = () => {
             <div className="flex items-center relative">
               <input
                 type="text"
-                placeholder="한글, 영문, 숫자 중 2가지 이상 8자 이내 입력"
+                placeholder="한글, 영문, 숫자로 8자 이내 입력"
                 className={`w-full py-2 pr-16 text-sm outline-none border-b-[1px] ${
                   nickname ? "border-black" : "border-[#D9D9D9]"
                 }`}
@@ -119,7 +115,9 @@ const RegisterContainer = () => {
                   사용 중인 닉네임입니다.
                 </p>
               ) : isCheckNickname === "ERROR" ? (
-                <p className="text-[#FC1919]">다시 입력해주세요.</p>
+                <p className="text-[#FC1919]">
+                  한글, 영문, 숫자로 8자 이내로 입력해주세요.
+                </p>
               ) : (
                 <p className="text-white">닉네임 관련 문구</p>
               )}

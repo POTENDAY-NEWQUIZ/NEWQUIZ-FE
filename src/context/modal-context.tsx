@@ -28,7 +28,6 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
 
   const openModal = (modalType: ModalType) => {
     setActiveModal(modalType);
-    console.log(activeModal);
   };
 
   const closeModal = () => {

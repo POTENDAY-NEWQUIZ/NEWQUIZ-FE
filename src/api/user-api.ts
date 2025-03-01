@@ -46,10 +46,7 @@ export const register = async (
 };
 
 // 닉네임 중복 확인
-export const checkNickname = async (
-  registerToken: string,
-  nickname: string
-) => {
+export const checkNickname = async (nickname: string) => {
   try {
     const response = await axios
       .create({
@@ -57,7 +54,6 @@ export const checkNickname = async (
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          registerToken: registerToken,
         },
       })
       .post(`/users/nickname/check`, { nickName: nickname });

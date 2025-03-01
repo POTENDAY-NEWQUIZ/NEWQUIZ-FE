@@ -17,12 +17,14 @@ const Modal = ({
 
       {/* 모달 컨텐츠 */}
       <div className="max-w-[340px] w-[calc(100%-60px)] h-[240px] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-[14px] z-50 shadow-modal text-center px-4 py-10">
-        <section className="flex justify-center mt-2 mb-4">
+        <section className="flex justify-center mt-2 mb-2">
           <Image src={icon} width={32} height={32} alt="모달 아이콘" />
         </section>
         <section className="mb-8">
-          <div className="text-xl font-bold">{text}</div>
-          <div className="text-sm text-[#727272]">{description}</div>
+          <div className="text-xl font-bold xs:text-lg">{text}</div>
+          <div className="text-sm text-[#727272] xs:text-[11px]">
+            {description}
+          </div>
         </section>
         <section className="flex justify-evenly">
           {leftChild}
