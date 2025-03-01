@@ -1,4 +1,4 @@
-import axiosInstance from "./axios-instance";
+import axiosInstance from "@api/axios-instance";
 
 // 퀴즈 조회
 export const readQuizAll = async (newsId: string) => {

@@ -1,4 +1,4 @@
-import axiosInstance from "./axios-instance";
+import axiosInstance from "@api/axios-instance";
 
 // 분야별 기사 조회
 export const readNewsAll = async (category: string) => {
