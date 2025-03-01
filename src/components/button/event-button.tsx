@@ -17,12 +17,20 @@ const EventButton = ({ icon, command }: IEventButton) => {
         router.back();
         break;
       }
+      case "back-modal": {
+        openModal("back-modal");
+        break;
+      }
       case "hint": {
         openModal("hint-modal");
         break;
       }
       case "hint-close": {
         closeModal("hint-modal");
+        break;
+      }
+      case "level-modal": {
+        openModal("level-modal");
         break;
       }
       case "close": {

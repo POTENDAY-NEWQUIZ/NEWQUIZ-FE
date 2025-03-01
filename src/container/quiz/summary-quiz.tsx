@@ -2,23 +2,29 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Header from "@components/common/header";
 import EventButton from "@components/button/event-button";
 import Blank from "@components/button/blank";
 import Button from "@components/button/button";
+import Modal from "@components/common/modal";
 import AILoading from "@container/feedback/ai-loading";
 import { createSummaryAnswer } from "@api/quiz-api";
 import { useNewsStore } from "@store/news-store";
 import { useSummaryStore } from "@store/summary-store";
+import { ModalContext } from "@context/modal-context";
 
 import cancel from "@assets/svg/cancel.svg";
 import pen from "@assets/svg/pen.svg";
 import pin from "@assets/svg/seciton_pin.svg";
+import warn from "@assets/img/warn.svg";
+import SmallButton from "@components/button/small-button";
 
 const SummaryQuiz = () => {
   const router = useRouter();
+  const { activeModal, openModal, closeModal } =
+    useContext(ModalContext);
   const [loading, setLoading] = useState(false);
   const { news } = useNewsStore();
   const { insertSummaryList, insertSummaryFeedback } =
@@ -69,7 +75,9 @@ const SummaryQuiz = () => {
           {/* 헤더 영역 */}
           <Header
             title="내용 요약 퀴즈"
-            leftChild={<EventButton icon={cancel} command="close" />}
+            leftChild={
+              <EventButton icon={cancel} command="back-modal" />
+            }
             rightChild={<Blank />}
           />
 
@@ -132,6 +140,34 @@ const SummaryQuiz = () => {
             />
           </section>
         </main>
+      )}
+
+      {activeModal === "back-modal" && (
+        <Modal
+          icon={warn}
+          text="아직 요약이 남아있어요!"
+          description={
+            <>
+              중간에 멈추시면 저장이 되지 않습니다.
+              <br />
+              그래도 멈추실 건가요?
+            </>
+          }
+          leftChild={
+            <SmallButton
+              text="중단하기"
+              type="negative"
+              onClick={() => router.replace("/")}
+            />
+          }
+          rightChild={
+            <SmallButton
+              text="계속하기"
+              type="positive"
+              onClick={() => closeModal("back-modal")}
+            />
+          }
+        />
       )}
     </>
   );

@@ -47,7 +47,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
           {/* 헤더 영역 - 수정 가능성 있음 */}
           <section className="max-w-[480px] h-[50px] px-5 bg-white flex justify-between items-center">
             <Blank />
-            <EventButton icon={cancel} command="close" />
+            <EventButton icon={cancel} command="level-modal" />
           </section>
 
           {/*  점수 영역 */}
