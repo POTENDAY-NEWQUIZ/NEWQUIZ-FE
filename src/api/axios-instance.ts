@@ -61,6 +61,10 @@ axiosInstance.interceptors.response.use(
       }
     }
 
+    if (error.response && error.response.data.code === "999") {
+      return Promise.reject(error);
+    }
+
     window.location.replace("/login");
     return Promise.reject(error);
   }
