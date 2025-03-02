@@ -46,11 +46,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   font-size: 14px;
   font-weight: 500;
   width: 40px;
   height: 36px;
   margin: 8px 0;
+}
+
+.custom-calendar .react-calendar__tile abbr {
+  text-align: center;
 }
 
 .custom-calendar .highlight-color {
@@ -81,46 +87,3 @@ body {
   border: 3px solid #e5dfff !important;
   border-radius: 28px;
 }
-
-/* .custom-calendar .highlight-image-same,
-.custom-calendar .highlight-image-start,
-.custom-calendar .highlight-image-end {
-  position: relative;
-} */
-
-/* .custom-calendar .highlight-image-same div,
-.custom-calendar .highlight-image-start div,
-.custom-calendar .highlight-image-end div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .custom-calendar .highlight-image-start div:after {
-  content: "";
-  background-color: #ebe2ff;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 21px;
-  z-index: -1;
-}
-
-.custom-calendar .highlight-image-end div:after {
-  content: "";
-  background-color: #ebe2ff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50%;
-  height: 21px;
-  z-index: -1;
-} */
-
-/* .custom-calendar .highlight-image-same abbr,
-.custom-calendar .highlight-image-start abbr,
-.custom-calendar .highlight-image-end abbr {
-  font-weight: 700;
-  color: #552baf;
-} */

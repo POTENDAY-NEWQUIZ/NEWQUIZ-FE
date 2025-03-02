@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://new-quiz.site/open-graph.jpeg",
+        url: "https://new-quiz.site/open-graph.jpg",
         width: 1200,
         height: 630,
         alt: "뉴퀴즈 대표 이미지",
