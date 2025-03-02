@@ -20,7 +20,7 @@ const OXSelect = ({
   return (
     <div className="w-full">
       <button
-        className={`w-full h-24 flex justify-center rounded-[20px] ${selectClass}`}
+        className={`w-full h-24 flex justify-center items-center rounded-[20px] ${selectClass}`}
         onClick={onClick}
       >
         <Image
