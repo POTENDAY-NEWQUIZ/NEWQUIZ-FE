@@ -31,6 +31,9 @@ export const useQuizStore = create<IQuizStore>(
           set({ quizzes: [] });
         }
       },
+      clearQuizAnwer: async () => {
+        set({ quizzes: [] });
+      },
     }),
     {
       name: "quiz-storage",

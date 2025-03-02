@@ -31,6 +31,7 @@ export interface IQuizStore {
     userAnswer: number
   ) => void;
   submitQuizAnswer: () => void;
+  clearQuizAnswer: () => void;
 }
 
 // 요약 store state
