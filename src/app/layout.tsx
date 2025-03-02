@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "뉴퀴즈 (NewQuiz)",
     description: "퀴즈 하나로 뉴스를 더 쉽게 🔍",
-    images: ["https://new-quiz.site/open-graph.png"],
+    images: ["https://new-quiz.site/open-graph.jpg"],
   },
 };
 
