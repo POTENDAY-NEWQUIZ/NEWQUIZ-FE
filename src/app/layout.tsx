@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { ModalProvider } from "@context/modal-context";
+import Script from "next/script";
 
 const pretendard = localFont({
   src: "/fonts/pretendard-variable.woff2",
@@ -44,6 +45,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WRSHVPKHXN"
+        ></Script>
+        <Script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-WRSHVPKHXN');`}
+        </Script>
+      </head>
       <body
         className={`${pretendard.className} antialiased tracking-tighter`}
       >
