@@ -1,10 +1,10 @@
 {
   "name": "NewQuiz",
   "short_name": "NewQuiz",
-  "description": "어휘력 및 문휘력 향상을 위한 AI 기반 사설 요약 서비스",
+  "description": "퀴즈 하나로 뉴스를 더 쉽게 🔍",
   "start_url": "/",
-  "theme_color": "#B287FD",
-  "background_color": "#262626",
+  "theme_color": "#6838CE",
+  "background_color": "#FBFAFF",
   "display": "standalone",
   "lang": "ko-KR",
   "icons": [
@@ -17,7 +17,7 @@
     {
       "purpose": "any",
       "sizes": "512x512",
-      "src": "/icons/icon512_rounded.png",
+      "src": "/icons/icon512_maskable.png",
       "type": "image/png"
     }
   ]
