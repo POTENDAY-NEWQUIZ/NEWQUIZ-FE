@@ -50,8 +50,8 @@ const MyCalendar = ({ start, end }: CalendarProps) => {
     };
 
     if (
-      normalizeDate(date) > normalizeDate(new Date(start)) &&
-      normalizeDate(date) < normalizeDate(new Date(end))
+      normalizeDate(date) >= normalizeDate(new Date(start)) &&
+      normalizeDate(date) <= normalizeDate(new Date(end))
     ) {
       return "highlight-color";
     }
@@ -98,14 +98,6 @@ const MyCalendar = ({ start, end }: CalendarProps) => {
               props
             )}`;
           }}
-          tileContent={({ date }) =>
-            isSameDay(date, new Date(start)) ||
-            isSameDay(date, new Date(end)) ? (
-              <div>
-                <Image src={fire} width={40} height={40} alt="불꽃" />
-              </div>
-            ) : null
-          }
         />
         <button
           className="flex gap-1 absolute top-7 left-8"

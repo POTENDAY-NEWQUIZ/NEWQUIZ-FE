@@ -35,6 +35,7 @@ body {
   font-weight: 600;
   color: #b6b6b6;
   letter-spacing: 0;
+  margin-bottom: 8px;
 }
 
 .custom-calendar .react-calendar__month-view__weekdays__weekday abbr {
@@ -44,34 +45,58 @@ body {
 .custom-calendar .react-calendar__tile {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   font-size: 14px;
   font-weight: 500;
   width: 40px;
-  height: 40px;
-  margin: 4px 0;
+  height: 36px;
+  margin: 8px 0;
+}
+
+.custom-calendar .highlight-color {
+  background-color: #baa9ff;
+  border: 3px solid #e5dfff;
+  border-left: none;
+  border-right: none;
 }
 
 .custom-calendar .highlight-color abbr {
-  background-color: #ebe2ff;
+  font-weight: 700;
+  color: white;
 }
 
-.custom-calendar .highlight-image-same,
+.custom-calendar .highlight-image-start {
+  border-left: 3px solid #e5dfff !important;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+
+.custom-calendar .highlight-image-end {
+  border-right: 3px solid #e5dfff !important;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+.custom-calendar .highlight-image-same {
+  border: 3px solid #e5dfff !important;
+  border-radius: 28px;
+}
+
+/* .custom-calendar .highlight-image-same,
 .custom-calendar .highlight-image-start,
 .custom-calendar .highlight-image-end {
   position: relative;
-}
+} */
 
-.custom-calendar .highlight-image-same div,
+/* .custom-calendar .highlight-image-same div,
 .custom-calendar .highlight-image-start div,
 .custom-calendar .highlight-image-end div {
   display: flex;
   justify-content: center;
-  position: relative;
-  z-index: 2;
-}
+  align-items: center;
+} */
 
-.custom-calendar .highlight-image-start div:after {
+/* .custom-calendar .highlight-image-start div:after {
   content: "";
   background-color: #ebe2ff;
   position: absolute;
@@ -91,16 +116,11 @@ body {
   width: 50%;
   height: 21px;
   z-index: -1;
-}
+} */
 
-.custom-calendar .highlight-image-same abbr,
+/* .custom-calendar .highlight-image-same abbr,
 .custom-calendar .highlight-image-start abbr,
 .custom-calendar .highlight-image-end abbr {
   font-weight: 700;
   color: #552baf;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-}
+} */

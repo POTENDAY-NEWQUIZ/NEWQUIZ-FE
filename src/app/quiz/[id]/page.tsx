@@ -33,11 +33,12 @@ const Quiz = () => {
   const [quiz, setQuiz] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const { submitQuizAnswer } = useQuizStore();
+  const { submitQuizAnswer, clearQuizAnswer } = useQuizStore();
 
   useEffect(() => {
     const newsId = params.id;
     getQuizAll(String(newsId));
+    clearQuizAnswer();
   }, []);
 
   useEffect(() => {
