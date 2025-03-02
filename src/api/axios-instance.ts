@@ -61,7 +61,7 @@ axiosInstance.interceptors.response.use(
       }
     }
 
-    if (error.response && error.response.data.code === "999") {
+    if (error.response && error.response.data.code === 999) {
       return Promise.reject(error);
     }
 

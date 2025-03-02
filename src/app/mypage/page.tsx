@@ -151,7 +151,7 @@ const Mypage = () => {
             />
             <div>
               <div className="flex items-center gap-1 mb-1">
-                <span className="font-semibold">나의 학습 데이터</span>
+                <span className="font-semibold">나의 오답 노트</span>
                 <Image
                   src={into}
                   width={20}
