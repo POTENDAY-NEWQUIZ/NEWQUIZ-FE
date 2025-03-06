@@ -13,7 +13,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         black: "#121212",
-        lavender: "#552BAF",
+        lavender: "#724AF7",
         "point-lavender": "#6838CE",
         "home-lavender": "#F5F2FF",
         "mist-lavender": "#FBFAFF",
