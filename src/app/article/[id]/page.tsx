@@ -13,9 +13,11 @@ import { readNewsDetail } from "@api/news-api";
 
 import caution from "@assets/svg/caution-lavender.svg";
 import { useNewsStore } from "@store/news-store";
+import QuizLoading from "@container/quiz/quiz-loading";
 
 const Article = () => {
   const params = useParams();
+  const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState<IArticle>({
     category: "",
     date: "",
@@ -37,6 +39,8 @@ const Article = () => {
     const { setNews } = useNewsStore.getState();
     setNews(response.data);
   };
+
+  if (loading) return <QuizLoading newsId={params.id as string} />;
 
   return (
     <main>
@@ -79,11 +83,11 @@ const Article = () => {
       </section>
 
       {/* 버튼 영역 */}
-      <section className="max-w-[480px] w-full fixed bottom-4">
+      <section className="max-w-[480px] w-full fixed bottom-5">
         <Button
           text="해당 사설로 퀴즈 시작할래요!"
           type="start"
-          link={`/quiz/${params.id}`}
+          onClick={() => setLoading(true)}
         />
       </section>
     </main>
