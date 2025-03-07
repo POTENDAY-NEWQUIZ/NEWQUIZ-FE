@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { ISynonymQuiz } from "@interface/props";
 import Button from "@components/button/button";
 import QuizSelect from "@components/quiz/quiz-select";
+import { ISynonymQuiz } from "@interface/props";
 import { useQuizStore } from "@store/quiz-store";
 
 const WordQuiz1 = ({
@@ -52,7 +52,7 @@ const WordQuiz1 = ({
         </div>
 
         <div
-          className="px-4 py-8 bg-mist-lavender text-sm shadow-default leading-6"
+          className="px-4 py-8 bg-mist-lavender text-[15px] shadow-default leading-6"
           dangerouslySetInnerHTML={{ __html: highlight }}
         ></div>
       </section>

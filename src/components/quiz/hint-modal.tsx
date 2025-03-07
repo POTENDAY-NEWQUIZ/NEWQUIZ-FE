@@ -30,7 +30,7 @@ const HintModal = ({ paragraphId }: { paragraphId: number }) => {
 
         {/* 기사 제목 영역 */}
         <section className="mx-5 mb-8">
-          <p className="font-semibold text-lg text-center break-keep leading-6 mb-2">
+          <p className="font-semibold text-xl text-center break-keep leading-7 mb-2">
             {news!.title}
           </p>
           <p className="text-xs text-[#484848] text-center">
@@ -40,11 +40,11 @@ const HintModal = ({ paragraphId }: { paragraphId: number }) => {
 
         {/* 기사 본문 영역 - 스크롤 적용 */}
         <section className="mx-5">
-          <div className="text-sm leading-7 mb-16 max-h-[360px] overflow-y-auto scrollbar-hide">
-            {news!.paragraphs.map((paragraph) =>
+          <div className="text-[#282828] leading-[30px] mb-16 max-h-[360px] overflow-y-auto scrollbar-hide">
+            {news!.paragraphs.map((paragraph, index) =>
               paragraphId === paragraph.paragraphId ? (
-                <>
-                  <div className="bg-[#5E28E0] text-white flex justify-center gap-1 rounded-[10px] py-2 mb-3 font-medium text-[13px]">
+                <article key={index}>
+                  <div className="bg-[#5E28E0] text-white flex justify-center gap-1 rounded-[10px] py-2 mb-4 font-medium text-[13px]">
                     <Image
                       src={hintPin}
                       width={16}
@@ -57,14 +57,14 @@ const HintModal = ({ paragraphId }: { paragraphId: number }) => {
                     <p>{paragraph.content}</p>
                     <br />
                   </div>
-                </>
+                </article>
               ) : (
-                <>
+                <article key={index}>
                   <div key={paragraph.order}>
                     <p>{paragraph.content}</p>
                     <br />
                   </div>
-                </>
+                </article>
               )
             )}
           </div>

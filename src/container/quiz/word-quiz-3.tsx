@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import OXSelect from "@components/quiz/ox-select";
 import Button from "@components/button/button";
-import { IContentQuiz, ISynonymQuiz } from "@interface/props";
+import { IContentQuiz } from "@interface/props";
 import { useQuizStore } from "@store/quiz-store";
 
 import caution from "@assets/svg/caution-gray.svg";
@@ -58,7 +58,7 @@ const WordQuiz3 = ({
           </p>
         </div>
 
-        <div className="px-4 py-8 mb-24 bg-mist-lavender text-sm font-bold shadow-default leading-6">
+        <div className="px-4 py-8 mb-24 bg-mist-lavender text-[15px] font-semibold shadow-default leading-6">
           {question}
         </div>
       </section>
