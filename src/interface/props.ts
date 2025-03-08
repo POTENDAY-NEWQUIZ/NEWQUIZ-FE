@@ -62,7 +62,30 @@ export interface IStudyDuration {
   text: string;
 }
 
+export interface IGraphData {
+  date: string;
+  dayOfWeek: string;
+  count: number;
+}
+
+export interface IGraph {
+  graph?: IGraphData[];
+}
+
 /* 사용자 인터페이스 */
+export interface IUserStudy {
+  nickName: string;
+  startDate: string;
+  endDate: string;
+  learningDays: number;
+  maxLearningDays: number;
+  totalCount: number;
+  graph: {
+    date: string;
+    dayOfWeek: string;
+    count: number;
+  }[];
+}
 
 /* 랭킹 인터페이스 */
 export interface IRank {
