@@ -15,7 +15,7 @@ export interface INavItem {
 }
 
 export interface IModal {
-  icon: string; // 아이콘으로 변경되어야 함
+  icon: string;
   text: string;
   description?: string | ReactNode;
   leftChild?: ReactNode;
@@ -31,9 +31,10 @@ export interface ILottie {
 export interface IButton {
   icon?: string;
   text: string;
-  type: "kakao" | "start" | "active" | "inactive" | "next";
+  type: "kakao" | "active" | "inactive" | "prev" | "next";
   link?: string;
   onClick?: () => void;
+  className?: string;
 }
 
 export interface IEventButton {
@@ -209,4 +210,16 @@ export interface ISummary {
   };
   isSuccess: boolean;
   message: string;
+}
+
+export interface ISummaryInput {
+  paragraph: IParagraph;
+  userSummary: string;
+  isFirst: boolean;
+  isLast: boolean;
+  onChangeSummary: (index: number, value: string) => void;
+  onClickPrev: () => void;
+  onClickNext: () => void;
+  onSubmit: () => void;
+  loading: boolean;
 }
