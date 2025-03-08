@@ -97,6 +97,7 @@ export interface IRank {
 
 /* 기사 인터페이스 */
 export interface ICategory {
+  currentCategory: string;
   onCategorySelect: (category: string) => void;
 }
 

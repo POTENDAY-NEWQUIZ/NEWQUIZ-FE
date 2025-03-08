@@ -4,9 +4,10 @@ import { useState } from "react";
 
 import { ICategory } from "@interface/props";
 
-const Category = ({ onCategorySelect }: ICategory) => {
-  const [select, setSelect] = useState(0);
+const Category = ({ currentCategory, onCategorySelect }: ICategory) => {
   const categories = ["정치", "경제", "사회", "글로벌"];
+  const defaultIndex = categories.indexOf(currentCategory);
+  const [select, setSelect] = useState(defaultIndex);
 
   const onClickCategory = (index: number) => {
     setSelect(index);
