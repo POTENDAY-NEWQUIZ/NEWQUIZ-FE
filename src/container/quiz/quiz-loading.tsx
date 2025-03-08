@@ -1,7 +1,7 @@
 import LottieImage from "@components/common/lottie-image";
+import Button from "@components/button/button";
 
 import lottie from "@assets/lottie/quiz-word.json";
-import Button from "@components/button/button";
 
 const QuizLoading = ({ newsId }: { newsId: string }) => {
   return (
