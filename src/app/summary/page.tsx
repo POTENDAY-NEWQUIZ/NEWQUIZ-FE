@@ -17,12 +17,13 @@ const Summary = () => {
   const [loading, setLoading] = useState(false);
   const [quizStart, setQuizStart] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [summaryList, setSummaryList] = useState(
-    news!.paragraphs.map((paragraph) => ({
-      paragraphId: paragraph.paragraphId,
-      userSummary: "",
-    }))
-  );
+  const [summaryList, setSummaryList] = useState<
+    { paragraphId: number; userSummary: string }[]
+  >([]);
+
+  if (!news) {
+    return <div>Loading...</div>;
+  }
 
   const onCilckStart = () => {
     setQuizStart(true);
