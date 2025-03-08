@@ -5,6 +5,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import Navigator from "@components/common/navigator";
+import Chart from "@container/home/chart";
+import { readStudy } from "@api/study-api";
+import { IUserStudy } from "@interface/props";
 
 import logo from "@assets/logo-transparent.svg";
 import fire from "@assets/img/fire.svg";
@@ -14,25 +17,19 @@ import society from "@assets/img/society.webp";
 import global from "@assets/img/global.webp";
 import book from "@assets/img/books.svg";
 import into from "@assets/svg/into.svg";
-import Chart from "@container/home/chart";
 
 const Home = () => {
   const router = useRouter();
-  const [study, setStudy] = useState({
-    startDate: "",
-    endDate: "",
-    learningDays: 0,
-    maxLearningDays: 0,
-  });
+  const [study, setStudy] = useState<IUserStudy>();
 
   useEffect(() => {
-    // getStudyHome();
+    getStudy();
   }, []);
 
-  // const getStudyHome = async () => {
-  //   const response = await readStudyHome();
-  //   setStudy(response.data);
-  // };
+  const getStudy = async () => {
+    const response = await readStudy();
+    setStudy(response.data);
+  };
 
   return (
     <>
@@ -47,13 +44,13 @@ const Home = () => {
             >
               <Image src={fire} height={24} alt="불꽃" />
               <span className="text-lg font-semibold text-[#FFE96C]">
-                8
+                {study?.learningDays}
               </span>
             </div>
           </div>
 
           <div className="font-semibold text-xl text-white leading-7 mb-2">
-            닉네임님
+            {study?.nickName}님
             <br />
             관심있는 주제로 퀴즈를 풀어보세요!
           </div>
@@ -66,19 +63,19 @@ const Home = () => {
         <section className="px-5 pt-5 bg-[#F4F3F6] rounded-t-3xl">
           {/* 카테고리 구역 */}
           <section className="flex flex-wrap gap-4 mb-8">
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light">
+            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
               <Image src={politics} width={96} height={96} alt="정치" />
               <p className="text-sm font-semibold">정치</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light">
+            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
               <Image src={economy} width={96} height={96} alt="경제" />
               <p className="text-sm font-semibold">경제</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light">
+            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
               <Image src={society} width={96} height={96} alt="사회" />
               <p className="text-sm font-semibold">사회</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light">
+            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
               <Image src={global} width={96} height={96} alt="글로벌" />
               <p className="text-sm font-semibold">글로벌</p>
             </div>
@@ -89,7 +86,7 @@ const Home = () => {
             <p className="font-semibold text-lg mb-4">
               헷갈렸던 문제, 다시 풀어볼까요? 🧐
             </p>
-            <div className="bg-white shadow-light rounded-lg py-6 px-4 xs:py-4">
+            <div className="bg-white shadow-light rounded-lg py-6 px-4 cursor-pointer">
               <div className="flex gap-2 items-start">
                 <Image
                   src={book}
@@ -122,14 +119,14 @@ const Home = () => {
             <p className="font-semibold text-lg mb-4">
               일주일 동안 이만큼 풀었어요! 📈
             </p>
-            <div className="bg-white p-4 rounded-lg shadow-light">
-              <div className="font-semibold text-[13px] flex justify-between px-1 mb-3">
+            <div className="bg-white px-4 py-5 rounded-lg shadow-light">
+              <div className="font-semibold text-[13px] flex justify-between px-1 mb-4">
                 <p className="text-[#707070]">
                   지난 6일 간 푼 누적 퀴즈 수
                 </p>
-                <p>총 50개</p>
+                <p>총 {study?.totalCount}개</p>
               </div>
-              <Chart />
+              <Chart graph={study?.graph} />
             </div>
           </section>
         </section>

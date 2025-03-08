@@ -9,23 +9,15 @@ import {
   YAxis,
 } from "recharts";
 
-const data = [
-  { weekday: "월", value: 1 },
-  { weekday: "화", value: 2 },
-  { weekday: "수", value: 3 },
-  { weekday: "목", value: 4 },
-  { weekday: "금", value: 5 },
-  { weekday: "토", value: 6 },
-  { weekday: "일", value: 7 },
-];
+import { IGraph } from "@interface/props";
 
-const Chart = () => {
+const Chart = ({ graph }: IGraph) => {
   return (
     <ResponsiveContainer width="100%" height={180}>
-      <BarChart data={data}>
+      <BarChart data={graph}>
         <CartesianGrid strokeDasharray="1 1" />
         <XAxis
-          dataKey="weekday"
+          dataKey="dayOfWeek"
           tickMargin={8}
           tick={{ fontSize: 12, fill: "#A9A9A9" }}
           axisLine={false}
@@ -38,7 +30,7 @@ const Chart = () => {
           axisLine={false}
           interval={0}
         />
-        <Bar dataKey="value" fill="#D3C7FC" radius={[10, 10, 0, 0]} />
+        <Bar dataKey="count" fill="#D3C7FC" radius={[10, 10, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
