@@ -97,6 +97,7 @@ export interface IRank {
 
 /* 기사 인터페이스 */
 export interface ICategory {
+  currentCategory: string;
   onCategorySelect: (category: string) => void;
 }
 
@@ -117,12 +118,14 @@ export interface IArticleItem {
 }
 
 export interface IArticle {
-  category: string;
-  date: string;
-  newsId: number;
-  paragraphs: IParagraph[];
-  source: string;
   title: string;
+  date: string;
+  source: string;
+  category: string;
+  newsId: number;
+  totalSummary: string;
+  order: number;
+  paragraphs: IParagraph[];
 }
 
 export interface IParagraph {

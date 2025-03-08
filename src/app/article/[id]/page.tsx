@@ -8,23 +8,26 @@ import Header from "@components/common/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
 import Button from "@components/button/button";
+import QuizLoading from "@container/quiz/quiz-loading";
+import { useNewsStore } from "@store/news-store";
 import { IArticle } from "@interface/props";
 import { readNewsDetail } from "@api/news-api";
 
 import caution from "@assets/svg/caution-lavender.svg";
-import { useNewsStore } from "@store/news-store";
-import QuizLoading from "@container/quiz/quiz-loading";
+import pin from "@assets/svg/seciton_pin.svg";
 
 const Article = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState<IArticle>({
-    category: "",
-    date: "",
-    newsId: 0,
-    paragraphs: [],
-    source: "",
     title: "",
+    date: "",
+    source: "",
+    category: "",
+    newsId: 0,
+    totalSummary: "",
+    order: 0,
+    paragraphs: [],
   });
 
   useEffect(() => {
@@ -62,17 +65,37 @@ const Article = () => {
       {/* 기사 내용 영역 */}
       <section className="mx-5">
         {/* 기사 제목 */}
-        <div className="mb-[18px]">
-          <p className="font-semibold text-lg text-center break-keep leading-6 mb-2">
+        <div className="mb-[22px]">
+          <p className="font-semibold text-xl break-keep leading-6 mb-2">
             {article.title}
           </p>
-          <p className="text-xs text-[#484848] text-center">
+          <p className="text-xs text-[#484848]">
             {article.date} | {article.source} | {article.category}
           </p>
         </div>
 
-        {/* 기사 내용 - 배열로 문단 출력하면됨 */}
-        <div className="text-sm leading-7 mb-16">
+        {/* 기사 요약 */}
+        <div className="bg-white border-2 border-[#DFD8FF] rounded-lg py-4 px-5 mb-6">
+          <div className="flex mb-2">
+            <Image src={pin} width={20} height={20} alt="핀" />
+            <p className="font-semibold text-sm">
+              이런 내용이에요! 기사 짧게 보기
+            </p>
+          </div>
+          <ul>
+            {article.totalSummary.split("\n").map((line, index) => (
+              <li
+                key={index}
+                className="list-disc list-inside pl-2 text-[13px] leading-6"
+              >
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 기사 내용 */}
+        <div className="leading-7 mb-16">
           {article.paragraphs.map((paragraph) => (
             <div key={paragraph.order}>
               <p>{paragraph.content}</p>

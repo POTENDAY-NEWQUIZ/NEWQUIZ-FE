@@ -63,19 +63,31 @@ const Home = () => {
         <section className="px-5 pt-5 bg-[#F4F3F6] rounded-t-3xl">
           {/* 카테고리 구역 */}
           <section className="flex flex-wrap gap-4 mb-8">
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
+            <div
+              className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer"
+              onClick={() => router.push("/article?category=정치")}
+            >
               <Image src={politics} width={96} height={96} alt="정치" />
               <p className="text-sm font-semibold">정치</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
+            <div
+              className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer"
+              onClick={() => router.push("/article?category=경제")}
+            >
               <Image src={economy} width={96} height={96} alt="경제" />
               <p className="text-sm font-semibold">경제</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
+            <div
+              className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer"
+              onClick={() => router.push("/article?category=사회")}
+            >
               <Image src={society} width={96} height={96} alt="사회" />
               <p className="text-sm font-semibold">사회</p>
             </div>
-            <div className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer">
+            <div
+              className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer"
+              onClick={() => router.push("/article?category=글로벌")}
+            >
               <Image src={global} width={96} height={96} alt="글로벌" />
               <p className="text-sm font-semibold">글로벌</p>
             </div>
