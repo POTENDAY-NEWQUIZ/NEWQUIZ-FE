@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
 import Navigator from "@components/common/navigator";
-import StudyDuration from "@components/study-duration";
+import StudyDuration from "@components/home/study-duration";
 import Modal from "@components/common/modal";
 import SmallButton from "@components/button/small-button";
 import { ModalContext } from "@context/modal-context";
