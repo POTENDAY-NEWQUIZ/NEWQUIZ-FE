@@ -1,9 +1,9 @@
 import axiosInstance from "@api/axios-instance";
 
 // 분야별 기사 조회
-export const readNewsAll = async (category: string) => {
+export const readNewsAll = async (category: string, filter: string) => {
   const response = await axiosInstance.get(
-    `/news?category=${category}`
+    `/news?category=${category}&level=${filter}`
   );
 
   return response.data;
