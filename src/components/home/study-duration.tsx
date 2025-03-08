@@ -4,7 +4,7 @@ import { IStudyDuration } from "@interface/props";
 
 const StudyDuration = ({ icon, duration, text }: IStudyDuration) => {
   return (
-    <div className="w-[calc((100%-8px)/2)] bg-white shadow-default flex gap-2 p-4 rounded-lg">
+    <div className="w-[calc((100%-8px)/2)] bg-white border-[1px] border-[#D3C7FC] shadow-light flex gap-2 p-4 rounded-lg">
       {/* 아이콘 구역 */}
       <section>
         <Image src={icon} width={24} height={24} alt="아이콘" />

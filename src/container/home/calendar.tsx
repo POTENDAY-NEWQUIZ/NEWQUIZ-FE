@@ -79,7 +79,7 @@ const MyCalendar = ({ start, end }: CalendarProps) => {
 
   return (
     <>
-      <div className="bg-white mx-5 p-6 rounded-[10px] shadow-default relative">
+      <div className="bg-white mx-5 p-6 rounded-[10px] shadow-light relative">
         <Calendar
           className="custom-calendar"
           value={selectDate}
@@ -112,7 +112,7 @@ const MyCalendar = ({ start, end }: CalendarProps) => {
           <Image src={next} width={20} height={20} alt="다음" />
         </button>
       </div>
-      <p className="text-xs text-[#909090] text-center my-3">
+      <p className="text-xs text-[#909090] text-center my-5">
         퀴즈부터 요약까지 모두 완료한 경우 연속 학습으로 인정됩니다
       </p>
     </>

@@ -41,7 +41,10 @@ const Home = () => {
         <section className="max-w-[480px] px-5 mb-6">
           <div className="flex justify-between items-center py-4">
             <Image src={logo} height={20} alt="로고" />
-            <div className="flex">
+            <div
+              className="flex cursor-pointer"
+              onClick={() => router.push("/fire")}
+            >
               <Image src={fire} height={24} alt="불꽃" />
               <span className="text-lg font-semibold text-[#FFE96C]">
                 8
