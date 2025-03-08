@@ -80,7 +80,7 @@ const AnswerModal = ({
         <section>
           <Button
             text="다음 문제로 넘어가기"
-            type="next"
+            type="active"
             onClick={onClickButton}
           />
         </section>

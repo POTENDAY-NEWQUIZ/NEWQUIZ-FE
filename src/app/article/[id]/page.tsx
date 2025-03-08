@@ -86,7 +86,7 @@ const Article = () => {
       <section className="max-w-[480px] w-full fixed bottom-5">
         <Button
           text="해당 사설로 퀴즈 시작할래요!"
-          type="start"
+          type="active"
           onClick={() => setLoading(true)}
         />
       </section>
