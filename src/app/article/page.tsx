@@ -17,11 +17,11 @@ const Article = () => {
   const [filter, setFilter] = useState("전체");
 
   useEffect(() => {
-    getArticles(category);
-  }, [category]);
+    getArticles(category, filter);
+  }, [category, filter]);
 
-  const getArticles = async (category: string) => {
-    const response = await readNewsAll(category);
+  const getArticles = async (category: string, filter: string) => {
+    const response = await readNewsAll(category, filter);
     setArticles(response.data.news);
   };
 

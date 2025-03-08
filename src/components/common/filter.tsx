@@ -4,7 +4,7 @@ import { IFilter } from "@interface/props";
 
 const Filter = ({ onFilterSelect }: IFilter) => {
   const [select, setSelect] = useState(0);
-  const filters = ["전체", "어려움", "쉬움"];
+  const filters = ["전체", "상", "하"];
 
   const onClickFilter = (index: number) => {
     setSelect(index);
@@ -24,7 +24,11 @@ const Filter = ({ onFilterSelect }: IFilter) => {
                 : "border-[1px] border-[#D8D8D8] text-[#797979]"
             } font-medium text-[13px] w-20 h-8 flex justify-center items-center rounded-2xl cursor-pointer`}
           >
-            {filter}
+            {filter === "상"
+              ? "어려움"
+              : filter === "하"
+              ? "쉬움"
+              : filter}
           </li>
         ))}
       </ul>
