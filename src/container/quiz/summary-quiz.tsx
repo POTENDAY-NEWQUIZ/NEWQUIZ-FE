@@ -56,10 +56,10 @@ const SummaryQuiz = ({
                   {paragraph.order}번째 문단을 요약하세요.
                 </p>
               </div>
-              <div className="max-w-[354px] mx-auto">
+              <div className="mx-5">
                 <p className="leading-7">{paragraph.content}</p>
               </div>
-              <div className="mt-5 mx-auto max-w-[354px]">
+              <div className="mt-5 mx-5">
                 <textarea
                   placeholder={`${paragraph.order}문단 요약을 입력해 주세요. (최대 300자)`}
                   className="w-full p-4 bg-[#F3F3F3] text-[#B6B6B6] text-sm rounded-md outline-none resize-none"
