@@ -118,12 +118,14 @@ export interface IArticleItem {
 }
 
 export interface IArticle {
-  category: string;
-  date: string;
-  newsId: number;
-  paragraphs: IParagraph[];
-  source: string;
   title: string;
+  date: string;
+  source: string;
+  category: string;
+  newsId: number;
+  totalSummary: string;
+  order: number;
+  paragraphs: IParagraph[];
 }
 
 export interface IParagraph {

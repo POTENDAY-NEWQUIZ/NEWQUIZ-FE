@@ -19,8 +19,6 @@ const Article = () => {
   const [category, setCategory] = useState(defaultCategory!);
   const [filter, setFilter] = useState("전체");
 
-  console.log(defaultCategory);
-
   useEffect(() => {
     getArticles(category, filter);
   }, [category, filter]);
