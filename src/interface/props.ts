@@ -100,6 +100,10 @@ export interface ICategory {
   onCategorySelect: (category: string) => void;
 }
 
+export interface IFilter {
+  onFilterSelect: (filter: string) => void;
+}
+
 export interface IArticleItemList {
   articles: IArticleItem[];
 }

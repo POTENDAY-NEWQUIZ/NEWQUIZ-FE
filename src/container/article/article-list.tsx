@@ -17,7 +17,7 @@ const ArticleList = ({ articles }: IArticleItemList) => {
           />
         ))
       ) : (
-        <p className="mt-[40vh] text-center text-sm font">
+        <p className="mt-[35vh] text-center text-sm font">
           해당 분야에 존재하는 기사가 없습니다.
           <br />
           다른 분야를 선택해주세요
