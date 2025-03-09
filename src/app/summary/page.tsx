@@ -19,7 +19,14 @@ const Summary = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [summaryList, setSummaryList] = useState<
     { paragraphId: number; userSummary: string }[]
-  >([]);
+  >(
+    news
+      ? news.paragraphs.map((p) => ({
+          paragraphId: p.paragraphId,
+          userSummary: "",
+        }))
+      : []
+  );
 
   if (!news) {
     return <div>Loading...</div>;
