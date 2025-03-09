@@ -13,3 +13,7 @@ export const readReviewDetail = async (quizResultId: number) => {
 };
 
 // 오답노트 기록 완료
+export const createReview = async (quizResultId: number) => {
+  const response = await axiosInstance.post(`note/${quizResultId}`);
+  return response.data;
+};
