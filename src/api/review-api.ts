@@ -2,7 +2,7 @@ import axiosInstance from "@api/axios-instance";
 
 // 퀴즈별 오답노트 조회
 export const readReviewAll = async (category: string) => {
-  const response = await axiosInstance.get(`/note?=type=${category}`);
+  const response = await axiosInstance.get(`/note?type=${category}`);
   return response.data;
 };
 

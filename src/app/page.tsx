@@ -11,10 +11,10 @@ import { IUserStudy } from "@interface/props";
 
 import logo from "@assets/logo-transparent.svg";
 import fire from "@assets/img/fire.svg";
-import politics from "@assets/img/politics.webp";
-import economy from "@assets/img/economy.webp";
-import society from "@assets/img/society.webp";
-import global from "@assets/img/global.webp";
+import politics from "@assets/img/politics.svg";
+import economy from "@assets/img/economy.svg";
+import society from "@assets/img/society.svg";
+import global from "@assets/img/global.svg";
 import book from "@assets/img/books.svg";
 import into from "@assets/svg/into.svg";
 
@@ -98,7 +98,10 @@ const Home = () => {
             <p className="font-semibold text-lg mb-4">
               헷갈렸던 문제, 다시 풀어볼까요? 🧐
             </p>
-            <div className="bg-white shadow-light rounded-lg py-6 px-4 cursor-pointer">
+            <div
+              className="bg-white shadow-light rounded-lg py-6 px-4 cursor-pointer"
+              onClick={() => router.push("/review")}
+            >
               <div className="flex gap-2 items-start">
                 <Image
                   src={book}
