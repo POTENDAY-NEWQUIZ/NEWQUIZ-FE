@@ -18,10 +18,6 @@ import clock from "@assets/img/clock.svg";
 const Fire = () => {
   const [study, setStudy] = useState<IUserStudy>();
 
-  if (!study) {
-    return <div>Loading...</div>;
-  }
-
   useEffect(() => {
     getStudy();
   }, []);
@@ -30,6 +26,10 @@ const Fire = () => {
     const response = await readStudy();
     setStudy(response.data);
   };
+
+  if (!study) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className="bg-[#F4F3F6]">

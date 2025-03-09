@@ -213,6 +213,7 @@ export interface IQuizAnswer {
   type: "correct" | "incorrect";
   answer?: string;
   explanation?: string;
+  buttonText?: string;
   onClick: () => void;
 }
 
@@ -252,4 +253,22 @@ export interface ISummaryInput {
   onClickNext: () => void;
   onSubmit: () => void;
   loading: boolean;
+}
+
+/* 오답노트 인터페이스 */
+export interface IReview {
+  quizResultId: number;
+  category: string;
+  title: string;
+  date: string;
+  type: string;
+  isChecked: boolean;
+}
+
+export interface IReviewDetail {
+  quizResultId: number;
+  news: IArticle;
+  synonymQuiz: ISynonymQuiz | null;
+  meaningQuiz: IMeaningQuiz | null;
+  contentQuiz: IContentQuiz | null;
 }
