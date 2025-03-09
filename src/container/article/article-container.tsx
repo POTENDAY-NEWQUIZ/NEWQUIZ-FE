@@ -13,16 +13,10 @@ import { readNewsAll } from "@api/news-api";
 
 const ArticleContainer = () => {
   const searchParams = useSearchParams();
+  const initialCategory = searchParams.get("category") || "";
   const [articles, setArticles] = useState([]);
-  const [category, setCategory] = useState("정치");
+  const [category, setCategory] = useState(initialCategory);
   const [filter, setFilter] = useState("전체");
-
-  useEffect(() => {
-    const defaultCategory = searchParams.get("category");
-    if (defaultCategory) {
-      setCategory(defaultCategory);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     getArticles(category, filter);
