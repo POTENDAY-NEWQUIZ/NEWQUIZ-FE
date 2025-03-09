@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Header from "@components/common/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
-import Category from "@components/common/category";
+import Category from "@components/article/category";
 import Filter from "@components/common/filter";
 import ArticleList from "@container/article/article-list";
 import { readNewsAll } from "@api/news-api";
