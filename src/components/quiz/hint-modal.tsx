@@ -3,9 +3,9 @@ import { useContext } from "react";
 
 import EventButton from "@components/button/event-button";
 import { ModalContext } from "@context/modal-context";
+import { useNewsStore } from "@store/news-store";
 
 import cancel from "@assets/svg/cancel.svg";
-import { useNewsStore } from "@store/news-store";
 import hintPin from "@assets/svg/hint-pin.svg";
 
 const HintModal = ({ paragraphId }: { paragraphId: number }) => {

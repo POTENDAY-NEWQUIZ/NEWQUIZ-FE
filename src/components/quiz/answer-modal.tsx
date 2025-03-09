@@ -12,6 +12,7 @@ const AnswerModal = ({
   type,
   answer,
   explanation,
+  buttonText,
   onClick,
 }: IQuizAnswer) => {
   const { activeModal, closeModal } = useContext(ModalContext);
@@ -79,7 +80,7 @@ const AnswerModal = ({
         {/* 버튼 구역 */}
         <section>
           <Button
-            text="다음 문제로 넘어가기"
+            text={buttonText || "다음 문제로 넘어가기"}
             type="active"
             onClick={onClickButton}
           />
