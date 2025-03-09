@@ -29,10 +29,6 @@ const EventButton = ({ icon, command }: IEventButton) => {
         closeModal("hint-modal");
         break;
       }
-      case "level-modal": {
-        openModal("level-modal");
-        break;
-      }
       case "close": {
         router.replace("/");
         break;

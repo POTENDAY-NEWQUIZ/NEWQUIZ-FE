@@ -46,10 +46,10 @@ const Article = () => {
   if (loading) return <QuizLoading newsId={params.id as string} />;
 
   return (
-    <main>
+    <main className="bg-mist-lavender">
       {/* 헤더 영역 */}
       <Header
-        title="오늘의 뉴퀴즈!"
+        title=" "
         leftChild={<BackButton />}
         rightChild={<Blank />}
       />
