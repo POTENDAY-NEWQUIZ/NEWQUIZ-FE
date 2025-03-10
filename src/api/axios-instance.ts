@@ -45,9 +45,13 @@ axiosInstance.interceptors.response.use(
         const response = await reissue(refreshToken);
 
         if (response.data.is_success) {
-          const newAccessToken = `Bearer ${response.data.data.accessToken}`;
-          useAuthStore.getState().setAccessToken(newAccessToken);
+          let newAccessToken = `Bearer ${response.data.data.accessToken}`;
 
+          if (!newAccessToken.startsWith("Bearer ")) {
+            newAccessToken = `Bearer ${newAccessToken}`;
+          }
+
+          useAuthStore.getState().setAccessToken(newAccessToken);
           originalRequest.headers["Authorization"] = newAccessToken;
           return axiosInstance(originalRequest);
         } else {
