@@ -108,3 +108,28 @@ export const updateUserData = async (nickname: string) => {
 
   return response.data;
 };
+
+// 프로필 사진 변경
+export const updateUserProfile = async (image: File) => {
+  const formData = new FormData();
+  formData.append("profile", image);
+
+  const response = await axios
+    .create({
+      baseURL: baseURL,
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: useAuthStore.getState().accessToken,
+      },
+    })
+    .patch(`/users/profile`, formData);
+
+  return response.data;
+};
+
+// 프로필 사진 삭제
+export const deleteUserProfile = async () => {
+  const response = await axiosInstance.delete(`/user/profile`);
+  return response.data;
+};
