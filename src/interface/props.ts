@@ -89,10 +89,11 @@ export interface IUserStudy {
 
 /* 랭킹 인터페이스 */
 export interface IRank {
+  userId: number;
   rank: number;
-  type?: string;
   nickname: string;
-  count: number;
+  score: number;
+  profileImageUrl: string;
 }
 
 /* 기사 인터페이스 */
