@@ -16,12 +16,14 @@ import {
 } from "@api/user-api";
 
 import user from "@assets/img/user.svg";
-import duration1 from "@assets/img/calendar.svg";
-import duration2 from "@assets/img/clock.svg";
+import fire from "@assets/img/fire.svg";
+import clock from "@assets/img/clock.svg";
 import chart from "@assets/img/data.svg";
 import book from "@assets/img/books.svg";
 import into from "@assets/svg/into.svg";
+import ask from "@assets/svg/ask.svg";
 import warn from "@assets/img/warn.svg";
+import Link from "next/link";
 
 const Mypage = () => {
   const router = useRouter();
@@ -34,7 +36,11 @@ const Mypage = () => {
     userQuizCount: 0,
     avgScore: 0,
     maxAvgScore: 0,
+    useQuizCount: 0,
+    profileImageUrl: "",
   });
+  const url =
+    "https://docs.google.com/forms/d/1kvfMF-x9oZGZEsQfg9uG9GeLPaJh583cfbKWgtlVLW0/viewform?edit_requested=true";
 
   useEffect(() => {
     getUserData();
@@ -59,7 +65,7 @@ const Mypage = () => {
 
   return (
     <>
-      <main className="h-screen flex flex-col justify-center bg-mist-lavender pb-20">
+      <main className="min-h-screen bg-mist-lavender pt-12 pb-24">
         {/* 프로필 구역 */}
         <section className="flex flex-col gap-1 items-center mb-8">
           <div className="rounded-full">
@@ -79,12 +85,12 @@ const Mypage = () => {
         {/* 학습 일수 구역 */}
         <section className="mx-5 flex justify-between mb-2">
           <StudyDuration
-            icon={duration1}
+            icon={fire}
             duration={userData.learningDays}
             text="현재 연속 학습 일수"
           />
           <StudyDuration
-            icon={duration2}
+            icon={clock}
             duration={
               userData.maxLearningDays == null
                 ? 0
@@ -95,8 +101,11 @@ const Mypage = () => {
         </section>
 
         {/* 학습 데이터 구역 */}
-        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4 mb-2 xs:py-4">
-          <div className="flex gap-2 items-start">
+        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 mb-2 xs:py-4">
+          <div
+            className="flex gap-2 items-start cursor-pointer"
+            onClick={() => router.push("/fire")}
+          >
             <Image
               src={chart}
               width={24}
@@ -141,8 +150,11 @@ const Mypage = () => {
         </section>
 
         {/* 오답노트 구역 */}
-        <section className="mx-5 bg-white shadow-default rounded-lg py-6 px-4 xs:py-4">
-          <div className="flex gap-2 items-start">
+        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 xs:py-4">
+          <div
+            className="flex gap-2 items-start cursor-pointer"
+            onClick={() => router.push("/review")}
+          >
             <Image
               src={book}
               width={24}
@@ -166,8 +178,18 @@ const Mypage = () => {
           </div>
         </section>
 
+        {/* 문의하기 구역 */}
+        <section
+          className="mx-9 my-4 flex gap-2 cursor-pointer"
+          onClick={() => window.open(url, "_blank")}
+        >
+          <Image src={ask} width={24} height={24} alt="문의하기" />
+          <span className="font-semibold text-[#6E6E6E]">문의하기</span>
+          <Image src={into} width={20} height={20} alt="들어가기" />
+        </section>
+
         {/* 로그아웃 & 회원탈퇴 구역 */}
-        <section className="flex justify-center gap-2 text-xs font-[#484848] mt-8">
+        <section className="flex justify-center gap-2 text-xs font-[#484848] mt-12">
           <span
             className="cursor-pointer"
             onClick={() => openModal("logout-modal")}
