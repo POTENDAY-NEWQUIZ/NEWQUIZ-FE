@@ -5,12 +5,11 @@ import { useState } from "react";
 
 import Header from "@components/common/header";
 import Blank from "@components/button/blank";
-import EventButton from "@components/button/event-button";
 import Button from "@components/button/button";
 import CheckButton from "@components/button/check-button";
 import { checkNickname, updateUserData } from "@api/user-api";
 
-import cancel from "@assets/svg/cancel.svg";
+import BackButton from "@components/button/back-button";
 
 const MypageUpdate = () => {
   const router = useRouter();
@@ -48,10 +47,7 @@ const MypageUpdate = () => {
   return (
     <>
       {/* 헤더 영역 */}
-      <Header
-        leftChild={<Blank />}
-        rightChild={<EventButton icon={cancel} command="back" />}
-      />
+      <Header leftChild={<BackButton />} rightChild={<Blank />} />
 
       {/* 닉네임 변경 영역 */}
       <section className="mx-5 flex flex-col h-screen justify-center pb-10">

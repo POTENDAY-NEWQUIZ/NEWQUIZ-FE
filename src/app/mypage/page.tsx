@@ -13,9 +13,11 @@ import {
   deleteUserData,
   logoutUserData,
   readUserData,
+  updateUserProfile,
 } from "@api/user-api";
 
-import user from "@assets/img/user.svg";
+import profile from "@assets/profile.jpg";
+import camera from "@assets/svg/camera.svg";
 import fire from "@assets/img/fire.svg";
 import clock from "@assets/img/clock.svg";
 import chart from "@assets/img/data.svg";
@@ -23,7 +25,6 @@ import book from "@assets/img/books.svg";
 import into from "@assets/svg/into.svg";
 import ask from "@assets/svg/ask.svg";
 import warn from "@assets/img/warn.svg";
-import Link from "next/link";
 
 const Mypage = () => {
   const router = useRouter();
@@ -37,18 +38,32 @@ const Mypage = () => {
     avgScore: 0,
     maxAvgScore: 0,
     useQuizCount: 0,
-    profileImageUrl: "",
+    profileImageUrl: profile,
   });
+
   const url =
     "https://docs.google.com/forms/d/1kvfMF-x9oZGZEsQfg9uG9GeLPaJh583cfbKWgtlVLW0/viewform?edit_requested=true";
 
   useEffect(() => {
     getUserData();
-  }, [userData.nickname]);
+  }, [userData.nickname, userData.profileImageUrl]);
 
   const getUserData = async () => {
     const response = await readUserData();
     setUserData(response.data);
+  };
+
+  const setUserProfile = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    const file = e.target.files[0];
+
+    const response = await updateUserProfile(file);
+    setUserData((prevData) => ({
+      ...prevData,
+      profileImageUrl: response.data.profileImageUrl,
+    }));
   };
 
   const logout = async () => {
@@ -68,8 +83,29 @@ const Mypage = () => {
       <main className="min-h-screen bg-mist-lavender pt-12 pb-24">
         {/* 프로필 구역 */}
         <section className="flex flex-col gap-1 items-center mb-8">
-          <div className="rounded-full">
-            <Image src={user} width={90} height={90} alt="프로필" />
+          <div className="relative mb-2">
+            <div className="rounded-full overflow-hidden border-[1px]">
+              <Image
+                src={userData.profileImageUrl}
+                width={90}
+                height={90}
+                alt="프로필"
+              />
+            </div>
+            <label htmlFor="profile-change">
+              <Image
+                src={camera}
+                alt="카메라"
+                className="absolute z-10 bottom-0 right-0 cursor-pointer"
+              />
+            </label>
+            <input
+              id="profile-change"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={setUserProfile}
+            />
           </div>
           <p className="text-2xl font-semibold xs:text-xl">
             {userData.nickname}
@@ -83,7 +119,7 @@ const Mypage = () => {
         </section>
 
         {/* 학습 일수 구역 */}
-        <section className="mx-5 flex justify-between mb-2">
+        <section className="mx-5 flex justify-between gap-2 mb-3">
           <StudyDuration
             icon={fire}
             duration={userData.learningDays}
@@ -101,7 +137,7 @@ const Mypage = () => {
         </section>
 
         {/* 학습 데이터 구역 */}
-        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 mb-2 xs:py-4">
+        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 mb-3 xs:py-4">
           <div
             className="flex gap-2 items-start cursor-pointer"
             onClick={() => router.push("/fire")}
@@ -150,7 +186,7 @@ const Mypage = () => {
         </section>
 
         {/* 오답노트 구역 */}
-        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 xs:py-4">
+        <section className="mx-5 bg-white shadow-light rounded-lg py-6 px-4 mb-3 xs:py-4">
           <div
             className="flex gap-2 items-start cursor-pointer"
             onClick={() => router.push("/review")}
