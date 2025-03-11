@@ -24,6 +24,7 @@ export interface IModal {
 }
 
 export interface ILottie {
+  text?: string;
   image: any;
 }
 

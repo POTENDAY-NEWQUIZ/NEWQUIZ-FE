@@ -8,8 +8,13 @@ const LottieImageDynamic = dynamic(() => import("lottie-react"), {
   ssr: false,
 });
 
-const LottieImage = ({ image }: ILottie) => {
-  return <LottieImageDynamic animationData={image} loop={true} />;
+const LottieImage = ({ text, image }: ILottie) => {
+  return (
+    <LottieImageDynamic
+      animationData={image}
+      loop={text === "fanfare" ? false : true}
+    />
+  );
 };
 
 export default LottieImage;
