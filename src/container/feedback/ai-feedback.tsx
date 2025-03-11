@@ -1,20 +1,62 @@
 import Image from "next/image";
+import { useState } from "react";
 
 import Blank from "@components/button/blank";
 import EventButton from "@components/button/event-button";
 import Button from "@components/button/button";
-import { ISummary } from "@interface/props";
+import { IDispleasure, ISummary } from "@interface/props";
 import { useNewsStore } from "@store/news-store";
 import { useSummaryStore } from "@store/summary-store";
+import { createDispleasure } from "@api/review-api";
 
 import cancel from "@assets/svg/cancel.svg";
 import star from "@assets/svg/star.svg";
 import unstar from "@assets/svg/unstar.svg";
+import good from "@assets/svg/good.svg";
+import goodFill from "@assets/svg/good-fill.svg";
+import bad from "@assets/svg/bad.svg";
+import badFill from "@assets/svg/bad-fill.svg";
 
 const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const { news } = useNewsStore();
   const { summaryList } = useSummaryStore();
   const { totalScore, generalFeedback, paragraphs } = data || {};
+  const [feedbackState, setFeedbackState] = useState<
+    (boolean | null)[]
+  >(new Array(paragraphs.length).fill(null));
+  const [selectReason, setSelectReason] = useState<(string | null)[]>(
+    new Array(paragraphs.length).fill(null)
+  );
+
+  const onClickGood = (index: number) => {
+    setFeedbackState((prev) =>
+      prev.map((state, i) => (i === index ? true : null))
+    );
+  };
+
+  const onClickBad = (index: number) => {
+    setFeedbackState((prev) =>
+      prev.map((state, i) => (i === index ? false : null))
+    );
+  };
+
+  const onClickBadReason = (index: number, reason: string) => {
+    const displeasureData: IDispleasure = {
+      newsId: news!.newsId,
+      paragraphId: index,
+      content: reason,
+      userSummary: summaryList[index].userSummary,
+      aiSummary: paragraphs[index].aiSummary,
+      strength: paragraphs[index].strengths,
+      improvement: paragraphs[index].improvements,
+    };
+
+    createDispleasure(displeasureData).then(() => {
+      setSelectReason((prev) =>
+        prev.map((item, i) => (i === index ? reason : item))
+      );
+    });
+  };
 
   if (!data) {
     return <p>Loading...</p>;
@@ -105,10 +147,63 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
 
                 {/* Ai 피드백 */}
                 <div className="rounded-md bg-white shadow-light p-4 mb-5">
-                  <div>
-                    <p className="font-semibold mb-2">Ai 피드백</p>
-                    {/* 난이도 평가 */}
+                  <div className="flex justify-between items-center mb-2">
+                    <p className="font-semibold">Ai 피드백</p>
+                    <div className="flex gap-2">
+                      <Image
+                        src={
+                          feedbackState[index] === true
+                            ? goodFill
+                            : good
+                        }
+                        width={18}
+                        height={18}
+                        alt="만족"
+                        className="cursor-pointer"
+                        onClick={() => onClickGood(index)}
+                      />
+                      <Image
+                        src={
+                          feedbackState[index] === false ? badFill : bad
+                        }
+                        width={18}
+                        height={18}
+                        alt="불만족"
+                        className="cursor-pointer"
+                        onClick={() => onClickBad(index)}
+                      />
+                    </div>
                   </div>
+                  {feedbackState[index] === false && (
+                    <div className="bg-[#F1F1F1] rounded-lg p-3 mt-4 mb-4">
+                      <p className="font-medium text-[13px] text-[#636363] pl-1 mb-2">
+                        어떤 부분이 아쉬웠나요?
+                      </p>
+                      <ul className="flex flex-wrap gap-[6px]">
+                        {[
+                          "내용이 부정확해요",
+                          "도움이 되지 않는 내용이에요",
+                          "이해하기 어려운 말을 해요",
+                        ].map((reason) => (
+                          <li
+                            key={reason}
+                            className={`px-2 py-1 rounded-md text-[13px] cursor-default ${
+                              selectReason[index] === reason
+                                ? "bg-[#bab3e3] border-[1px] border-[#A29ACF] text-white"
+                                : "bg-[#FCFCFC] border-[1px] border-[#DBDBDB] text-[#787878]"
+                            }`}
+                            onClick={() =>
+                              selectReason[index]
+                                ? null
+                                : onClickBadReason(index, reason)
+                            }
+                          >
+                            {reason}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <p className="font-semibold text-lavender mb-2">
                     잘된 점
                   </p>

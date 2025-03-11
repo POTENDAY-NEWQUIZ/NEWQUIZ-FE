@@ -256,6 +256,16 @@ export interface ISummaryInput {
   loading: boolean;
 }
 
+export interface IDispleasure {
+  newsId: number;
+  paragraphId: number;
+  content: string;
+  userSummary: string;
+  aiSummary: string;
+  strength: string;
+  improvement: string;
+}
+
 /* 오답노트 인터페이스 */
 export interface IReview {
   quizResultId: number;
