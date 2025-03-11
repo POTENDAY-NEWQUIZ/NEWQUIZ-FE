@@ -21,11 +21,13 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const { news } = useNewsStore();
   const { summaryList } = useSummaryStore();
   const { totalScore, generalFeedback, paragraphs } = data || {};
+  const paragraphsData = paragraphs || [];
+
   const [feedbackState, setFeedbackState] = useState<
     (boolean | null)[]
-  >(new Array(paragraphs.length).fill(null));
+  >(new Array(paragraphsData.length).fill(null));
   const [selectReason, setSelectReason] = useState<(string | null)[]>(
-    new Array(paragraphs.length).fill(null)
+    new Array(paragraphsData.length).fill(null)
   );
 
   const onClickGood = (index: number) => {
@@ -43,7 +45,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   const onClickBadReason = (index: number, reason: string) => {
     const displeasureData: IDispleasure = {
       newsId: news!.newsId,
-      paragraphId: index,
+      paragraphId: paragraphs[index].paragraphId,
       content: reason,
       userSummary: summaryList[index].userSummary,
       aiSummary: paragraphs[index].aiSummary,
