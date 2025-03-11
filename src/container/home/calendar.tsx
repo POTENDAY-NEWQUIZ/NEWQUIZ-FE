@@ -6,12 +6,9 @@ import Calendar from "react-calendar";
 
 import prev from "@assets/svg/month-prev.svg";
 import next from "@assets/svg/month-next.svg";
-import fire from "@assets/img/fire.svg";
 
-// 날짜 관련 부분은 백에서 정해지면 수정 필요
 type SelectDate = Date;
 
-// 임시 자료형
 type CalendarProps = {
   start: string;
   end: string;
