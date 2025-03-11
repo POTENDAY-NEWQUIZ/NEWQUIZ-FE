@@ -12,7 +12,7 @@ import Chart from "@container/home/chart";
 import { readStudy } from "@api/study-api";
 import { IUserStudy } from "@interface/props";
 
-import fire from "@assets/img/fire.svg";
+import fire from "@assets/svg/fire.svg";
 import clock from "@assets/img/clock.svg";
 
 const Fire = () => {

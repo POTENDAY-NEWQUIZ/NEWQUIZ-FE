@@ -18,7 +18,7 @@ import {
 
 import profile from "@assets/profile.jpg";
 import camera from "@assets/svg/camera.svg";
-import fire from "@assets/img/fire.svg";
+import fire from "@assets/svg/fire.svg";
 import clock from "@assets/img/clock.svg";
 import chart from "@assets/img/data.svg";
 import book from "@assets/img/books.svg";
@@ -276,14 +276,14 @@ const Mypage = () => {
           }
           leftChild={
             <SmallButton
-              text="중단하기"
+              text="유지하기"
               type="negative"
               onClick={() => closeModal("withdraw-modal")}
             />
           }
           rightChild={
             <SmallButton
-              text="계속하기"
+              text="탈퇴하기"
               type="positive"
               onClick={withdraw}
             />
