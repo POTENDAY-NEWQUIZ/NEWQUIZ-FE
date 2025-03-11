@@ -3,7 +3,7 @@
   "short_name": "NewQuiz",
   "description": "퀴즈 하나로 뉴스를 더 쉽게 🔍",
   "start_url": "/",
-  "theme_color": "#6838CE",
+  "theme_color": "#724AF7",
   "background_color": "#FBFAFF",
   "display": "standalone",
   "lang": "ko-KR",

@@ -87,3 +87,35 @@ body {
   border: 3px solid #e5dfff !important;
   border-radius: 28px;
 }
+
+/* 배너 커스텀 */
+#custom-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0;
+}
+
+#custom-swiper .swiper-pagination-bullet {
+  width: 5px;
+  height: 5px;
+  background-color: #bfb1ff;
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+  margin: 0 3px;
+}
+
+#custom-swiper .swiper-pagination-bullet-active {
+  width: 17px;
+  border-radius: 12px;
+  background-color: #6d2ff2;
+  opacity: 1;
+}
+
+@media (min-height: 801px) {
+  #custom-swiper {
+    padding-top: 40px;
+  }
+
+  #banner-text {
+    margin-bottom: 24px;
+  }
+}
