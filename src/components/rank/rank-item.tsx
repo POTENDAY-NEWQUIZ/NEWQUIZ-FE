@@ -47,7 +47,7 @@ const RankItem = ({
               width={42}
               height={42}
               alt="프로필"
-              className="aspect-square"
+              className="aspect-square object-cover"
             />
           </div>
           <p

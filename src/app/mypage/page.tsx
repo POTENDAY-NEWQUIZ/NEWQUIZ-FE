@@ -90,7 +90,7 @@ const Mypage = () => {
                 width={90}
                 height={90}
                 alt="프로필"
-                className="aspect-square"
+                className="aspect-square object-cover"
               />
             </div>
             <label htmlFor="profile-change">
