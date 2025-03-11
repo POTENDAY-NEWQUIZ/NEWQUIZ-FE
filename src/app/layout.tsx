@@ -44,8 +44,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
+        <meta name="color-scheme" content="light dark" />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-WRSHVPKHXN"
