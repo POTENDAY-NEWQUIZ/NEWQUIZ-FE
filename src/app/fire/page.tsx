@@ -35,7 +35,7 @@ const Fire = () => {
     <main className="bg-[#F4F3F6]">
       {/* 헤더 구역 */}
       <Header
-        title="내 학습 데이터"
+        title="학습 데이터"
         leftChild={<BackButton />}
         rightChild={<Blank />}
       />
