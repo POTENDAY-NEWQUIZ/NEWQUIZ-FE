@@ -2,11 +2,13 @@ import Image from "next/image";
 import { useContext } from "react";
 
 import Button from "@components/button/button";
+import LottieImage from "@components/common/lottie-image";
 import { IQuizAnswer } from "@interface/props";
 import { ModalContext } from "@context/modal-context";
 
 import correct from "@assets/img/correct.svg";
 import incorrect from "@assets/img/incorrect.svg";
+import fanfare from "@assets/lottie/fanfare.json";
 
 const AnswerModal = ({
   type,
@@ -32,6 +34,9 @@ const AnswerModal = ({
   return (
     <>
       {/* 흐린 배경 */}
+      <div className="z-[100] fixed -top-1/4 left-1/2 transform -translate-x-1/2 w-[480px]">
+        <LottieImage text="fanfare" image={fanfare} />
+      </div>
       <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[480px] h-full bg-black bg-opacity-40 z-40" />
 
       {/* 모달 */}
@@ -79,11 +84,19 @@ const AnswerModal = ({
 
         {/* 버튼 구역 */}
         <section>
-          <Button
-            text={buttonText || "다음 문제로 넘어가기"}
-            type="active"
-            onClick={onClickButton}
-          />
+          {type === "correct" ? (
+            <Button
+              text={buttonText || "다음 문제로 넘어가기"}
+              type="correct"
+              onClick={onClickButton}
+            />
+          ) : (
+            <Button
+              text={buttonText || "다음 문제로 넘어가기"}
+              type="incorrect"
+              onClick={onClickButton}
+            />
+          )}
         </section>
       </div>
     </>

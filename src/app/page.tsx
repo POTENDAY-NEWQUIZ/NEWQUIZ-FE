@@ -10,7 +10,7 @@ import { readStudy } from "@api/study-api";
 import { IUserStudy } from "@interface/props";
 
 import logo from "@assets/logo-transparent.svg";
-import fire from "@assets/img/fire.svg";
+import fire from "@assets/svg/fire.svg";
 import politics from "@assets/img/politics.svg";
 import economy from "@assets/img/economy.svg";
 import society from "@assets/img/society.svg";

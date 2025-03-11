@@ -6,13 +6,17 @@ import lottie from "@assets/lottie/quiz-summary.json";
 
 const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
   return (
-    <main className="h-screen flex flex-col justify-center items-center bg-mist-lavender">
+    <main className="h-screen pb-14 flex flex-col justify-center items-center bg-mist-lavender">
       {/* 이미지 구역 */}
-      <section>
-        <p className="text-center mt-3 mx-5 text-xl font-semibold">
+      <section className="mb-8">
+        <p className="text-center mt-3 mb-5 mx-5 text-xl font-semibold">
           다음은 문단 요약 퀴즈예요!
         </p>
-        <LottieImage image={lottie} />
+        <div>
+          <div className="w-56">
+            <LottieImage image={lottie} />
+          </div>
+        </div>
       </section>
 
       {/* 안내문 구역 */}
@@ -57,7 +61,7 @@ const SummaryLoading = ({ onStartQuiz }: ISummaryLoading) => {
       </section>
 
       {/* 버튼 영역 */}
-      <section className="w-full mt-12">
+      <section className="max-w-[480px] w-full fixed bottom-6">
         <Button
           text="준비됐어요!"
           type="active"

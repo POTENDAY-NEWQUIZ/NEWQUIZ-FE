@@ -8,10 +8,12 @@ const QuizLoading = ({ newsId }: { newsId: string }) => {
     <main className="h-screen pb-14 flex flex-col justify-center items-center bg-mist-lavender">
       {/* 이미지 구역 */}
       <section className="mb-8">
-        <p className="mt-3 mb-8 mx-5 text-center text-xl font-semibold">
+        <p className="mt-3 mb-5 mx-5 text-center text-xl font-semibold">
           퀴즈가 곧 시작돼요!
         </p>
-        <LottieImage image={lottie} />
+        <div className="w-56">
+          <LottieImage image={lottie} />
+        </div>
       </section>
 
       {/* 안내문 구역 */}
@@ -57,7 +59,7 @@ const QuizLoading = ({ newsId }: { newsId: string }) => {
       </section>
 
       {/* 버튼 구역 */}
-      <section className="max-w-[480px] w-full fixed bottom-5">
+      <section className="max-w-[480px] w-full fixed bottom-6">
         <Button
           text="준비됐어요!"
           type="active"

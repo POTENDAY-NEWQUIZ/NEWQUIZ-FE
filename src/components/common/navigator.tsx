@@ -3,9 +3,9 @@ import NavItem from "@components/common/nav-item";
 import rank from "@assets/svg/rank.svg";
 import study from "@assets/svg/study.svg";
 import mypage from "@assets/svg/mypage.svg";
-import rank_active from "@assets/svg/rank_fill.svg";
-import study_active from "@assets/svg/study_fill.svg";
-import mypage_active from "@assets/svg/mypage_fill.svg";
+import rank_active from "@assets/svg/rank-fill.svg";
+import study_active from "@assets/svg/study-fill.svg";
+import mypage_active from "@assets/svg/mypage-fill.svg";
 
 const Navigator = () => {
   return (
