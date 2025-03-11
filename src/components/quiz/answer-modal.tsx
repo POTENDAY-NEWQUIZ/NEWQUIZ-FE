@@ -79,11 +79,19 @@ const AnswerModal = ({
 
         {/* 버튼 구역 */}
         <section>
-          <Button
-            text={buttonText || "다음 문제로 넘어가기"}
-            type="active"
-            onClick={onClickButton}
-          />
+          {type === "correct" ? (
+            <Button
+              text={buttonText || "다음 문제로 넘어가기"}
+              type="correct"
+              onClick={onClickButton}
+            />
+          ) : (
+            <Button
+              text={buttonText || "다음 문제로 넘어가기"}
+              type="incorrect"
+              onClick={onClickButton}
+            />
+          )}
         </section>
       </div>
     </>

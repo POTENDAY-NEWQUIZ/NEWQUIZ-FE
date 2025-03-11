@@ -31,7 +31,14 @@ export interface ILottie {
 export interface IButton {
   icon?: string;
   text: string;
-  type: "kakao" | "active" | "inactive" | "prev" | "next";
+  type:
+    | "kakao"
+    | "correct"
+    | "incorrect"
+    | "active"
+    | "inactive"
+    | "prev"
+    | "next";
   link?: string;
   onClick?: () => void;
   className?: string;

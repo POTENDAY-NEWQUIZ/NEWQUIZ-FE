@@ -17,6 +17,8 @@ const Button = ({
 
   const buttonClass = {
     kakao: "bg-[#FEE500] text-black",
+    correct: "bg-[#64C324] text-white font-semibold text-sm",
+    incorrect: "bg-[#EC5A5A] text-white font-semibold text-sm",
     active: "bg-lavender text-white font-semibold text-sm",
     inactive: "bg-[#E2E2E2] text-[#888888] font-semibold text-sm",
     prev: "bg-white border-[1px] border-[#DCDCDC] text-[#444444] font-semibold text-sm",
