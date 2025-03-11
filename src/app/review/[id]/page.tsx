@@ -65,7 +65,7 @@ const Review = () => {
         {/* 헤더 구역 */}
         <Header
           title={""}
-          leftChild={<EventButton icon={cancel} command="back-modal" />}
+          leftChild={<EventButton icon={cancel} command="back" />}
           rightChild={<EventButton icon={hint} command="hint" />}
         />
         <div className="absolute right-4 top-[40px] z-40">
