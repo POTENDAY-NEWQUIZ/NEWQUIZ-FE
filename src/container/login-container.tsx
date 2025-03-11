@@ -11,6 +11,7 @@ import { useAuthStore } from "@store/user-store";
 import logo from "@assets/logo.svg";
 import kakao from "@assets/svg/kakao.svg";
 import lottie from "@assets/lottie/login.json";
+import Banner from "@components/common/banner";
 
 const LoginContainer = () => {
   const router = useRouter();
@@ -31,18 +32,20 @@ const LoginContainer = () => {
   }, []);
 
   return (
-    <main className="w-full h-screen bg-white flex flex-col justify-center items-center">
+    <main className="bg-white h-screen relative">
       {/* 로고 영역 */}
-      <section className="text-center mb-20">
-        <div className="mb-3">
-          <Image src={logo} width={174.01} height={39.52} alt="로고" />
-        </div>
-        <div className="font-semibold">퀴즈 하나로 뉴스를 더 쉽게!</div>
+      <section className="mx-5 pt-6 mb-10">
+        <Image src={logo} width={93.31} height={22} alt="로고" />
+      </section>
+
+      {/* 온보딩 영역 */}
+      <section className="mx-5 overflow-hidden">
+        <Banner />
       </section>
 
       {/* 버튼 영역 */}
-      <section className="w-full">
-        <div className="flex justify-center mb-2">
+      <section className="absolute bottom-6 w-full">
+        <div className="flex justify-center">
           <LottieImage image={lottie} />
         </div>
         <Button
