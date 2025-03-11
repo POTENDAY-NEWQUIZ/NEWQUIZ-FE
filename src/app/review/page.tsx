@@ -54,7 +54,7 @@ const Review = () => {
           <p className="mt-[40vh] text-center text-sm font">
             해당 유형에 존재하는 오답이 없습니다.
             <br />
-            다른 유형 선택해주세요
+            다른 유형을 선택해주세요
           </p>
         )}
       </section>
