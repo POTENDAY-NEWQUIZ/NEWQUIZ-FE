@@ -48,7 +48,7 @@ const SummaryQuiz = ({
           />
 
           {/* 기사 내용 - 요약 영역 */}
-          <section className="pt-16">
+          <section className="pt-14">
             <article className="mx-5 mb-8">
               <div className="flex gap-2 mb-4">
                 <Image src={pin} width={24} height={24} alt="핀" />
@@ -56,10 +56,10 @@ const SummaryQuiz = ({
                   {paragraph.order}번째 문단을 요약하세요.
                 </p>
               </div>
-              <div className="mx-5">
+              <div>
                 <p className="leading-7">{paragraph.content}</p>
               </div>
-              <div className="mt-5 mx-5">
+              <div className="mt-5 pb-20">
                 <textarea
                   placeholder={`${paragraph.order}문단 요약을 입력해 주세요. (최대 300자)`}
                   className="w-full p-4 bg-[#F6F6F6] text-black text-sm rounded-md outline-none resize-none"
@@ -78,31 +78,33 @@ const SummaryQuiz = ({
           </section>
 
           {/* 버튼 영역 */}
-          <section className="flex gap-4 mx-5 mb-5">
-            {!isFirst && (
-              <Button
-                text="이전 문단"
-                type={"prev"}
-                onClick={onClickPrev}
-                className="flex-1"
-              />
-            )}
-            {!isLast && (
-              <Button
-                text="다음 문단"
-                type={isDisabled ? "inactive" : "active"}
-                onClick={onClickNext}
-                className="flex-1"
-              />
-            )}
-            {isLast && (
-              <Button
-                text="요약 완료"
-                type={isDisabled ? "inactive" : "active"}
-                onClick={isDisabled ? () => {} : onSubmit}
-                className="flex-1"
-              />
-            )}
+          <section className="fixed bottom-6 w-full">
+            <div className="flex gap-3 mx-5 mb-5">
+              {!isFirst && (
+                <Button
+                  text="이전 문단"
+                  type={"prev"}
+                  onClick={onClickPrev}
+                  className="flex-1"
+                />
+              )}
+              {!isLast && (
+                <Button
+                  text="다음 문단"
+                  type={isDisabled ? "inactive" : "active"}
+                  onClick={onClickNext}
+                  className="flex-1"
+                />
+              )}
+              {isLast && (
+                <Button
+                  text="요약 완료"
+                  type={isDisabled ? "inactive" : "active"}
+                  onClick={isDisabled ? () => {} : onSubmit}
+                  className="flex-1"
+                />
+              )}
+            </div>
           </section>
         </main>
       )}
