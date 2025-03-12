@@ -76,12 +76,12 @@ const Quiz = () => {
 
   const checkAnswerCorrect = (isCorrect: boolean) => {
     setIsCorrect(isCorrect);
+    setCurrentIndex((prev) => prev + 1);
     openModal("answer-modal");
   };
 
   const onClickNext = () => {
     if (currentIndex + 1 < quizData.totalQuizCount) {
-      setCurrentIndex((prev) => prev + 1);
     } else {
       submitQuizAnswer();
       router.push("/summary");

@@ -34,9 +34,11 @@ const AnswerModal = ({
   return (
     <>
       {/* 흐린 배경 */}
-      <div className="z-[100] fixed -top-1/4 left-1/2 transform -translate-x-1/2 w-[480px]">
-        <LottieImage text="fanfare" image={fanfare} />
-      </div>
+      {type === "correct" && (
+        <div className="z-[100] fixed bottom-48 left-1/2 transform -translate-x-1/2 w-[480px]">
+          <LottieImage text="fanfare" image={fanfare} />
+        </div>
+      )}
       <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[480px] h-full bg-black bg-opacity-40 z-40" />
 
       {/* 모달 */}
