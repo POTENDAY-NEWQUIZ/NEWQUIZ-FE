@@ -78,7 +78,7 @@ const SummaryQuiz = ({
           </section>
 
           {/* 버튼 영역 */}
-          <section className="fixed bottom-6 w-full">
+          <section className="fixed bottom-6 w-full max-w-[480px]">
             <div className="flex gap-3 mx-5 mb-5">
               {!isFirst && (
                 <Button
@@ -92,7 +92,7 @@ const SummaryQuiz = ({
                 <Button
                   text="다음 문단"
                   type={isDisabled ? "inactive" : "active"}
-                  onClick={onClickNext}
+                  onClick={isDisabled ? () => {} : onClickNext}
                   className="flex-1"
                 />
               )}
