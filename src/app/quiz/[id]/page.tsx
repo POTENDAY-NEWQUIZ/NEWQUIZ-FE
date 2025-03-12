@@ -31,6 +31,7 @@ const Quiz = () => {
     useContext(ModalContext);
   const [quizData, setQuizData] = useState<any>(null);
   const [quiz, setQuiz] = useState<any>(null);
+  const [progressIndex, setProgressIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const { submitQuizAnswer, clearQuizAnswer } = useQuizStore();
@@ -76,12 +77,13 @@ const Quiz = () => {
 
   const checkAnswerCorrect = (isCorrect: boolean) => {
     setIsCorrect(isCorrect);
-    setCurrentIndex((prev) => prev + 1);
+    setProgressIndex((prev) => prev + 1);
     openModal("answer-modal");
   };
 
   const onClickNext = () => {
     if (currentIndex + 1 < quizData.totalQuizCount) {
+      setCurrentIndex((prev) => prev + 1);
     } else {
       submitQuizAnswer();
       router.push("/summary");
@@ -102,7 +104,7 @@ const Quiz = () => {
         <section className="pt-16 mx-5 flex items-center gap-3 relative">
           <ProgressiveBar
             total={quizData?.totalQuizCount}
-            current={currentIndex}
+            current={progressIndex}
           />
           <EventButton icon={hint} command="hint" />
           <div className="absolute right-0 top-[88px]">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 import EventButton from "@components/button/event-button";
 import { ModalContext } from "@context/modal-context";
@@ -9,8 +9,18 @@ import cancel from "@assets/svg/cancel.svg";
 import hintPin from "@assets/svg/hint-pin.svg";
 
 const HintModal = ({ paragraphId }: { paragraphId: number }) => {
+  const hintRef = useRef<HTMLDivElement | null>(null);
   const { activeModal } = useContext(ModalContext);
   const { news } = useNewsStore();
+
+  useEffect(() => {
+    if (activeModal === "hint-modal" && hintRef.current) {
+      hintRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [activeModal]);
 
   if (activeModal !== "hint-modal") return null;
 
@@ -44,7 +54,10 @@ const HintModal = ({ paragraphId }: { paragraphId: number }) => {
             {news!.paragraphs.map((paragraph, index) =>
               paragraphId === paragraph.paragraphId ? (
                 <article key={index}>
-                  <div className="bg-[#5E28E0] text-white flex justify-center gap-1 rounded-[10px] py-2 mb-4 font-medium text-[13px]">
+                  <div
+                    className="bg-[#5E28E0] text-white flex justify-center gap-1 rounded-[10px] py-2 mb-4 font-medium text-[13px]"
+                    ref={hintRef}
+                  >
                     <Image
                       src={hintPin}
                       width={16}
