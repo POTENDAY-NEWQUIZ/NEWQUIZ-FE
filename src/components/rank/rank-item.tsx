@@ -35,7 +35,7 @@ const RankItem = ({
           <p
             className={`${
               userId === myUserId ? "text-white" : ""
-            } font-semibold w-8 text-center`}
+            } font-semibold w-10 text-center`}
           >
             {rank}
           </p>

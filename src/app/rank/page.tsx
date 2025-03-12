@@ -72,7 +72,7 @@ const Rank = () => {
     <>
       <main className="relative">
         {/* 타이틀 구역 */}
-        <section className="fixed top-0 w-full max-w-[480px] h-[72px] bg-gradient-to-l from-[#7258EE] to-[#413288] flex justify-between px-5">
+        <section className="fixed top-0 w-full max-w-[480px] h-[72px] bg-lavender flex justify-between px-5">
           <div className="flex items-center gap-1">
             <p className="font-semibold text-xl text-white">
               뉴퀴즈 학습왕에 도전하세요!

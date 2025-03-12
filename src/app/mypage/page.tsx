@@ -41,8 +41,7 @@ const Mypage = () => {
     profileImageUrl: profile,
   });
 
-  const url =
-    "https://docs.google.com/forms/d/1kvfMF-x9oZGZEsQfg9uG9GeLPaJh583cfbKWgtlVLW0/viewform?edit_requested=true";
+  const url = "https://form.naver.com/response/dP4OLeJ1ijkk0-og8evJSA";
 
   useEffect(() => {
     getUserData();
