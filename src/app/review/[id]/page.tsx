@@ -63,14 +63,16 @@ const Review = () => {
     <>
       <main>
         {/* 헤더 구역 */}
-        <Header
-          title={""}
-          leftChild={<EventButton icon={cancel} command="back" />}
-          rightChild={<EventButton icon={hint} command="hint" />}
-        />
-        <div className="absolute right-4 top-[40px] z-40">
-          <LottieImage image={lottie} />
-        </div>
+        <section className="relative">
+          <Header
+            title={""}
+            leftChild={<EventButton icon={cancel} command="back" />}
+            rightChild={<EventButton icon={hint} command="hint" />}
+          />
+          <div className="absolute right-4 top-[40px] z-40">
+            <LottieImage image={lottie} />
+          </div>
+        </section>
 
         {/* 퀴즈 구역 */}
         {review.synonymQuiz !== null ? (
