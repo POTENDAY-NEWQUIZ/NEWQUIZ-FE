@@ -132,7 +132,7 @@ const Home = () => {
           {/* 그래프 구역 */}
           <section className="pb-5">
             <p className="font-semibold text-lg mb-4">
-              일주일 동안 이만큼 풀었어요! 📈
+              일주일 동안 이만큼 풀었어요! 📊
             </p>
             <div className="bg-white px-4 py-5 rounded-lg shadow-light">
               <div className="font-semibold text-[13px] flex justify-between px-1 mb-4">

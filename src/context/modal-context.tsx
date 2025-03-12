@@ -6,7 +6,6 @@ type ModalType =
   | "answer-modal"
   | "back-modal"
   | "hint-modal"
-  | "level-modal"
   | "logout-modal"
   | "withdraw-modal";
 

@@ -236,7 +236,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
           </section>
 
           {/* 버튼 영역 */}
-          <section className="w-full mb-5">
+          <section className="w-full mb-6">
             <Button text="홈으로 이동하기" type="active" link="/" />
           </section>
         </div>
