@@ -169,7 +169,7 @@ const Mypage = () => {
               <span className="text-[22px] font-semibold">
                 {userData.userQuizCount}
               </span>
-              <span className="text-xs font-medium">푼 문제 수</span>
+              <span className="text-xs font-medium">푼 퀴즈 수</span>
             </div>
             <div className="flex flex-col gap-2 items-center">
               <span className="text-[22px] font-semibold">
@@ -209,7 +209,7 @@ const Mypage = () => {
                 />
               </div>
               <p className="text-xs font-medium text-[#B6B6B6]">
-                틀린 문제를 확인하고 복습해보세요.
+                틀린 퀴즈를 확인하고 복습해보세요.
               </p>
             </div>
           </div>

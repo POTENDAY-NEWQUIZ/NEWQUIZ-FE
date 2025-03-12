@@ -88,6 +88,8 @@ export interface IUserStudy {
   learningDays: number;
   maxLearningDays: number;
   totalCount: number;
+  avgScore: number;
+  maxAvgScore: number;
   graph: {
     date: string;
     dayOfWeek: string;

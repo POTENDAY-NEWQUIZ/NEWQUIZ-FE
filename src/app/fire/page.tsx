@@ -72,7 +72,7 @@ const Fire = () => {
       {/* 차트 구역 */}
       <section className="mx-5 pb-8">
         <p className="font-semibold text-lg mb-4">
-          일주일 동안 이만큼 풀었어요! 📈
+          일주일 동안 이만큼 풀었어요! 📊
         </p>
         <div className="bg-white p-4 rounded-lg shadow-light">
           <div className="font-semibold text-[13px] flex justify-between px-1 mb-3">
@@ -82,6 +82,45 @@ const Fire = () => {
             <p>총 {study?.totalCount}개</p>
           </div>
           <Chart graph={study?.graph} />
+        </div>
+      </section>
+
+      {/* 학습 데이터 구역 */}
+      <section className="mx-5 pb-8">
+        <p className="font-semibold text-lg mb-1">
+          평점을 좀 더 높여보세요! 📈
+        </p>
+        <p className="text-xs font-medium text-[#909090] mb-4">
+          평점은 맞힌 퀴즈 수 및 Ai 요약 총점을 기준으로 산출됩니다
+        </p>
+
+        <div className="mb-2">
+          <div className="flex justify-between">
+            <div className="flex flex-col gap-2 items-center w-[32%] bg-white shadow-light rounded-lg p-4">
+              <span className="text-[22px] font-semibold">
+                {study?.totalCount}
+              </span>
+              <span className="text-xs font-medium">푼 퀴즈 수</span>
+            </div>
+            <div className="flex flex-col gap-2 items-center w-[32%] bg-white shadow-light rounded-lg p-4">
+              <span className="text-[22px] font-semibold">
+                {study?.avgScore}
+              </span>
+              <span className="text-xs font-medium">평점 평균</span>
+            </div>
+            <div
+              className="flex flex-col gap-2 items-center w-[32%] bg-white shadow-light rounded-lg p-4"
+              bg-white
+              shadow-light
+              rounded-lg
+              p-4
+            >
+              <span className="text-[22px] font-semibold">
+                {study?.maxAvgScore}
+              </span>
+              <span className="text-xs font-medium">최고 평점</span>
+            </div>
+          </div>
         </div>
       </section>
     </main>
