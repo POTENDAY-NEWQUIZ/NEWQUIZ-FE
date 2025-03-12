@@ -35,7 +35,13 @@ const LoginContainer = () => {
     <main className="bg-white h-screen relative">
       {/* 로고 영역 */}
       <section className="mx-5 pt-6 mb-10">
-        <Image src={logo} width={93.31} height={22} alt="로고" />
+        <Image
+          src={logo}
+          width={93.31}
+          height={22}
+          alt="로고"
+          priority
+        />
       </section>
 
       {/* 온보딩 영역 */}

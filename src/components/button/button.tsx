@@ -61,6 +61,7 @@ const Button = ({
                   width={21}
                   height={21}
                   alt="카카오 로고"
+                  priority
                 />
               ) : null}
               {text}
