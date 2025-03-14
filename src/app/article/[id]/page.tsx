@@ -83,14 +83,20 @@ const Article = () => {
             </p>
           </div>
           <ul>
-            {article.totalSummary.split("\n").map((line, index) => (
-              <li
-                key={index}
-                className="list-disc list-inside pl-2 text-[13px] leading-6"
-              >
-                {line}
+            {article.totalSummary.includes("\n") ? (
+              article.totalSummary.split("\n").map((line, index) => (
+                <li
+                  key={index}
+                  className="list-disc list-inside pl-2 text-[13px] leading-6"
+                >
+                  {line}
+                </li>
+              ))
+            ) : (
+              <li className="list-disc list-inside pl-2 text-[13px] leading-6">
+                {article.totalSummary}
               </li>
-            ))}
+            )}
           </ul>
         </div>
 
