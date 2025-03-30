@@ -61,7 +61,7 @@ axiosInstance.interceptors.response.use(
         }
       } catch (error) {
         useAuthStore.getState().clearAccessToken();
-        window.location.replace("/login");
+        window.location.replace("/");
       }
     }
 
@@ -69,7 +69,7 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    window.location.replace("/login");
+    // window.location.replace("/");
     return Promise.reject(error);
   }
 );

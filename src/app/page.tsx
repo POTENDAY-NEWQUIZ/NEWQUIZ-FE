@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import Navigator from "@components/common/navigator";
 import Chart from "@container/home/chart";
+import ServiceUpdate from "@container/home/service-update";
 import { readStudy } from "@api/study-api";
 import { IUserStudy } from "@interface/props";
 
@@ -19,22 +20,23 @@ import book from "@assets/img/books.svg";
 import into from "@assets/svg/into.svg";
 
 const Home = () => {
-  const router = useRouter();
-  const [study, setStudy] = useState<IUserStudy>();
+  // const router = useRouter();
+  // const [study, setStudy] = useState<IUserStudy>();
 
-  useEffect(() => {
-    getStudy();
-  }, []);
+  // useEffect(() => {
+  //   getStudy();
+  // }, []);
 
-  const getStudy = async () => {
-    const response = await readStudy();
-    setStudy(response.data);
-  };
+  // const getStudy = async () => {
+  //   const response = await readStudy();
+  //   setStudy(response.data);
+  // };
 
   return (
     <>
-      <main className="bg-lavender pb-[72px]">
-        {/* 헤더 구역 */}
+      <ServiceUpdate />
+      {/* <main className="bg-lavender pb-[72px]">
+        // 헤더 구역
         <section className="max-w-[480px] px-5 mb-6">
           <div className="flex justify-between items-center py-4">
             <Image src={logo} height={20} alt="로고" />
@@ -59,9 +61,9 @@ const Home = () => {
           </p>
         </section>
 
-        {/* 콘텐츠 구역 */}
+        // 콘텐츠 구역
         <section className="px-5 pt-5 bg-[#F4F3F6] rounded-t-3xl">
-          {/* 카테고리 구역 */}
+          // 카테고리 구역
           <section className="flex flex-wrap gap-4 mb-8">
             <div
               className="w-[calc(50%-8px)] bg-white rounded-xl py-4 flex flex-col items-center shadow-light cursor-pointer"
@@ -93,7 +95,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* 오답노트 구역 */}
+          // 오답노트 구역
           <section className="mb-8">
             <p className="font-semibold text-lg mb-4">
               헷갈렸던 문제, 다시 풀어볼까요? 🧐
@@ -129,7 +131,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* 그래프 구역 */}
+          // 그래프 구역
           <section className="pb-5">
             <p className="font-semibold text-lg mb-4">
               일주일 동안 이만큼 풀었어요! 📊
@@ -147,7 +149,7 @@ const Home = () => {
         </section>
       </main>
 
-      <Navigator />
+      <Navigator /> */}
     </>
   );
 };
