@@ -25,6 +25,10 @@ export default {
         button: "0px 4px 8px 0px rgba(0, 0, 0, 0.15)",
         modal: "0px 3.81px 9.524px 0px rgba(0, 0, 0, 0.10)",
       },
+      backgroundImage: {
+        "radial-gradient":
+          "radial-gradient(circle, rgba(251, 250, 255, 0.8) 0%, rgba(220, 212, 255, 0.5) 50%, rgba(135, 110, 255, 0.3) 100%)",
+      },
       screens: {
         xs: { max: "368px" },
       },
