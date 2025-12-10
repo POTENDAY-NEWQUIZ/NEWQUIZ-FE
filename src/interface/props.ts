@@ -80,6 +80,15 @@ export interface IGraph {
   graph?: IGraphData[];
 }
 
+export interface IHomeContainer {
+  initialData: IUserStudy;
+}
+
+export interface IHomeCategory {
+  image: string;
+  category: "정치" | "경제" | "사회" | "글로벌";
+}
+
 /* 사용자 인터페이스 */
 export interface IUserStudy {
   nickName: string;
