@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import SummaryLoading from "@container/quiz/summary-loading";
-import SummaryQuiz from "@container/quiz/summary-quiz";
+import SummaryLoading from "@components/loading/summary-loading";
+import SummaryQuiz from "@components/quiz/summary-quiz";
 import { useNewsStore } from "@store/news-store";
 import { useSummaryStore } from "@store/summary-store";
 import { createSummaryAnswer } from "@api/quiz-api";
@@ -12,8 +12,7 @@ import { createSummaryAnswer } from "@api/quiz-api";
 const Summary = () => {
   const router = useRouter();
   const { news } = useNewsStore();
-  const { insertSummaryList, insertSummaryFeedback } =
-    useSummaryStore();
+  const { insertSummaryList, insertSummaryFeedback } = useSummaryStore();
   const [loading, setLoading] = useState(false);
   const [quizStart, setQuizStart] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,10 +62,7 @@ const Summary = () => {
     setLoading(true);
 
     try {
-      const response = await createSummaryAnswer(
-        news!.newsId,
-        summaryList
-      );
+      const response = await createSummaryAnswer(news!.newsId, summaryList);
       insertSummaryFeedback(response);
       setLoading(false);
     } finally {

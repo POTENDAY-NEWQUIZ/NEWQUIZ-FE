@@ -7,8 +7,8 @@ import Header from "@components/common/header";
 import Blank from "@components/button/blank";
 import BackButton from "@components/button/back-button";
 import StudyDuration from "@components/home/study-duration";
-import MyCalendar from "@container/home/calendar";
-import Chart from "@container/home/chart";
+import MyCalendar from "@components/home/calendar";
+import Chart from "@components/home/chart";
 import { readStudy } from "@api/study-api";
 import { IUserStudy } from "@interface/props";
 
@@ -76,9 +76,7 @@ const Fire = () => {
         </p>
         <div className="bg-white p-4 rounded-lg shadow-light">
           <div className="font-semibold text-[13px] flex justify-between px-1 mb-3">
-            <p className="text-[#707070]">
-              지난 6일 간 푼 누적 퀴즈 수
-            </p>
+            <p className="text-[#707070]">지난 6일 간 푼 누적 퀴즈 수</p>
             <p>총 {study?.totalCount}개</p>
           </div>
           <Chart graph={study?.graph} />

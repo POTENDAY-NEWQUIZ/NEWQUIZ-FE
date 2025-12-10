@@ -17,15 +17,15 @@ import goodFill from "@assets/svg/good-fill.svg";
 import bad from "@assets/svg/bad.svg";
 import badFill from "@assets/svg/bad-fill.svg";
 
-const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
+const FeedbackContainer = ({ code, data, isSuccess, message }: ISummary) => {
   const { news } = useNewsStore();
   const { summaryList } = useSummaryStore();
   const { totalScore, generalFeedback, paragraphs } = data || {};
   const paragraphsData = paragraphs || [];
 
-  const [feedbackState, setFeedbackState] = useState<
-    (boolean | null)[]
-  >(new Array(paragraphsData.length).fill(null));
+  const [feedbackState, setFeedbackState] = useState<(boolean | null)[]>(
+    new Array(paragraphsData.length).fill(null)
+  );
   const [selectReason, setSelectReason] = useState<(string | null)[]>(
     new Array(paragraphsData.length).fill(null)
   );
@@ -107,12 +107,9 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
 
             {/* 최종 평가 영역 */}
             <section className="mx-5 rounded-md bg-white border-[1px] border-[#D5CCF8] p-5 mb-7">
-              <div className="font-semibold mb-2">
-                📌 Ai 종합 피드백
-              </div>
+              <div className="font-semibold mb-2">📌 Ai 종합 피드백</div>
               <div className="leading-6">
-                지금은 피드백을 드릴 수 없어요. 다음에 다시
-                시도해주세요.
+                지금은 피드백을 드릴 수 없어요. 다음에 다시 시도해주세요.
               </div>
             </section>
 
@@ -137,9 +134,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
 
                   {/* 사용자 요약 내용 */}
                   <div className="rounded-md bg-white shadow-light p-4 mb-5">
-                    <div className="font-semibold mb-2">
-                      내가 한 요약
-                    </div>
+                    <div className="font-semibold mb-2">내가 한 요약</div>
                     <div className="leading-6">
                       {summaryList[index].userSummary}
                     </div>
@@ -151,11 +146,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                       <p className="font-semibold">Ai 피드백</p>
                       <div className="flex gap-2">
                         <Image
-                          src={
-                            feedbackState[index] === true
-                              ? goodFill
-                              : good
-                          }
+                          src={feedbackState[index] === true ? goodFill : good}
                           width={18}
                           height={18}
                           alt="만족"
@@ -163,11 +154,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                           onClick={() => onClickGood(index)}
                         />
                         <Image
-                          src={
-                            feedbackState[index] === false
-                              ? badFill
-                              : bad
-                          }
+                          src={feedbackState[index] === false ? badFill : bad}
                           width={18}
                           height={18}
                           alt="불만족"
@@ -206,19 +193,15 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                         </ul>
                       </div>
                     )}
-                    <p className="font-semibold text-lavender mb-2">
-                      잘된 점
-                    </p>
+                    <p className="font-semibold text-lavender mb-2">잘된 점</p>
                     <div className="leading-6 mb-3">
-                      지금은 피드백을 드릴 수 없어요. 다음에 다시
-                      시도해주세요.
+                      지금은 피드백을 드릴 수 없어요. 다음에 다시 시도해주세요.
                     </div>
                     <p className="font-semibold text-lavender mb-2">
                       보완할 점
                     </p>
                     <div className="leading-6">
-                      지금은 피드백을 드릴 수 없어요. 다음에 다시
-                      시도해주세요.
+                      지금은 피드백을 드릴 수 없어요. 다음에 다시 시도해주세요.
                     </div>
                   </div>
 
@@ -266,9 +249,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
               </p>
               <div className="flex font-medium mb-1">
                 총점&nbsp;&nbsp;
-                <span className="font-bold text-lavender">
-                  {totalScore}
-                </span>
+                <span className="font-bold text-lavender">{totalScore}</span>
                 <span className="text-[#9C9C9C]">/5점</span>
               </div>
               <div className="flex gap-[2px]">
@@ -295,9 +276,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
 
             {/* 최종 평가 영역 */}
             <section className="mx-5 rounded-md bg-white border-[1px] border-[#D5CCF8] p-5 mb-7">
-              <div className="font-semibold mb-2">
-                📌 Ai 종합 피드백
-              </div>
+              <div className="font-semibold mb-2">📌 Ai 종합 피드백</div>
               <div className="leading-6">{generalFeedback}</div>
             </section>
 
@@ -322,9 +301,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
 
                   {/* 사용자 요약 내용 */}
                   <div className="rounded-md bg-white shadow-light p-4 mb-5">
-                    <div className="font-semibold mb-2">
-                      내가 한 요약
-                    </div>
+                    <div className="font-semibold mb-2">내가 한 요약</div>
                     <div className="leading-6">
                       {summaryList[index].userSummary}
                     </div>
@@ -336,11 +313,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                       <p className="font-semibold">Ai 피드백</p>
                       <div className="flex gap-2">
                         <Image
-                          src={
-                            feedbackState[index] === true
-                              ? goodFill
-                              : good
-                          }
+                          src={feedbackState[index] === true ? goodFill : good}
                           width={18}
                           height={18}
                           alt="만족"
@@ -348,11 +321,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                           onClick={() => onClickGood(index)}
                         />
                         <Image
-                          src={
-                            feedbackState[index] === false
-                              ? badFill
-                              : bad
-                          }
+                          src={feedbackState[index] === false ? badFill : bad}
                           width={18}
                           height={18}
                           alt="불만족"
@@ -391,18 +360,12 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                         </ul>
                       </div>
                     )}
-                    <p className="font-semibold text-lavender mb-2">
-                      잘된 점
-                    </p>
-                    <div className="leading-6 mb-3">
-                      {paragraph.strengths}
-                    </div>
+                    <p className="font-semibold text-lavender mb-2">잘된 점</p>
+                    <div className="leading-6 mb-3">{paragraph.strengths}</div>
                     <p className="font-semibold text-lavender mb-2">
                       보완할 점
                     </p>
-                    <div className="leading-6">
-                      {paragraph.improvements}
-                    </div>
+                    <div className="leading-6">{paragraph.improvements}</div>
                   </div>
 
                   {/* Ai 요약 */}
@@ -411,9 +374,7 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
                       <summary className="font-semibold">
                         Ai가 요약한 내용
                       </summary>
-                      <p className="leading-6 mt-3">
-                        {paragraph.aiSummary}
-                      </p>
+                      <p className="leading-6 mt-3">{paragraph.aiSummary}</p>
                     </details>
                   </div>
                 </article>
@@ -431,4 +392,4 @@ const AIFeedback = ({ code, data, isSuccess, message }: ISummary) => {
   );
 };
 
-export default AIFeedback;
+export default FeedbackContainer;
