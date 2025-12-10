@@ -3,9 +3,9 @@
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
-import WordQuiz1 from "@container/quiz/word-quiz-1";
-import WordQuiz2 from "@container/quiz/word-quiz-2";
-import WordQuiz3 from "@container/quiz/word-quiz-3";
+import WordQuiz1 from "@components/quiz/word-quiz-1";
+import WordQuiz2 from "@components/quiz/word-quiz-2";
+import WordQuiz3 from "@components/quiz/word-quiz-3";
 import Header from "@components/common/header";
 import EventButton from "@components/button/event-button";
 import AnswerModal from "@components/quiz/answer-modal";
@@ -56,8 +56,7 @@ const Review = () => {
     return <div>Loading...</div>;
   }
 
-  const quiz =
-    review.synonymQuiz ?? review.meaningQuiz ?? review.contentQuiz;
+  const quiz = review.synonymQuiz ?? review.meaningQuiz ?? review.contentQuiz;
 
   return (
     <>
@@ -77,26 +76,17 @@ const Review = () => {
         {/* 퀴즈 구역 */}
         {review.synonymQuiz !== null ? (
           <div className="pt-6">
-            <WordQuiz1
-              {...review.synonymQuiz}
-              onCheck={checkAnswerCorrect}
-            />
+            <WordQuiz1 {...review.synonymQuiz} onCheck={checkAnswerCorrect} />
             <HintModal paragraphId={review.synonymQuiz.paragraphId} />
           </div>
         ) : review.meaningQuiz !== null ? (
           <div className="pt-6">
-            <WordQuiz2
-              {...review.meaningQuiz}
-              onCheck={checkAnswerCorrect}
-            />
+            <WordQuiz2 {...review.meaningQuiz} onCheck={checkAnswerCorrect} />
             <HintModal paragraphId={review.meaningQuiz.paragraphId} />
           </div>
         ) : review.contentQuiz !== null ? (
           <div className="pt-6">
-            <WordQuiz3
-              {...review.contentQuiz}
-              onCheck={checkAnswerCorrect}
-            />
+            <WordQuiz3 {...review.contentQuiz} onCheck={checkAnswerCorrect} />
             <HintModal paragraphId={review.contentQuiz.paragraphId} />
           </div>
         ) : (

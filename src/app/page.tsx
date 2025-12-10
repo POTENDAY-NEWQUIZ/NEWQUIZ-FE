@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import Navigator from "@components/common/navigator";
-import Chart from "@container/home/chart";
-import ServiceUpdate from "@container/home/service-update";
+import Chart from "@components/home/chart";
+import ServiceUpdate from "@components/home/service-update";
 import { readStudy } from "@api/study-api";
 import { IUserStudy } from "@interface/props";
 

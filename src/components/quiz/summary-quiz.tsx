@@ -10,7 +10,7 @@ import Blank from "@components/button/blank";
 import Button from "@components/button/button";
 import Modal from "@components/common/modal";
 import SmallButton from "@components/button/small-button";
-import AILoading from "@container/feedback/ai-loading";
+import AILoading from "@components/loading/ai-loading";
 import { ModalContext } from "@context/modal-context";
 import { ISummaryInput } from "@interface/props";
 
@@ -41,9 +41,7 @@ const SummaryQuiz = ({
         <main>
           {/* 헤더 영역 */}
           <Header
-            leftChild={
-              <EventButton icon={cancel} command="back-modal" />
-            }
+            leftChild={<EventButton icon={cancel} command="back-modal" />}
             rightChild={<Blank />}
           />
 
@@ -67,10 +65,7 @@ const SummaryQuiz = ({
                   rows={6}
                   value={userSummary}
                   onChange={(e) =>
-                    onChangeSummary(
-                      paragraph.paragraphId,
-                      e.target.value
-                    )
+                    onChangeSummary(paragraph.paragraphId, e.target.value)
                   }
                 ></textarea>
               </div>

@@ -12,9 +12,9 @@ import AnswerModal from "@components/quiz/answer-modal";
 import Modal from "@components/common/modal";
 import SmallButton from "@components/button/small-button";
 import LottieImage from "@components/common/lottie-image";
-import WordQuiz1 from "@container/quiz/word-quiz-1";
-import WordQuiz2 from "@container/quiz/word-quiz-2";
-import WordQuiz3 from "@container/quiz/word-quiz-3";
+import WordQuiz1 from "@components/quiz/word-quiz-1";
+import WordQuiz2 from "@components/quiz/word-quiz-2";
+import WordQuiz3 from "@components/quiz/word-quiz-3";
 import { ModalContext } from "@context/modal-context";
 import { useQuizStore } from "@store/quiz-store";
 import { readQuizAll } from "@api/quiz-api";
@@ -27,8 +27,7 @@ import lottie from "@assets/lottie/hint.json";
 const Quiz = () => {
   const params = useParams();
   const router = useRouter();
-  const { activeModal, openModal, closeModal } =
-    useContext(ModalContext);
+  const { activeModal, openModal, closeModal } = useContext(ModalContext);
   const [quizData, setQuizData] = useState<any>(null);
   const [quiz, setQuiz] = useState<any>(null);
   const [progressIndex, setProgressIndex] = useState(0);

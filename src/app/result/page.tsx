@@ -1,6 +1,6 @@
 "use client";
 
-import AIFeedback from "@container/feedback/ai-feedback";
+import FeedbackContainer from "@container/feedback-container";
 import { useSummaryStore } from "@store/summary-store";
 
 const Result = () => {
@@ -8,7 +8,7 @@ const Result = () => {
 
   return (
     <main>
-      <AIFeedback {...summaryFeedback!} />
+      <FeedbackContainer {...summaryFeedback!} />
     </main>
   );
 };

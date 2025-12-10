@@ -8,7 +8,7 @@ import Header from "@components/common/header";
 import BackButton from "@components/button/back-button";
 import Blank from "@components/button/blank";
 import Button from "@components/button/button";
-import QuizLoading from "@container/quiz/quiz-loading";
+import QuizLoading from "@components/loading/quiz-loading";
 import { useNewsStore } from "@store/news-store";
 import { IArticle } from "@interface/props";
 import { readNewsDetail } from "@api/news-api";
@@ -48,11 +48,7 @@ const Article = () => {
   return (
     <main className="bg-mist-lavender">
       {/* 헤더 영역 */}
-      <Header
-        title=" "
-        leftChild={<BackButton />}
-        rightChild={<Blank />}
-      />
+      <Header title=" " leftChild={<BackButton />} rightChild={<Blank />} />
 
       {/* 안내 문구 영역 */}
       <section className="pt-16 mx-5 mb-7">

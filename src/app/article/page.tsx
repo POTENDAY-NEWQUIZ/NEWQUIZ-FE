@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import ArticleContainer from "@container/article/article-container";
+import ArticleContainer from "@container/article-container";
 
 const Article = async () => {
   return (
