@@ -186,7 +186,7 @@ export interface IQuiz {
 export interface ISynonymQuiz {
   type: string;
   quizId: number;
-  paragraphId: 82;
+  paragraphId: number;
   sourceSentence: string;
   word: string;
   option1: string;
@@ -200,7 +200,7 @@ export interface ISynonymQuiz {
 export interface IMeaningQuiz {
   type: string;
   quizId: number;
-  paragraphId: 82;
+  paragraphId: number;
   sourceSentence: string;
   word: string;
   option1: string;
@@ -214,7 +214,7 @@ export interface IMeaningQuiz {
 export interface IContentQuiz {
   type: string;
   quizId: number;
-  paragraphId: 82;
+  paragraphId: number;
   question: string;
   answer: boolean;
   explanation: string;
