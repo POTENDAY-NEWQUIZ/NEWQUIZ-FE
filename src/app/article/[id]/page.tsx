@@ -79,18 +79,26 @@ const Article = () => {
             </p>
           </div>
           <ul>
-            {article.totalSummary.includes("\n") ? (
-              article.totalSummary.split("\n").map((line, index) => (
-                <li
-                  key={index}
-                  className="list-disc list-inside pl-2 text-[13px] leading-6"
-                >
-                  {line}
-                </li>
-              ))
+            {Boolean(article?.totalSummary?.trim()) ? (
+              <ul>
+                {article.totalSummary.includes("\n") ? (
+                  article.totalSummary.split("\n").map((line, index) => (
+                    <li
+                      key={index}
+                      className="list-disc list-inside pl-2 text-[13px] leading-6"
+                    >
+                      {line}
+                    </li>
+                  ))
+                ) : (
+                  <li className="list-disc list-inside pl-2 text-[13px] leading-6">
+                    {article.totalSummary}
+                  </li>
+                )}
+              </ul>
             ) : (
               <li className="list-disc list-inside pl-2 text-[13px] leading-6">
-                {article.totalSummary}
+                요약 제공 중 오류가 발생했습니다. 기사 전문을 확인해주세요.
               </li>
             )}
           </ul>
